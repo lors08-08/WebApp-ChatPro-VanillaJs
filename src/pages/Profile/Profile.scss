@@ -1,0 +1,40 @@
+.profile-container {
+  display: flex;
+  height: 100%;
+}
+
+.back-icon-wrapper {
+  background-color: var(--dark-white);
+  border-right: 1px solid var(--light-grey);
+  padding: 18px;
+}
+
+.back-icon {
+  background-color: var(--blue);
+  border-radius: 50%;
+  padding: 4px;
+
+  &:hover {
+    background-color: var(--dark-blue);
+    cursor: pointer;
+  }
+}
+
+.profile-main-content {
+  width: 60%;
+  row-gap: 60px;
+  height: calc(100% - 120px);
+  margin: auto;
+}
+
+.profile-user-info {
+  row-gap: 60px;
+}
+
+.profile-actions {
+  row-gap: 10px;
+
+  button {
+    width: fit-content;
+  }
+}

@@ -1,0 +1,18 @@
+.w100 {
+  width: 100%;
+}
+.h100 {
+  height: 100%;
+}
+.flex{
+  display: flex;
+}
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+.flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
