@@ -5,7 +5,7 @@
   "scripts": {
     "start": "parcel build ./static/index.html && node ./server/server.js",
     "dev": "parcel ./static/index.html --port=3000 --no-cache",
-    "build": "parcel build ./static/index.html"
+    "build": "parcel build ./static/index.html --public-url ."
   },
   "author": "Lors",
   "license": "ISC",
