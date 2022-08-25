@@ -4,10 +4,10 @@
   "description": "",
   "scripts": {
     "start": "parcel build ./static/index.html && node ./server/server.js",
-    "dev": "parcel ./static/index.html --port=3000 --no-cache",
-    "build": "parcel build ./static/index.html --public-url ."
+    "dev": "parcel ./static/index.html --port=3000",
+    "build": "parcel build ./static/index.html"
   },
-  "author": "Lors",
+  "author": "Lors Saidov",
   "license": "ISC",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.7.0",
