@@ -4,7 +4,7 @@ import "./Routing.scss"
 export default `
     <div class="wrapper flexColumn flexCenter w100 h100">
         <a href="/login">
-            Login
+            Log
         </a>
         <a href="/signup">
             Signup
