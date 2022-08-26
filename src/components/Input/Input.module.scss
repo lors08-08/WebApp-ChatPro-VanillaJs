@@ -1,0 +1,31 @@
+.input-wrapper {
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--blue);
+  padding: 0 0 7px;
+
+  &:hover, &:focus {
+    border-color: var(--green);
+  }
+}
+
+.input {
+  width: 100%;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.ghost {
+  border-radius: 5px;
+  padding: 7px 11px;
+  height: 32px;
+  border: none;
+  background-color: var(--dark-grey);
+  &:hover, &:focus {
+    background-color: var(--light-grey);
+    border: none;
+  }
+}
+
+

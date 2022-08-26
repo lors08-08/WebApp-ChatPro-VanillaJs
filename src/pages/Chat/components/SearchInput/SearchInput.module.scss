@@ -1,0 +1,21 @@
+.wrapper {
+  margin-right: 35px;
+  width: 40px;
+  transition: all 0.4s;
+  &:focus {
+    margin: 0;
+
+    &::placeholder {
+      visibility: hidden;
+    }
+    width: 100%;
+  }
+
+  &::placeholder {
+    text-align: center;
+   }
+}
+
+.search-wrapper {
+  column-gap: 5px;
+}
