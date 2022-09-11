@@ -1,0 +1,15 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "color-hex-case": "upper",
+    "string-quotes": "double"
+  },
+  "ignoreFiles": [
+    "dist/*",
+    "node_modules/*",
+    ".github/*",
+    ".parcel-cache/*",
+    "static/*",
+    "server/*"
+  ]
+}

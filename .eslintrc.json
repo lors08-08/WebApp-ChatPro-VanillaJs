@@ -1,0 +1,91 @@
+{
+  "extends": [
+    "airbnb-typescript",
+    "plugin:unicorn/recommended",
+    "plugin:import/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["prettier"],
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "sourceType": "module"
+  },
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/no-implied-eval": "off",
+    "@typescript-eslint/lines-between-class-members": "off",
+    "consistent-return": "off",
+    "newline-before-return": "error",
+    "prettier/prettier": "error",
+    "no-console": "error",
+    "quotes": ["error", "double", { "avoidEscape": true }],
+    "import/no-extraneous-dependencies": "off",
+    "unicorn/prevent-abbreviations": "off",
+    "unicorn/no-array-reduce": "off",
+    "unicorn/no-null": "off",
+    "react/jsx-filename-extension": "off",
+    "unicorn/explicit-length-check": "off",
+    "unicorn/no-array-for-each": "off",
+    "@typescript-eslint/no-useless-constructor": "off",
+    "newline-after-var": [
+      "error",
+      "always"
+    ],
+    "unicorn/filename-case": [
+      "error",
+      {
+        "cases": {
+          "camelCase": true,
+          "pascalCase": true
+        }
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          [
+            "external",
+            "builtin"
+          ],
+          [
+            "index",
+            "sibling",
+            "internal",
+            "parent"
+          ]
+        ],
+        "newlines-between": "always"
+      }
+    ]
+  },
+  "settings": {
+    "import/ignore": [
+      "node_modules"
+    ],
+    "import/parsers": {
+      "@typescript-eslint/parser": [
+        ".ts"
+      ]
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".ts"]
+      }
+    }
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.d.ts"
+      ],
+      "rules": {
+        "@typescript-eslint/naming-convention": "off",
+        "@typescript-eslint/no-empty-interface": "off",
+        "unicorn/filename-case": "off",
+        "eslint-disable-next-line unicorn/filename-case": "off"
+      }
+    }
+  ]
+}
