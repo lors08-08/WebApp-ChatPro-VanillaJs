@@ -1,19 +1,20 @@
 .input-wrapper {
   box-sizing: border-box;
-  border-bottom: 1px solid var(--blue);
-  padding: 0 0 7px;
-
-  &:hover, &:focus {
-    border-color: var(--green);
-  }
 }
 
 .input {
   width: 100%;
-  padding: 0;
   border: none;
   outline: none;
   background: transparent;
+
+  border-bottom: 1px solid var(--blue);
+  padding: 8px 2px 7px;
+
+  &:hover,
+  &:focus {
+    border-color: var(--green);
+  }
 }
 
 .ghost {
@@ -22,10 +23,10 @@
   height: 32px;
   border: none;
   background-color: var(--dark-grey);
-  &:hover, &:focus {
+
+  &:hover,
+  &:focus {
     background-color: var(--light-grey);
     border: none;
   }
 }
-
-

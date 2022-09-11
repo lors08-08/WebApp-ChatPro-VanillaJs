@@ -4,7 +4,7 @@
 @import "./common/styles/commonStyles.scss";
 
 * {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 body {
@@ -17,4 +17,3 @@ body {
 #root {
   height: 100%;
 }
-
