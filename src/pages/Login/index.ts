@@ -45,15 +45,13 @@ const AskForAccountBtn = new ButtonComponent({
 const AuthCard = new AuthCardComponent({
   title: "Вход",
   content: [InputLogin, InputPassword],
-  buttons: [AuthorizeBtn, AskForAccountBtn],
+  buttons: [AuthorizeBtn.getContent(), AskForAccountBtn],
 }).getContent();
 
-const wrapper = new LayoutComponent({
-  content: "content",
-});
-
 setTimeout(() => {
-  wrapper.setProps({ content: "update" });
-}, 1000);
+  AuthorizeBtn.setProps({ value: "Вход" });
+}, 3000);
 
-export default wrapper.getContent();
+export default new LayoutComponent({
+  content: AuthCard,
+}).getContent();

@@ -1,8 +1,7 @@
 import icon from "./Icon.tmp";
-import Templator from "../../utils/Templator";
+import Templator from "../../utils/classes/Templator";
 import styles from "./Icon.module.scss";
-import { Block } from "../../utils/Block";
-import { IContextData } from "../../common/types/types";
+import { Block } from "../../utils/classes/Block/Block";
 
 interface IIcon {
   size?: string;
@@ -17,7 +16,7 @@ class IconComponent extends Block {
     super(props);
   }
 
-  render(): ChildNode {
+  render() {
     return tmp.compile({ ...this.props }, styles);
   }
 }

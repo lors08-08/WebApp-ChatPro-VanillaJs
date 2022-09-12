@@ -15,27 +15,40 @@ const currentLocation = window.location.pathname;
 
 switch (currentLocation) {
   case "/login": {
-    root.append(LoginPage);
+    if (LoginPage) {
+      root.append(LoginPage);
+    }
     break;
   }
   case "/signup": {
-    root.append(SignupPage);
+    if (SignupPage) {
+      root.append(SignupPage);
+    }
+
     break;
   }
   case "/chat": {
-    root.append(ChatPage);
+    if (ChatPage) {
+      root.append(ChatPage);
+    }
     break;
   }
   case "/profile": {
-    root.append(ProfilePage);
+    if (ProfilePage) {
+      root.append(ProfilePage);
+    }
     break;
   }
   case "/404": {
-    root.append(Page404);
+    if (Page404) {
+      root.append(Page404);
+    }
     break;
   }
   case "/500": {
-    root.append(Page500);
+    if (Page500) {
+      root.append(Page500);
+    }
     break;
   }
   default: {

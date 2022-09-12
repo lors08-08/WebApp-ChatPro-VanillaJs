@@ -1,10 +1,12 @@
 //language=hbs
 export default `
-    <div class="{{ styles.title }}">
-        500
+    <div class="flexColumn flexCenter">
+      <div class="{{ styles.title }}">
+          500
+      </div>
+      <div class="{{ styles.subtitle }} large">
+          Мы уже фиксим
+      </div>
+      {{ button }}
     </div>
-    <div class="{{ styles.subtitle }} large">
-        Мы уже фиксим
-    </div>
-    {{ button }}
 `;

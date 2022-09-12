@@ -6,15 +6,16 @@ import AvatarProfile from "./modules/Avatar/Avatar";
 import FieldComponent from "./components/Field/Field";
 import ArrowLeft from "../../../static/img/arrow-left";
 import AvatarDefault from "../../../static/img/avatar-default";
-import Templator from "../../utils/Templator";
-import { Block } from "../../utils/Block";
+import Templator from "../../utils/classes/Templator";
+import { Block } from "../../utils/classes/Block/Block";
 import styles from "./modules/Avatar/Avatar.module.scss";
+import { TElement } from "../../utils/classes/Block/types/types";
 
 interface IProfile {
-  icon: string;
-  userAvatar: string;
-  userInfo: string;
-  buttons: DocumentFragment[];
+  icon: TElement;
+  userAvatar: TElement;
+  userInfo: TElement | TElement[];
+  buttons: TElement[] | TElement;
 }
 
 const userInfoFields = [
@@ -66,7 +67,7 @@ class ProfileComponent extends Block {
     super(props);
   }
 
-  render(): ChildNode {
+  render() {
     return tmp.compile({ ...this.props }, styles);
   }
 }

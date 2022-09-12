@@ -5,7 +5,10 @@ interface IData<T> {
   path: string;
 }
 
-function getObjectData<T>({ data, path }: IData<T>): TResult {
+function getObjectData<T extends Record<string, any>>({
+  data,
+  path,
+}: IData<T>): TResult {
   const keys = path.split(".");
 
   let currentData = data;

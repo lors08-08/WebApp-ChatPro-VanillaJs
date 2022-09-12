@@ -1,10 +1,11 @@
 import LayoutTmp from "./Layout.tmp";
 import styles from "./Layout.module.scss";
-import Templator from "../../utils/Templator";
-import { Block } from "../../utils/Block";
+import Templator from "../../utils/classes/Templator";
+import { Block } from "../../utils/classes/Block/Block";
+import { TElement } from "../../utils/classes/Block/types/types";
 
 interface ILayout {
-  content: HTMLElement;
+  content: TElement;
   className?: string;
 }
 
@@ -15,7 +16,7 @@ class Layout extends Block {
     super(props);
   }
 
-  render(): string {
+  render() {
     return tmp.compile({ ...this.props }, styles);
   }
 }

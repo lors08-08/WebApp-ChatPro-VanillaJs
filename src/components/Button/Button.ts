@@ -1,8 +1,8 @@
 import ButtonTmp from "./Button.tmp";
 import styles from "./Button.module.scss";
-import Templator from "../../utils/Templator";
-import { IContextData } from "../../common/types/types";
-import { Block } from "../../utils/Block";
+import Templator from "../../utils/classes/Templator";
+import { Block } from "../../utils/classes/Block/Block";
+import { TElement } from "../../utils/classes/Block/types/types";
 
 export interface IEvent {
   type: string;
@@ -14,7 +14,7 @@ interface IButton {
   className?: string;
   type?: string;
   color?: string;
-  iconRight?: DocumentFragment;
+  iconRight?: TElement;
 }
 
 const tmp = new Templator(ButtonTmp);
@@ -24,7 +24,7 @@ class ButtonComponent extends Block {
     super(props);
   }
 
-  render(): ChildNode {
+  render() {
     return tmp.compile({ ...this.props }, styles);
   }
 }

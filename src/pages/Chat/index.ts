@@ -1,6 +1,6 @@
 import Chat from "./Chat.tmp";
 import styles from "./Chat.module.scss";
-import Templator from "../../utils/Templator";
+import Templator from "../../utils/classes/Templator";
 import SidebarComponent from "./modules/Sidebar/Sidebar";
 import MainComponent from "./modules/Main/modules/ChatEmpty/ChatEmpty";
 import HeaderComponent from "./modules/Sidebar/modules/Header/Header";
@@ -12,11 +12,12 @@ import LabelComponent from "../../components/Label/Label";
 import IconComponent from "../../components/Icon/Icon";
 import SearchIcon from "../../../static/img/search";
 import ArrowRight from "../../../static/img/arrow-right-min";
-import { Block } from "../../utils/Block";
+import { Block } from "../../utils/classes/Block/Block";
+import { TElement } from "../../utils/classes/Block/types/types";
 
 interface IChat {
-  sidebar: HTMLElement;
-  main: HTMLElement;
+  sidebar: TElement;
+  main: TElement;
 }
 
 const tmp = new Templator(Chat);
@@ -74,7 +75,7 @@ class ChatComponent extends Block {
     super(props);
   }
 
-  render(): ChildNode {
+  render() {
     return tmp.compile({ ...this.props }, styles);
   }
 }

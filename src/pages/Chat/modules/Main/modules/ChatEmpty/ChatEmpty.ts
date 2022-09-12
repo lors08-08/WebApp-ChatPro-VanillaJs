@@ -1,8 +1,8 @@
 import ChatEmpty from "./ChatEmpty.tmp";
 import styles from "./ChatEmpty.module.scss";
-import Templator from "../../../../../../utils/Templator";
+import Templator from "../../../../../../utils/classes/Templator";
 import LayoutComponent from "../../../../../../components/Layout/Layout";
-import { Block } from "../../../../../../utils/Block";
+import { Block } from "../../../../../../utils/classes/Block/Block";
 
 interface IChatEmpty {
   value: string;
@@ -15,7 +15,7 @@ class ChatEmptyComponent extends Block {
     super(props);
   }
 
-  render(): ChildNode {
+  render() {
     return tmp.compile({ ...this.props }, styles);
   }
 }

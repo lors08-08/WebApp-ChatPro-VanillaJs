@@ -1,12 +1,12 @@
 import Avatar from "./Avatar.tmp";
 import styles from "./Avatar.module.scss";
-import Templator from "../../utils/Templator";
-import { IContextData } from "../../common/types/types";
-import { Block } from "../../utils/Block";
+import Templator from "../../utils/classes/Templator";
+import { Block } from "../../utils/classes/Block/Block";
+import { TElement } from "../../utils/classes/Block/types/types";
 
 interface IAvatar {
   size?: string;
-  icon?: Block;
+  icon?: TElement;
   image?: string;
 }
 
@@ -17,7 +17,7 @@ class AvatarComponent extends Block {
     super(props);
   }
 
-  render(): ChildNode {
+  render() {
     return tmp.compile({ ...this.props }, styles);
   }
 }

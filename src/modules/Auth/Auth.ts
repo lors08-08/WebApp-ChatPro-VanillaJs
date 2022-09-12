@@ -1,13 +1,14 @@
-import Templator from "../../utils/Templator";
+import Templator from "../../utils/classes/Templator";
 import Auth from "./Auth.tmp";
-import { Block } from "../../utils/Block";
+import { Block } from "../../utils/classes/Block/Block";
 import styles from "../../components/Button/Button.module.scss";
+import { TElement } from "../../utils/classes/Block/types/types";
 
 interface IAuth {
   title: string;
   fieldsClassName?: string;
-  content: HTMLElement | HTMLElement[];
-  buttons: HTMLElement | HTMLElement[];
+  content: TElement | TElement[];
+  buttons: TElement | TElement[];
 }
 
 const tmp = new Templator(Auth);
@@ -17,7 +18,7 @@ class AuthCardComponent extends Block {
     super(props);
   }
 
-  render(): ChildNode {
+  render() {
     return tmp.compile({ ...this.props }, styles);
   }
 }

@@ -4,10 +4,10 @@
     "target": "es2020",
     "declaration": true,
     "module": "commonjs",
-    "strictNullChecks": false,
+    "strictNullChecks": true,
     "sourceMap": true,
-    "noImplicitAny": false,
-    "noUnusedLocals": false,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
     "noUnusedParameters": false,
   }
 }

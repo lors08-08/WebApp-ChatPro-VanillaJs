@@ -2,13 +2,13 @@ import AuthCardComponent from "../../modules/Auth/Auth";
 import ButtonComponent from "../../components/Button/Button";
 import InputComponent from "../../components/Input/Input";
 import LabelComponent from "../../components/Label/Label";
-import Templator from "../../utils/Templator";
+import Templator from "../../utils/classes/Templator";
 import SignupTmp from "./Signup.tmp";
-import { Block } from "../../utils/Block";
+import { Block } from "../../utils/classes/Block/Block";
 import styles from "../../components/Button/Button.module.scss";
 
 interface ISignUp {
-  content: HTMLElement;
+  content: HTMLElement | null;
 }
 
 const ctxLabelMail = {
@@ -135,7 +135,7 @@ class SignUpComponent extends Block {
     super(props);
   }
 
-  render(): ChildNode {
+  render() {
     return tmp.compile({ ...this.props }, styles);
   }
 }

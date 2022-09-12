@@ -1,14 +1,15 @@
 import ChatContact from "./ChatContact.tmp";
 import styles from "./ChatContact.module.scss";
-import Templator from "../../../../../../utils/Templator";
-import { Block } from "../../../../../../utils/Block";
+import Templator from "../../../../../../utils/classes/Templator";
+import { Block } from "../../../../../../utils/classes/Block/Block";
+import { TElement } from "../../../../../../utils/classes/Block/types/types";
 
 interface IChatContact {
-  avatar: string;
+  avatar: TElement;
   name: string;
   lastMessage: string;
   timestamp: string;
-  notifier: string;
+  notifier?: string;
 }
 
 const tmp = new Templator(ChatContact);
@@ -18,7 +19,7 @@ class ChatEmptyComponent extends Block {
     super(props);
   }
 
-  render(): ChildNode {
+  render() {
     return tmp.compile({ ...this.props }, styles);
   }
 }

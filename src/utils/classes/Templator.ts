@@ -1,24 +1,18 @@
 import { nanoid } from "nanoid";
 
-import getObjectData from "./getObjectData";
-import { IContextData } from "../common/types/types";
-import { IEvent } from "../components/Button/Button";
+import getObjectData from "../getObjectData";
 
-interface ITemplator {
-  compile<T extends {}>(context: T, styles: Record<string, string>): string;
-}
-
-class Templator implements ITemplator {
+class Templator<T extends Record<string, any>> {
   protected readonly _template: string;
 
   constructor(template: string) {
     this._template = template;
   }
 
-  compile<T extends {}>(context: T, styles: Record<string, string>) {
+  compile(context: any, styles: Record<string, string>) {
     const { children, props } = this._getChildrenAndProps(context);
 
-    const contextAndStubs = { ...props };
+    const contextAndStubs: any = { ...props };
 
     const withIds = this._addIds(children);
 
@@ -26,7 +20,7 @@ class Templator implements ITemplator {
       contextAndStubs[data.name] = `<div data-id="${data.id}"></div>`;
     });
 
-    const compiledHtml = this._compileTemplate<T>(contextAndStubs, styles);
+    const compiledHtml = this._compileTemplate(contextAndStubs, styles);
 
     const temp = document.createDocumentFragment();
 
@@ -65,18 +59,18 @@ class Templator implements ITemplator {
     });
   }
 
-  private _getChildrenAndProps(childrenAndProps: Record<string, any>): {
-    children: Record<string, any>;
+  private _getChildrenAndProps(childrenAndProps: T): {
+    children: T;
     props: Record<string, string>;
   } {
-    const children = {};
-    const props = {};
+    const children = {} as T;
+    const props = {} as T;
 
-    Object.entries(childrenAndProps).forEach(([key, value]) => {
+    Object.entries(childrenAndProps).forEach(([key, value]: [keyof T, any]) => {
       if (typeof value === "object" && !Array.isArray(value)) {
         children[key] = value;
       } else if (Array.isArray(value)) {
-        children[key] = value;
+        children[key] = value as typeof children[typeof key];
       } else {
         props[key] = value;
       }
@@ -88,7 +82,7 @@ class Templator implements ITemplator {
     };
   }
 
-  private _getAllVariables<T>(data: T, condition: string) {
+  private _getAllVariables(data: T, condition: string) {
     return !data || !Object.keys(data).length
       ? `const ${condition} = ${undefined}`
       : Object.entries(data).reduce((vars, [key, value]) => {
@@ -108,7 +102,7 @@ class Templator implements ITemplator {
         }, "");
   }
 
-  private _funcConstructor<T>(data: T, condition: string) {
+  private _funcConstructor(data: T, condition: string) {
     return new Function(`
               ${this._getAllVariables(data, condition.split(" ")[0])}
               
@@ -116,7 +110,7 @@ class Templator implements ITemplator {
             `);
   }
 
-  private _htmlToElement(html): DocumentFragment {
+  private _htmlToElement(html: string): DocumentFragment {
     const template = document.createElement("template");
 
     html = html.trim();
@@ -126,7 +120,7 @@ class Templator implements ITemplator {
     return template.content;
   }
 
-  private _compileTemplate<T>(context: T, styles: Record<string, string>) {
+  private _compileTemplate(context: T, styles: Record<string, string>) {
     const TEMPLATE_REGEXP = /{{(.*?)}}/i;
     const TEMPLATE_CONDITIONAL_REGEXP = /{{&if (.*?)}}(.*?){{&end}}/i;
 
@@ -181,11 +175,8 @@ class Templator implements ITemplator {
         }
       }
     }
-    const htmlElements = this._htmlToElement(template) as HTMLElement;
 
-    // console.log(htmlElements.querySelector("#my"));
-
-    return htmlElements;
+    return this._htmlToElement(template);
   }
 }
 

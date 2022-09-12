@@ -1,8 +1,8 @@
-import InputComponent from "../../../../components/Input/Input";
+import InputComponent, { IInput } from "../../../../components/Input/Input";
 import styles from "./SearchInput.module.scss";
 
-const SearchInput = (args) =>
-  new InputComponent({
+const SearchInput = (args: IInput) =>
+  new InputComponent<IInput>({
     className: "styles.wrapper medium styles.ghost",
     wrapperClass: "styles.search-wrapper",
     additionalStyles: styles,

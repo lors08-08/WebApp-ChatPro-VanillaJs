@@ -1,35 +1,19 @@
-import { nanoid } from "nanoid";
+import { EventBus } from "../EventBus";
+import { EVENTS } from "./types/enum";
+import { IBlockEventsArgs, TElement, TMeta } from "./types/types";
 
-import { EventBus } from "./EventBus";
-import Templator from "./Templator";
-
-enum EVENTS {
-  INIT = "init",
-  FLOW_CDM = "flow:component-did-mount",
-  FLOW_CDU = "flow:component-did-update",
-  FLOW_RENDER = "flow:render",
-}
-
-interface IMetaProps {
-  props: any;
-}
-
-type TMeta = IMetaProps | null;
-type TElement = DocumentFragment | null;
-
-export class Block {
+export class Block<P extends Record<string, unknown> = any> {
   static EVENTS = EVENTS;
 
-  protected props: Record<string, unknown>;
-  private readonly eventBus: () => EventBus;
+  protected props = {} as P;
+  private readonly eventBus: () => EventBus<typeof EVENTS, IBlockEventsArgs>;
 
   _element: TElement = null;
-  _old_element: TElement = null;
 
-  _meta: TMeta = null;
+  _meta: TMeta<P> = null;
 
-  constructor(props = {}) {
-    const eventBus = new EventBus();
+  constructor(props: P) {
+    const eventBus = new EventBus<typeof EVENTS, IBlockEventsArgs>();
 
     this._meta = {
       props,
@@ -42,23 +26,17 @@ export class Block {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  _registerEvents(eventBus) {
+  _registerEvents(eventBus: EventBus<typeof EVENTS, IBlockEventsArgs>) {
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
-  _createResources() {
+  private _createResources() {
     if (!this._meta) {
       return;
     }
-
-    this._element = this._createDocumentElement();
-  }
-
-  _createDocumentElement() {
-    return document.createDocumentFragment();
   }
 
   private _init() {
@@ -81,7 +59,7 @@ export class Block {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
 
-  private _componentDidUpdate(newProps, oldProps) {
+  private _componentDidUpdate(newProps: P, oldProps: P) {
     const response = this.componentDidUpdate(oldProps, newProps);
 
     if (response) {
@@ -89,11 +67,11 @@ export class Block {
     }
   }
 
-  protected componentDidUpdate(oldProps, newProps) {
+  protected componentDidUpdate(oldProps: P, newProps: P) {
     return true;
   }
 
-  public setProps(nextProps) {
+  public setProps(nextProps: P) {
     if (!nextProps) {
       return;
     }
@@ -108,28 +86,34 @@ export class Block {
   private _render() {
     const block = this.render();
 
-    this._element.append(block);
+    const rootElement = block.firstElementChild as HTMLElement;
+
+    if (this._element) {
+      this._element.replaceWith(rootElement);
+    }
+
+    this._element = rootElement;
   }
 
-  render(): ChildNode {
-    return;
+  render(): DocumentFragment {
+    return new DocumentFragment();
   }
 
   getContent() {
     return this.element;
   }
 
-  _makeProxyProps(props) {
+  _makeProxyProps(props: P) {
     return new Proxy(props, {
-      get: (target, prop) => {
+      get: (target: P, prop: string) => {
         const value = target[prop];
 
         return typeof value === "function" ? value.bind(target) : value;
       },
-      set: (target, prop, value) => {
+      set: (target: P, prop: string, value) => {
         const oldTarget = { ...target };
 
-        target[prop] = value;
+        target[prop as keyof P] = value;
 
         this.eventBus().emit<any>(Block.EVENTS.FLOW_CDU, oldTarget, target);
 
@@ -144,15 +128,15 @@ export class Block {
   show() {
     const currentElement = this.getContent();
 
-    // if (currentElement) {
-    //   currentElement.style.display = "block";
-    // }
+    if (currentElement) {
+      currentElement.style.display = "block";
+    }
   }
   hide() {
     const currentElement = this.getContent();
 
-    // if (currentElement) {
-    //   currentElement.style.display = "none";
-    // }
+    if (currentElement) {
+      currentElement.style.display = "none";
+    }
   }
 }

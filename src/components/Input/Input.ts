@@ -1,14 +1,15 @@
 import InputTmp from "./Input.tmp";
 import styles from "./Input.module.scss";
-import Templator from "../../utils/Templator";
-import { Block } from "../../utils/Block";
+import Templator from "../../utils/classes/Templator";
+import { Block } from "../../utils/classes/Block/Block";
+import { TElement } from "../../utils/classes/Block/types/types";
 
-interface IInput {
+export interface IInput {
   wrapperClass?: string;
   inputVariant?: string;
-  label?: HTMLElement;
+  label?: HTMLElement | null;
   placeholder?: string;
-  iconLeft?: string;
+  iconLeft?: TElement;
   id?: string;
   name?: string;
   type?: string;
@@ -19,12 +20,12 @@ interface IInput {
 
 const tmp = new Templator(InputTmp);
 
-class InputComponent extends Block {
-  constructor(props: IInput) {
+class InputComponent<T extends IInput> extends Block {
+  constructor(props: T) {
     super(props);
   }
 
-  render(): ChildNode {
+  render() {
     const { additionalStyles, ...rest } = this.props;
 
     const combinedStyles = {

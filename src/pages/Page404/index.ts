@@ -1,12 +1,13 @@
 import Page404 from "./Page404.tmp";
 import styles from "./Page404.module.scss";
-import Templator from "../../utils/Templator";
+import Templator from "../../utils/classes/Templator";
 import LayoutComponent from "../../components/Layout/Layout";
 import ButtonComponent from "../../components/Button/Button";
-import { Block } from "../../utils/Block";
+import { Block } from "../../utils/classes/Block/Block";
+import { TElement } from "../../utils/classes/Block/types/types";
 
 interface IPage404 {
-  button: HTMLElement;
+  button: TElement;
 }
 
 const tmp = new Templator(Page404);
@@ -16,7 +17,7 @@ class Page404Component extends Block {
     super(props);
   }
 
-  render(): ChildNode {
+  render() {
     return tmp.compile({ ...this.props }, styles);
   }
 }
