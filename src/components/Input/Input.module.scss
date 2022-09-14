@@ -17,6 +17,15 @@
   }
 }
 
+.error {
+  border-bottom: 1px solid var(--red);
+
+  &:hover,
+  &:focus {
+    border-color: var(--red);
+  }
+}
+
 .ghost {
   border-radius: 5px;
   padding: 7px 11px;

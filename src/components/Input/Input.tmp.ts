@@ -4,7 +4,7 @@ export default `
   w100{{&if wrapperClass !== undefined }} {{ wrapperClass }} {{&end}} {{&if inputVariant !== undefined }} {{ inputVariant }} {{&end}}">
       {{&if label !== undefined }} {{ label }} {{&end}}
       {{&if iconLeft !== undefined }} {{ iconLeft }} {{&end}}
-      <Input 
+      <Input
           {{&if id !== undefined }} id="{{ id }}" {{&end}}
           {{&if name !== undefined }} name="{{ name }}" {{&end}}
           {{&if type !== undefined }} type="{{ type }}" {{&end}}

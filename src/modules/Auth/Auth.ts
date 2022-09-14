@@ -1,7 +1,7 @@
 import Templator from "../../utils/classes/Templator";
 import Auth from "./Auth.tmp";
 import { Block } from "../../utils/classes/Block/Block";
-import styles from "../../components/Button/Button.module.scss";
+import styles from "./Auth.module.scss";
 import { TElement } from "../../utils/classes/Block/types/types";
 
 interface IAuth {

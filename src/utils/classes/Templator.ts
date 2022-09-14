@@ -176,7 +176,8 @@ class Templator<T extends Record<string, any>> {
       }
     }
 
-    return this._htmlToElement(template);
+    //removes all empty attributes
+    return this._htmlToElement(template.replace(/[a-z]+="\s*"/gi, ""));
   }
 }
 

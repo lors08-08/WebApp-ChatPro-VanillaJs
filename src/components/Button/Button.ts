@@ -10,6 +10,7 @@ export interface IEvent {
 }
 
 interface IButton {
+  id?: string;
   value: string;
   className?: string;
   type?: string;

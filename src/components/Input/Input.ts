@@ -14,7 +14,7 @@ export interface IInput {
   name?: string;
   type?: string;
   className?: string;
-  error?: string;
+  error?: TElement;
   additionalStyles?: Record<string, string>;
 }
 

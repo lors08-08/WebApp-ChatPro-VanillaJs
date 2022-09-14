@@ -1,7 +1,7 @@
 @import "./common/styles/colors.scss";
 @import url("https://fonts.googleapis.com/css2?family=Exo:wght@600&family=Inter&display=swap");
 @import "./common/styles/fonts.scss";
-@import "./common/styles/commonStyles.scss";
+@import "./common/styles/common.scss";
 
 * {
   font-family: "Inter", sans-serif;

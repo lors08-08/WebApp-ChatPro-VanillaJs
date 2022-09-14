@@ -1,4 +1,5 @@
 import AuthCardComponent from "../../modules/Auth/Auth";
+import FormComponent from "../../modules/Form/Form";
 import LayoutComponent from "../../components/Layout/Layout";
 import ButtonComponent from "../../components/Button/Button";
 import InputComponent from "../../components/Input/Input";
@@ -13,7 +14,7 @@ const ctxLabelPassword = {
   value: "Пароль",
 };
 
-const ctxInput = {
+const ctxLogin = {
   id: "login",
   name: "login",
   type: "text",
@@ -30,11 +31,12 @@ const ctxPassword = {
   wrapperClass: "flexColumn",
 };
 
-const InputLogin = new InputComponent(ctxInput).getContent();
+const InputLogin = new InputComponent(ctxLogin);
 const InputPassword = new InputComponent(ctxPassword).getContent();
 
 const AuthorizeBtn = new ButtonComponent({
   value: "Авторизоваться",
+  type: "submit",
 });
 
 const AskForAccountBtn = new ButtonComponent({
@@ -44,14 +46,20 @@ const AskForAccountBtn = new ButtonComponent({
 
 const AuthCard = new AuthCardComponent({
   title: "Вход",
-  content: [InputLogin, InputPassword],
+  content: [InputLogin.getContent(), InputPassword],
   buttons: [AuthorizeBtn.getContent(), AskForAccountBtn],
 }).getContent();
 
-setTimeout(() => {
-  AuthorizeBtn.setProps({ value: "Вход" });
-}, 3000);
+const Form = new FormComponent({
+  id: "login-form",
+  input: AuthCard,
+  login: InputLogin,
+}).getContent();
+
+// setTimeout(() => {
+//   InputLogin.setProps({ className: "styles.error" });
+// }, 3000);
 
 export default new LayoutComponent({
-  content: AuthCard,
+  content: Form,
 }).getContent();

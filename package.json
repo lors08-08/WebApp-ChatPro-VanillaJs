@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "start": "parcel build ./static/index.html && node ./server/server.js",
-    "dev": "concurrently \"tsc --noEmit && parcel ./static/index.html --port=3000 --no-cache\" \"tsc --watch\"",
+    "dev": "concurrently \"parcel ./static/index.html --port=3000 --no-cache\"",
     "build": "parcel build ./static/index.html",
     "lint": "tsc --noEmit && eslint \"./**/*.{ts,js}\""
   },
