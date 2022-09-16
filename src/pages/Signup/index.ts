@@ -6,6 +6,7 @@ import Templator from "../../utils/classes/Templator";
 import SignupTmp from "./Signup.tmp";
 import { Block } from "../../utils/classes/Block/Block";
 import styles from "../../components/Button/Button.module.scss";
+import InputWrapper from "../../modules/InputWrapper/InputWrapper";
 
 interface ISignUp {
   content: HTMLElement | null;
@@ -45,65 +46,79 @@ const ctxMail = {
   name: "mail",
   type: "text",
   placeholder: "Почта",
-  label: new LabelComponent(ctxLabelMail).getContent(),
-  wrapperClass: "flexColumn",
 };
-const ctxInput = {
+const ctxLogin = {
   id: "login",
   name: "login",
   type: "text",
   placeholder: "Логин",
-  label: new LabelComponent(ctxLabelLogin).getContent(),
-  wrapperClass: "flexColumn",
 };
 const ctxName = {
   id: "name",
   name: "name",
   type: "text",
   placeholder: "Имя",
-  label: new LabelComponent(ctxLabelName).getContent(),
-  wrapperClass: "flexColumn",
 };
 const ctxSurname = {
   id: "surname",
   name: "surname",
   type: "text",
   placeholder: "Фамилия",
-  label: new LabelComponent(ctxLabelSurname).getContent(),
-  wrapperClass: "flexColumn",
 };
 const ctxPhone = {
   id: "phone",
   name: "phone",
   type: "number",
   placeholder: "Телефон",
-  label: new LabelComponent(ctxLabelPhone).getContent(),
-  wrapperClass: "flexColumn",
 };
 const ctxPassword = {
   id: "password",
   name: "password",
   type: "password",
   placeholder: "Пароль",
-  label: new LabelComponent(ctxLabelPassword).getContent(),
-  wrapperClass: "flexColumn",
 };
 const ctxPasswordAgain = {
   id: "passwordAgain",
   name: "passwordAgain",
   type: "password",
   placeholder: "Пароль еще раз",
-  label: new LabelComponent(ctxLabelPasswordAgain).getContent(),
-  wrapperClass: "flexColumn",
 };
 
-const InputMail = new InputComponent(ctxMail).getContent();
-const InputLogin = new InputComponent(ctxInput).getContent();
-const InputName = new InputComponent(ctxName).getContent();
-const InputSurname = new InputComponent(ctxSurname).getContent();
-const InputPhone = new InputComponent(ctxPhone).getContent();
-const InputPassword = new InputComponent(ctxPassword).getContent();
-const InputPasswordAgain = new InputComponent(ctxPasswordAgain).getContent();
+const InputMail = new InputWrapper({
+  label: new LabelComponent(ctxLabelMail).getContent(),
+  wrapperClass: "flexColumn",
+  input: new InputComponent(ctxMail).getContent(),
+}).getContent();
+const InputLogin = new InputWrapper({
+  label: new LabelComponent(ctxLabelLogin).getContent(),
+  wrapperClass: "flexColumn",
+  input: new InputComponent(ctxLogin).getContent(),
+}).getContent();
+const InputName = new InputWrapper({
+  label: new LabelComponent(ctxLabelName).getContent(),
+  wrapperClass: "flexColumn",
+  input: new InputComponent(ctxName).getContent(),
+}).getContent();
+const InputSurname = new InputWrapper({
+  label: new LabelComponent(ctxLabelSurname).getContent(),
+  wrapperClass: "flexColumn",
+  input: new InputComponent(ctxSurname).getContent(),
+}).getContent();
+const InputPhone = new InputWrapper({
+  label: new LabelComponent(ctxLabelPhone).getContent(),
+  wrapperClass: "flexColumn",
+  input: new InputComponent(ctxPhone).getContent(),
+}).getContent();
+const InputPassword = new InputWrapper({
+  label: new LabelComponent(ctxLabelPassword).getContent(),
+  wrapperClass: "flexColumn",
+  input: new InputComponent(ctxPassword).getContent(),
+}).getContent();
+const InputPasswordAgain = new InputWrapper({
+  label: new LabelComponent(ctxLabelPasswordAgain).getContent(),
+  wrapperClass: "flexColumn",
+  input: new InputComponent(ctxPasswordAgain).getContent(),
+}).getContent();
 
 const SignupBtn = new ButtonComponent({
   value: "Зарегистрироваться",

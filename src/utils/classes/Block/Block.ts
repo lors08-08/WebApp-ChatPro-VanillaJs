@@ -95,11 +95,11 @@ export class Block<P extends Record<string, unknown> = any> {
     this._element = rootElement;
   }
 
-  render(): DocumentFragment {
+  public render(): DocumentFragment {
     return new DocumentFragment();
   }
 
-  getContent() {
+  public getContent() {
     return this.element;
   }
 

@@ -10,6 +10,7 @@ interface IForm {
   id: string;
   input: TElement | TElement[];
   login: InputComponent<{}>;
+  password: InputComponent<{}>;
 }
 
 interface IFormElements extends HTMLCollection {
@@ -22,6 +23,12 @@ const inputs = ["login", "password"];
 const tmp = new Templator(FormTemplate);
 
 class FormComponent extends Block {
+  validateFullName = new RegExp(/^(?=.*[A-Za-z])^[A-Z][A-Za-z-]*$/);
+  validateLogin = new RegExp(/^(?=.*[a-z])[\w-]*$/i);
+  validateEmail = new RegExp(/\S+@\S+\.\S+/);
+  validatePassword = new RegExp(/(?=.*\d)[A-Z]/);
+  validatePhone = new RegExp(/^[\s()+-]*(\d[\s()+-]*){10,15}$/);
+
   constructor(props: IForm) {
     super(props);
   }
@@ -32,20 +39,30 @@ class FormComponent extends Block {
     formElements.login.addEventListener("focus", (e) => {
       const targetInput = e.target as HTMLInputElement;
 
+      this.props.login.setProps({
+        label: "0",
+      });
       console.log("focus");
-      this.props.login.setProps({
-        label: "123",
-      });
     });
 
-    formElements.login.addEventListener("focusout", (e) => {
-      const targetInput = e.target as HTMLInputElement;
+    // formElements.login.addEventListener("focusout", (e) => {
+    //   const targetInput = e.target as HTMLInputElement;
+    //
+    //   console.log(22);
+    //   this.props.password.setProps({
+    //     label: "12",
+    //   });
+    // });
 
-      this.props.login.setProps({
-        label: "123",
-      });
-      console.log("blur");
-    });
+    // formElements.password.addEventListener("focusout", (e) => {
+    //   const targetInput = e.target as HTMLInputElement;
+    //
+    //   this.props.password.setProps({
+    //     label: "asd",
+    //   });
+    //
+    //   console.log("blur");
+    // });
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();

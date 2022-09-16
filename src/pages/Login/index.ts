@@ -4,6 +4,7 @@ import LayoutComponent from "../../components/Layout/Layout";
 import ButtonComponent from "../../components/Button/Button";
 import InputComponent from "../../components/Input/Input";
 import LabelComponent from "../../components/Label/Label";
+import InputWrapperComponent from "../../modules/InputWrapper/InputWrapper";
 
 const ctxLabelLogin = {
   id: "login",
@@ -19,25 +20,58 @@ const ctxLogin = {
   name: "login",
   type: "text",
   placeholder: "Логин",
-  label: new LabelComponent(ctxLabelLogin).getContent(),
-  wrapperClass: "flexColumn",
 };
 const ctxPassword = {
   id: "password",
   name: "password",
   type: "password",
   placeholder: "Пароль",
-  label: new LabelComponent(ctxLabelPassword).getContent(),
-  wrapperClass: "flexColumn",
 };
 
-const InputLogin = new InputComponent(ctxLogin);
-const InputPassword = new InputComponent(ctxPassword).getContent();
+const InputLogin = new InputWrapperComponent({
+  label: new LabelComponent(ctxLabelLogin).getContent(),
+  wrapperClass: "flexColumn",
+  input: new InputComponent({
+    ...ctxLogin,
+    event: {
+      type: "focus",
+      action: () => {
+        console.log(document.activeElement);
+        InputLogin.setProps({
+          error: undefined,
+        });
+
+        console.log("focus");
+      },
+    },
+  }).getContent(),
+});
+const InputPassword = new InputWrapperComponent({
+  label: new LabelComponent(ctxLabelPassword).getContent(),
+  wrapperClass: "flexColumn",
+  input: new InputComponent({
+    ...ctxPassword,
+    event: {
+      type: "focusout",
+      action: () => {
+        InputLogin.setProps({
+          error: new LabelComponent({
+            id: "password",
+            className: "styles.error",
+            value: "error",
+          }).getContent(),
+        });
+
+        console.log("blur");
+      },
+    },
+  }).getContent(),
+});
 
 const AuthorizeBtn = new ButtonComponent({
   value: "Авторизоваться",
   type: "submit",
-});
+}).getContent();
 
 const AskForAccountBtn = new ButtonComponent({
   value: "Нет аккаунта?",
@@ -46,20 +80,21 @@ const AskForAccountBtn = new ButtonComponent({
 
 const AuthCard = new AuthCardComponent({
   title: "Вход",
-  content: [InputLogin.getContent(), InputPassword],
-  buttons: [AuthorizeBtn.getContent(), AskForAccountBtn],
+  content: [InputLogin.getContent()],
+  buttons: [AuthorizeBtn, AskForAccountBtn],
 }).getContent();
 
-const Form = new FormComponent({
-  id: "login-form",
-  input: AuthCard,
-  login: InputLogin,
-}).getContent();
+// const Form = new FormComponent({
+//   id: "login-form",
+//   input: AuthCard,
+//   login: InputLogin,
+//   password: InputPassword,
+// }).getContent();
 
 // setTimeout(() => {
 //   InputLogin.setProps({ className: "styles.error" });
 // }, 3000);
 
 export default new LayoutComponent({
-  content: Form,
+  content: AuthCard,
 }).getContent();

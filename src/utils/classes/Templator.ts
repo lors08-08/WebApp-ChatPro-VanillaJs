@@ -2,6 +2,11 @@ import { nanoid } from "nanoid";
 
 import getObjectData from "../getObjectData";
 
+interface IEvent {
+  type: string;
+  action(e: any): void;
+}
+
 class Templator<T extends Record<string, any>> {
   protected readonly _template: string;
 
@@ -9,7 +14,7 @@ class Templator<T extends Record<string, any>> {
     this._template = template;
   }
 
-  compile(context: any, styles: Record<string, string>) {
+  compile(context: any, styles: Record<string, string>, event?: IEvent) {
     const { children, props } = this._getChildrenAndProps(context);
 
     const contextAndStubs: any = { ...props };
@@ -20,7 +25,7 @@ class Templator<T extends Record<string, any>> {
       contextAndStubs[data.name] = `<div data-id="${data.id}"></div>`;
     });
 
-    const compiledHtml = this._compileTemplate(contextAndStubs, styles);
+    const compiledHtml = this._compileTemplate(contextAndStubs, styles, event);
 
     const temp = document.createDocumentFragment();
 
@@ -120,7 +125,11 @@ class Templator<T extends Record<string, any>> {
     return template.content;
   }
 
-  private _compileTemplate(context: T, styles: Record<string, string>) {
+  private _compileTemplate(
+    context: T,
+    styles: Record<string, string>,
+    event?: IEvent,
+  ) {
     const TEMPLATE_REGEXP = /{{(.*?)}}/i;
     const TEMPLATE_CONDITIONAL_REGEXP = /{{&if (.*?)}}(.*?){{&end}}/i;
 
@@ -176,8 +185,17 @@ class Templator<T extends Record<string, any>> {
       }
     }
 
-    //removes all empty attributes
-    return this._htmlToElement(template.replace(/[a-z]+="\s*"/gi, ""));
+    //возвращает хтмл
+    const renderedHtml = this._htmlToElement(
+      //removes all empty attributes
+      template.replace(/[a-z]+="\s*"/gi, ""),
+    );
+
+    if (event && renderedHtml.firstElementChild) {
+      renderedHtml.firstElementChild.addEventListener(event.type, event.action);
+    }
+
+    return renderedHtml;
   }
 }
 
