@@ -1,6 +1,7 @@
 import { EventBus } from "../EventBus";
 import { EVENTS } from "./types/enum";
 import { IBlockEventsArgs, TElement, TMeta } from "./types/types";
+import isEqual from "../../funcs/isEqual";
 
 export class Block<P extends Record<string, unknown> = any> {
   static EVENTS = EVENTS;
@@ -62,13 +63,13 @@ export class Block<P extends Record<string, unknown> = any> {
   private _componentDidUpdate(newProps: P, oldProps: P) {
     const response = this.componentDidUpdate(oldProps, newProps);
 
-    if (response) {
+    if (!response) {
       this._render();
     }
   }
 
   protected componentDidUpdate(oldProps: P, newProps: P) {
-    return true;
+    return isEqual(oldProps, newProps);
   }
 
   public setProps(nextProps: P) {

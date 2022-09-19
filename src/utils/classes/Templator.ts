@@ -1,11 +1,7 @@
 import { nanoid } from "nanoid";
 
-import getObjectData from "../getObjectData";
-
-interface IEvent {
-  type: string;
-  action(e: any): void;
-}
+import getObjectData from "../funcs/getObjectData";
+import { IEvent } from "../../common/types/types";
 
 class Templator<T extends Record<string, any>> {
   protected readonly _template: string;
@@ -14,7 +10,11 @@ class Templator<T extends Record<string, any>> {
     this._template = template;
   }
 
-  compile(context: any, styles: Record<string, string>, event?: IEvent) {
+  compile(
+    context: any,
+    styles: Record<string, string>,
+    event?: IEvent | IEvent[],
+  ) {
     const { children, props } = this._getChildrenAndProps(context);
 
     const contextAndStubs: any = { ...props };
@@ -128,7 +128,7 @@ class Templator<T extends Record<string, any>> {
   private _compileTemplate(
     context: T,
     styles: Record<string, string>,
-    event?: IEvent,
+    event?: IEvent | IEvent[],
   ) {
     const TEMPLATE_REGEXP = /{{(.*?)}}/i;
     const TEMPLATE_CONDITIONAL_REGEXP = /{{&if (.*?)}}(.*?){{&end}}/i;
@@ -192,7 +192,15 @@ class Templator<T extends Record<string, any>> {
     );
 
     if (event && renderedHtml.firstElementChild) {
-      renderedHtml.firstElementChild.addEventListener(event.type, event.action);
+      const html = renderedHtml.firstElementChild;
+
+      if (Array.isArray(event)) {
+        event.forEach((e: IEvent) => {
+          html.addEventListener(e.type, e.action);
+        });
+      } else {
+        html.addEventListener(event.type, event.action);
+      }
     }
 
     return renderedHtml;

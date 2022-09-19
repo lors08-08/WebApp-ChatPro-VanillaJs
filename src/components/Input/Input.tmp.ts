@@ -1,4 +1,3 @@
-//language=hbs
 export default `
       <Input 
               id="{{&if id !== undefined }}{{ id }}{{&end}}"

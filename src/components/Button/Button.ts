@@ -4,11 +4,6 @@ import Templator from "../../utils/classes/Templator";
 import { Block } from "../../utils/classes/Block/Block";
 import { TElement } from "../../utils/classes/Block/types/types";
 
-export interface IEvent {
-  type: string;
-  action(e?: HTMLElement): void;
-}
-
 interface IButton {
   id?: string;
   value: string;

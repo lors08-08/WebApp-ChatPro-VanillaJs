@@ -1,6 +1,5 @@
 import "./Profile.scss";
 
-//language=hbs
 export default `
   <div class="profile-container">
       <div class="back-icon-wrapper flexColumn flexCenter">

@@ -1,0 +1,13 @@
+.message-wrapper {
+  border-radius: 30px;
+  padding: 0;
+}
+.message-input {
+  background-color: transparent;
+  border-radius: 30px;
+
+  &:focus,
+  &:hover {
+    background-color: transparent;
+  }
+}

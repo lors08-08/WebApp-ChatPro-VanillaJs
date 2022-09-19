@@ -1,6 +1,5 @@
 import "./Routing.scss";
 
-//language=hbs
 export default `
     <div class="wrapper flexColumn flexCenter w100 h100">
         <a href="/login">

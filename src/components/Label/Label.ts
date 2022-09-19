@@ -7,7 +7,7 @@ import { TElement } from "../../utils/classes/Block/types/types";
 interface ILabel {
   id: string;
   className?: string;
-  value: TElement | string | null;
+  value?: TElement | string;
 }
 
 const tmp = new Templator(Label);

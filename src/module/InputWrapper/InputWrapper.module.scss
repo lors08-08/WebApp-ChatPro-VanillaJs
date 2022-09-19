@@ -1,0 +1,17 @@
+.input-wrapper {
+  box-sizing: border-box;
+}
+
+.ghost {
+  border-radius: 5px;
+  padding: 7px 11px;
+  height: 32px;
+  border: none;
+  background-color: var(--dark-grey);
+
+  &:hover,
+  &:focus {
+    background-color: var(--light-grey);
+    border: none;
+  }
+}

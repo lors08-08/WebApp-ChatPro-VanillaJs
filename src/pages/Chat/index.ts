@@ -1,10 +1,10 @@
 import Chat from "./Chat.tmp";
 import styles from "./Chat.module.scss";
 import Templator from "../../utils/classes/Templator";
-import SidebarComponent from "./modules/Sidebar/Sidebar";
-import MainComponent from "./modules/Main/modules/ChatEmpty/ChatEmpty";
-import HeaderComponent from "./modules/Sidebar/modules/Header/Header";
-import ChatContactComponent from "./modules/Sidebar/modules/ChatContact/ChatContact";
+import SidebarComponent from "./module/Sidebar/Sidebar";
+import MainComponent from "./module/Main/module/ChatPage/ChatPage";
+import HeaderComponent from "./module/Sidebar/module/Header/Header";
+import ChatContactComponent from "./module/Sidebar/module/ChatContact/ChatContact";
 import AvatarComponent from "../../components/Avatar/Avatar";
 import ButtonComponent from "../../components/Button/Button";
 import SearchInput from "./components/SearchInput/SearchInput";
@@ -98,5 +98,5 @@ export default new ChatComponent({
       }).getContent();
     }),
   }).getContent(),
-  main: MainComponent,
+  main: MainComponent.getContent(),
 }).getContent();

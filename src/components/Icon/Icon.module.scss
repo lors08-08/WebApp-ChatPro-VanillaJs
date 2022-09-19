@@ -1,3 +1,10 @@
+.clickable {
+  cursor: pointer;
+
+  &:hover {
+    color: var(--light-grey);
+  }
+}
 .small {
   height: 20px;
   width: 20px;

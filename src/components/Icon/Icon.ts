@@ -4,6 +4,7 @@ import styles from "./Icon.module.scss";
 import { Block } from "../../utils/classes/Block/Block";
 
 interface IIcon {
+  className?: string;
   size?: string;
   color?: string;
   icon: string;

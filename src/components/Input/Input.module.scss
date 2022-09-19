@@ -11,6 +11,10 @@
   border-bottom: 1px solid var(--blue);
   padding: 8px 2px 7px;
 
+  &:invalid {
+    color: red;
+  }
+
   &:hover,
   &:focus {
     border-color: var(--green);
@@ -30,6 +34,7 @@
   border-radius: 5px;
   padding: 7px 11px;
   height: 32px;
+  box-sizing: border-box;
   border: none;
   background-color: var(--dark-grey);
 

@@ -1,4 +1,3 @@
-//language=hbs
 export default `
     <button id="{{&if id !== undefined}} {{ id }} {{&end}}" 
             type="{{&if type !== undefined}} {{ type }} {{&end}}" 

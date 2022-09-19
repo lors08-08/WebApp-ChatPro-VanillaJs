@@ -1,4 +1,3 @@
-//language=hbs
 export default `
   <div class="flex h100">
       <div class="{{ styles.sidebar }}">

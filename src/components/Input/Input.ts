@@ -3,6 +3,7 @@ import styles from "./Input.module.scss";
 import Templator from "../../utils/classes/Templator";
 import { Block } from "../../utils/classes/Block/Block";
 import { TElement } from "../../utils/classes/Block/types/types";
+import { IEvent } from "../../common/types/types";
 
 export interface IInput {
   inputVariant?: string;
@@ -14,10 +15,7 @@ export interface IInput {
   value?: string;
   className?: string;
   additionalStyles?: Record<string, string>;
-  event?: {
-    type: string;
-    action(e: any): void;
-  };
+  event?: IEvent | IEvent[];
 }
 
 const tmp = new Templator(InputTmp);

@@ -1,4 +1,3 @@
-//language=hbs
 export default `
     <div class="flexColumn flexCenter">
         <div class="{{ styles.title}}">
