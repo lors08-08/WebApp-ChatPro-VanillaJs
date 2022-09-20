@@ -1,0 +1,44 @@
+.wrapper {
+  padding: 12px 0;
+  margin-bottom: 2px;
+  justify-content: space-between;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--tile);
+  }
+}
+
+.border-top {
+  border-top: 1px solid var(--light-grey);
+  width: calc(100% - 20px);
+  margin: 0 auto 2px;
+}
+
+.chat-content {
+  row-gap: 4px;
+  justify-content: flex-start;
+  margin: 0 15px 0 10px;
+}
+
+.chat-content {
+  margin-left: 10px;
+}
+
+.message-info {
+  justify-content: flex-start;
+  row-gap: 14px;
+  margin-right: 10px;
+}
+
+.last-message {
+  color: var(--grey);
+}
+
+.timestamp {
+  color: var(--grey);
+}
+
+.name {
+  color: var(--light-black);
+}

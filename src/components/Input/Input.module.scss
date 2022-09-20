@@ -1,31 +1,46 @@
 .input-wrapper {
   box-sizing: border-box;
-  border-bottom: 1px solid var(--blue);
-  padding: 0 0 7px;
-
-  &:hover, &:focus {
-    border-color: var(--green);
-  }
 }
 
 .input {
   width: 100%;
-  padding: 0;
   border: none;
   outline: none;
   background: transparent;
+
+  border-bottom: 1px solid var(--blue);
+  padding: 8px 2px 7px;
+
+  &:invalid {
+    color: red;
+  }
+
+  &:hover,
+  &:focus {
+    border-color: var(--green);
+  }
+}
+
+.error {
+  border-bottom: 1px solid var(--red);
+
+  &:hover,
+  &:focus {
+    border-color: var(--red);
+  }
 }
 
 .ghost {
   border-radius: 5px;
   padding: 7px 11px;
   height: 32px;
+  box-sizing: border-box;
   border: none;
   background-color: var(--dark-grey);
-  &:hover, &:focus {
+
+  &:hover,
+  &:focus {
     background-color: var(--light-grey);
     border: none;
   }
 }
-
-
