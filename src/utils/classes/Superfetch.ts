@@ -1,4 +1,4 @@
-enum METHODS {
+enum Methods {
   GET = "GET",
   PUT = "PUT",
   POST = "POST",
@@ -8,7 +8,7 @@ interface IOptions {
   data?: Record<string, string> | string;
   timeout?: number;
   headers?: Record<string, string>;
-  method: METHODS;
+  method: Methods;
 }
 
 function queryStringify(data: Record<string, string> | string | undefined) {
@@ -27,28 +27,28 @@ export class Superfetch {
 
     return this.request(
       url,
-      { ...options, method: METHODS.GET },
+      { ...options, method: Methods.GET },
       options.timeout,
     );
   };
   post = (url: string, options: IOptions) => {
     return this.request(
       url,
-      { ...options, method: METHODS.POST },
+      { ...options, method: Methods.POST },
       options.timeout,
     );
   };
   put = (url: string, options: IOptions) => {
     return this.request(
       url,
-      { ...options, method: METHODS.PUT },
+      { ...options, method: Methods.PUT },
       options.timeout,
     );
   };
   delete = (url: string, options: IOptions) => {
     return this.request(
       url,
-      { ...options, method: METHODS.DELETE },
+      { ...options, method: Methods.DELETE },
       options.timeout,
     );
   };
@@ -59,7 +59,7 @@ export class Superfetch {
     return new Promise((res, rej) => {
       const xhr = new XMLHttpRequest();
 
-      if (method === METHODS.GET && data) {
+      if (method === Methods.GET && data) {
         xhr.open(method, `${url}${data}`);
       } else {
         xhr.open(method, url);
@@ -82,7 +82,7 @@ export class Superfetch {
       xhr.addEventListener("abort", rej);
       xhr.ontimeout = rej;
 
-      if (method === METHODS.GET || !data) {
+      if (method === Methods.GET || !data) {
         xhr.send();
       } else {
         xhr.send(data as any);

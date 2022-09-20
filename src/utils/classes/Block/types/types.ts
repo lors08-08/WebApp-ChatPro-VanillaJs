@@ -1,10 +1,10 @@
-import { EVENTS } from "./enum";
+import { Events } from "./enum";
 
 export interface IBlockEventsArgs {
-  [EVENTS.INIT]: [];
-  [EVENTS.FLOW_CDM]: [];
-  [EVENTS.FLOW_CDU]: [any, any];
-  [EVENTS.FLOW_RENDER]: [];
+  [Events.INIT]: [];
+  [Events.FLOW_CDM]: [];
+  [Events.FLOW_CDU]: [any, any];
+  [Events.FLOW_RENDER]: [];
 }
 
 export interface IMetaProps<P> {

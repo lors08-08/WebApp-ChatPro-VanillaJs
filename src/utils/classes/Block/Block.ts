@@ -1,20 +1,20 @@
 import { EventBus } from "../EventBus";
-import { EVENTS } from "./types/enum";
+import { Events } from "./types/enum";
 import { IBlockEventsArgs, TElement, TMeta } from "./types/types";
 import isEqual from "../../funcs/isEqual";
 
 export class Block<P extends {}> {
-  static EVENTS = EVENTS;
+  static Events = Events;
 
   protected props = {} as P;
-  private readonly eventBus: () => EventBus<typeof EVENTS, IBlockEventsArgs>;
+  private readonly eventBus: () => EventBus<typeof Events, IBlockEventsArgs>;
 
   _element: TElement = null;
 
   _meta: TMeta<P> = null;
 
   constructor(props: P) {
-    const eventBus = new EventBus<typeof EVENTS, IBlockEventsArgs>();
+    const eventBus = new EventBus<typeof Events, IBlockEventsArgs>();
 
     this._meta = {
       props,
@@ -24,14 +24,14 @@ export class Block<P extends {}> {
     this.eventBus = () => eventBus;
 
     this._registerEvents(eventBus);
-    eventBus.emit(Block.EVENTS.INIT);
+    eventBus.emit(Block.Events.INIT);
   }
 
-  private _registerEvents(eventBus: EventBus<typeof EVENTS, IBlockEventsArgs>) {
-    eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
-    eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
-    eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
-    eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
+  private _registerEvents(eventBus: EventBus<typeof Events, IBlockEventsArgs>) {
+    eventBus.on(Block.Events.INIT, this._init.bind(this));
+    eventBus.on(Block.Events.FLOW_CDM, this._componentDidMount.bind(this));
+    eventBus.on(Block.Events.FLOW_CDU, this._componentDidUpdate.bind(this));
+    eventBus.on(Block.Events.FLOW_RENDER, this._render.bind(this));
   }
 
   private _createResources() {
@@ -45,7 +45,7 @@ export class Block<P extends {}> {
 
     this.init();
 
-    this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+    this.eventBus().emit(Block.Events.FLOW_RENDER);
   }
 
   protected init() {}
@@ -57,7 +57,7 @@ export class Block<P extends {}> {
   componentDidMount(oldProps = null) {}
 
   public dispatchComponentDidMount() {
-    this.eventBus().emit(Block.EVENTS.FLOW_CDM);
+    this.eventBus().emit(Block.Events.FLOW_CDM);
   }
 
   private _componentDidUpdate(newProps: P, oldProps: P) {
@@ -116,7 +116,7 @@ export class Block<P extends {}> {
 
         target[prop as keyof P] = value;
 
-        this.eventBus().emit<any>(Block.EVENTS.FLOW_CDU, oldTarget, target);
+        this.eventBus().emit<any>(Block.Events.FLOW_CDU, oldTarget, target);
 
         return true;
       },
