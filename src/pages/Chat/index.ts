@@ -1,10 +1,10 @@
 import Chat from "./Chat.tmp";
-import styles from "./Chat.module.scss";
+import * as styles from "./Chat.module.scss";
 import Templator from "../../utils/classes/Templator";
 import SidebarComponent from "./module/Sidebar/Sidebar";
-import MainComponent from "./module/Main/module/ChatPage/ChatPage";
+import MainComponent from "./module/ChatPage/ChatPage";
 import HeaderComponent from "./module/Sidebar/module/Header/Header";
-import ChatContactComponent from "./module/Sidebar/module/ChatContact/ChatContact";
+import ChatContactComponent from "./module/ChatContact/ChatContact";
 import AvatarComponent from "../../components/Avatar/Avatar";
 import ButtonComponent from "../../components/Button/Button";
 import SearchInput from "./components/SearchInput/SearchInput";
@@ -70,11 +70,7 @@ const profileBtnCtx = {
   }).getContent(),
 };
 
-class ChatComponent extends Block {
-  constructor(props: IChat) {
-    super(props);
-  }
-
+class ChatComponent extends Block<IChat> {
   render() {
     return tmp.compile({ ...this.props }, styles);
   }

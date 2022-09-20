@@ -1,8 +1,6 @@
-import styles from "./MessageInput.module.scss";
-import InputComponent, {
-  IInput,
-} from "../../../../../../../../../../components/Input/Input";
-import InputWrapper from "../../../../../../../../../../module/InputWrapper/InputWrapper";
+import * as styles from "./MessageInput.module.scss";
+import InputComponent, { IInput } from "../../../../components/Input/Input";
+import InputWrapper from "../../../../module/InputWrapper/InputWrapper";
 
 const MessageInput = (args: IInput) => {
   const { iconLeft, ...rest } = args;

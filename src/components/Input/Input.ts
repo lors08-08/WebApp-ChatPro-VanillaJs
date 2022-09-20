@@ -1,5 +1,5 @@
 import InputTmp from "./Input.tmp";
-import styles from "./Input.module.scss";
+import * as styles from "./Input.module.scss";
 import Templator from "../../utils/classes/Templator";
 import { Block } from "../../utils/classes/Block/Block";
 import { TElement } from "../../utils/classes/Block/types/types";
@@ -20,11 +20,7 @@ export interface IInput {
 
 const tmp = new Templator(InputTmp);
 
-class InputComponent<T extends IInput> extends Block {
-  constructor(props: T) {
-    super(props);
-  }
-
+class InputComponent<T extends IInput> extends Block<T> {
   render() {
     const { additionalStyles, event, ...rest } = this.props;
 

@@ -2,7 +2,7 @@ import Templator from "../../utils/classes/Templator";
 import FormTemplate from "./Form.tmp";
 import { TElement } from "../../utils/classes/Block/types/types";
 import { Block } from "../../utils/classes/Block/Block";
-import styles from "./Form.scss";
+import * as styles from "./Form.scss";
 
 export interface IForm {
   id: string;
@@ -11,11 +11,7 @@ export interface IForm {
 
 const tmp = new Templator(FormTemplate);
 
-class FormComponent<T extends IForm> extends Block {
-  constructor(props: T) {
-    super(props);
-  }
-
+class FormComponent<T extends IForm> extends Block<T> {
   protected _validate(value: string, regExp: RegExp) {
     return regExp.test(value);
   }

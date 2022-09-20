@@ -45,21 +45,3 @@ export class EventBus<
     });
   }
 }
-
-// enum EVENTS {
-//   INIT = "init",
-//   FLOW_CDM = "flow:component-did-mount",
-//   FLOW_CDU = "flow:component-did-update",
-//   FLOW_RENDER = "flow:render",
-// }
-//
-// interface IBlockEventsArgs {
-//   [EVENTS.INIT]: [];
-//   [EVENTS.FLOW_CDM]: [];
-//   [EVENTS.FLOW_CDU]: [any, any];
-//   [EVENTS.FLOW_RENDER]: [];
-// }
-//
-// const eventer = new EventBus<typeof EVENTS, IBlockEventsArgs>();
-//
-// eventer.on(EVENTS.INIT, () => {});

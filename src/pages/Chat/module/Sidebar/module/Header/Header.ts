@@ -1,5 +1,5 @@
 import Header from "./Header.tmp";
-import styles from "./Header.module.scss";
+import * as styles from "./Header.module.scss";
 import Templator from "../../../../../../utils/classes/Templator";
 import { Block } from "../../../../../../utils/classes/Block/Block";
 import { TElement } from "../../../../../../utils/classes/Block/types/types";
@@ -11,11 +11,7 @@ interface ISidebarComponent {
 
 const tmp = new Templator(Header);
 
-class HeaderComponent extends Block {
-  constructor(props: ISidebarComponent) {
-    super(props);
-  }
-
+class HeaderComponent extends Block<ISidebarComponent> {
   render() {
     return tmp.compile({ ...this.props }, styles);
   }

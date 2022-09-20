@@ -17,12 +17,12 @@ function queryStringify(data: Record<string, string> | string | undefined) {
   }
 
   return Object.entries(data).reduce((a, [k, v], idx) => {
-    return a + `${!!idx ? "&" : ""}${k}=${v}`;
+    return a + `${idx ? "&" : ""}${k}=${v}`;
   }, "?");
 }
 
 export class Superfetch {
-  get = (url: string, options: IOptions) => {
+  get = (url: string, options: Omit<IOptions, "method">) => {
     options.data = queryStringify(options.data);
 
     return this.request(

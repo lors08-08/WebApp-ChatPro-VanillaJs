@@ -21,10 +21,6 @@ interface IFormElements extends HTMLCollection {
 }
 
 class FormSignup extends Form<IFormSignup> {
-  constructor(props: IFormSignup) {
-    super(props);
-  }
-
   private _validateLogin = new RegExp(/^(?=.*[a-z])[\w-]*$/i);
   private _validatePassword = new RegExp(/(?=.*\d)[A-Z]/);
 

@@ -3,7 +3,7 @@ import { EVENTS } from "./types/enum";
 import { IBlockEventsArgs, TElement, TMeta } from "./types/types";
 import isEqual from "../../funcs/isEqual";
 
-export class Block<P extends Record<string, unknown> = any> {
+export class Block<P extends {}> {
   static EVENTS = EVENTS;
 
   protected props = {} as P;
@@ -27,7 +27,7 @@ export class Block<P extends Record<string, unknown> = any> {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  _registerEvents(eventBus: EventBus<typeof EVENTS, IBlockEventsArgs>) {
+  private _registerEvents(eventBus: EventBus<typeof EVENTS, IBlockEventsArgs>) {
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
@@ -104,9 +104,9 @@ export class Block<P extends Record<string, unknown> = any> {
     return this.element;
   }
 
-  _makeProxyProps(props: P) {
+  private _makeProxyProps(props: P) {
     return new Proxy(props, {
-      get: (target: P, prop: string) => {
+      get: (target: any, prop: string) => {
         const value = target[prop];
 
         return typeof value === "function" ? value.bind(target) : value;
@@ -126,14 +126,14 @@ export class Block<P extends Record<string, unknown> = any> {
     });
   }
 
-  show() {
+  public show() {
     const currentElement = this.getContent();
 
     if (currentElement) {
       currentElement.style.display = "block";
     }
   }
-  hide() {
+  public hide() {
     const currentElement = this.getContent();
 
     if (currentElement) {

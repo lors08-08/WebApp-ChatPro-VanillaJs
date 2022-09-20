@@ -1,5 +1,5 @@
 import InputComponent, { IInput } from "../../../../components/Input/Input";
-import styles from "./SearchInput.module.scss";
+import * as styles from "./SearchInput.module.scss";
 import InputWrapper from "../../../../module/InputWrapper/InputWrapper";
 
 const SearchInput = (args: IInput) => {

@@ -1,5 +1,5 @@
 import Page404 from "./Page404.tmp";
-import styles from "./Page404.module.scss";
+import * as styles from "./Page404.module.scss";
 import Templator from "../../utils/classes/Templator";
 import LayoutComponent from "../../components/Layout/Layout";
 import ButtonComponent from "../../components/Button/Button";
@@ -12,11 +12,7 @@ interface IPage404 {
 
 const tmp = new Templator(Page404);
 
-class Page404Component extends Block {
-  constructor(props: IPage404) {
-    super(props);
-  }
-
+class Page404Component extends Block<IPage404> {
   render() {
     return tmp.compile({ ...this.props }, styles);
   }

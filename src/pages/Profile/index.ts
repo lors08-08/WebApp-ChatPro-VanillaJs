@@ -8,7 +8,7 @@ import ArrowLeft from "../../../static/img/arrow-left";
 import AvatarDefault from "../../../static/img/avatar-default";
 import Templator from "../../utils/classes/Templator";
 import { Block } from "../../utils/classes/Block/Block";
-import styles from "./modules/Avatar/Avatar.module.scss";
+import * as styles from "./modules/Avatar/Avatar.module.scss";
 import { TElement } from "../../utils/classes/Block/types/types";
 
 interface IProfile {
@@ -62,11 +62,7 @@ const Fields = userInfoFields.map(({ key, value }) =>
 
 const tmp = new Templator(Profile);
 
-class ProfileComponent extends Block {
-  constructor(props: IProfile) {
-    super(props);
-  }
-
+class ProfileComponent extends Block<IProfile> {
   render() {
     return tmp.compile({ ...this.props }, styles);
   }
