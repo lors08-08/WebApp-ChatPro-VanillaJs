@@ -6,7 +6,7 @@ import * as styles from "./Form.scss";
 
 export interface IForm {
   id: string;
-  input: TElement | TElement[];
+  content: TElement | TElement[];
 }
 
 const tmp = new Templator(FormTemplate);

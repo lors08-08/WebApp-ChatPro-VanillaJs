@@ -16,6 +16,7 @@ export interface IInput {
   className?: string;
   additionalStyles?: Record<string, string>;
   event?: IEvent | IEvent[];
+  disabled?: string;
 }
 
 const tmp = new Templator(InputTmp);

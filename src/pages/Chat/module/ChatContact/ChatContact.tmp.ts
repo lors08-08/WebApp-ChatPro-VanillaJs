@@ -6,7 +6,9 @@ export default `
                 {{ avatar }}
                 <div class="{{ styles.chat-content }} flexColumn">
                     <div class="{{ styles.name}} medium">{{ name }}</div>
-                    <div class="{{ styles.last-message }}">{{ lastMessage }}</div>
+                    <div class="{{ styles.last-message }}">
+                      {{ lastMessage }}
+                    </div>
                 </div>
             </div>
             <div class="{{ styles.message-info }} flexColumn">

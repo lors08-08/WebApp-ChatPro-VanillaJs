@@ -9,4 +9,8 @@
 }
 .key {
   color: var(--grey);
+
+  input {
+    text-align: right;
+  }
 }

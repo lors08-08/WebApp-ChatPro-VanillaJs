@@ -8,6 +8,7 @@ interface IAuth {
   title: string;
   fieldsClassName?: string;
   wrapperClass?: string;
+  serverError?: TElement;
   content: TElement | TElement[];
   buttons: TElement | TElement[];
 }

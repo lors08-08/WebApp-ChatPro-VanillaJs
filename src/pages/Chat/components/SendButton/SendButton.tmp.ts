@@ -1,5 +1,5 @@
 export default `
-  <div class="wrapper">
+  <div>
       {{icon}}
   </div>
 `;

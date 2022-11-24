@@ -38,7 +38,7 @@ function isEqual(x: any, y: any): boolean {
   const p = Object.keys(x);
 
   return (
-    Object.keys(y).every(function (i) {
+    Object.keys(y).every((i) => {
       return p.includes(i);
     }) &&
     p.every(function (i) {

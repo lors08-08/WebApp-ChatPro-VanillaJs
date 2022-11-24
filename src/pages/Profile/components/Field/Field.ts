@@ -5,8 +5,9 @@ import { Block } from "../../../../utils/classes/Block/Block";
 import { TElement } from "../../../../utils/classes/Block/types/types";
 
 interface IField {
+  id?: string;
   key: TElement | string;
-  value?: string;
+  input?: TElement;
 }
 
 const tmp = new Templator(Field);

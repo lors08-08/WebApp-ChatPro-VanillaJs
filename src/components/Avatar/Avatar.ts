@@ -6,8 +6,7 @@ import { TElement } from "../../utils/classes/Block/types/types";
 
 interface IAvatar {
   size?: string;
-  icon?: TElement;
-  image?: string;
+  image?: TElement;
 }
 
 const tmp = new Templator(Avatar);

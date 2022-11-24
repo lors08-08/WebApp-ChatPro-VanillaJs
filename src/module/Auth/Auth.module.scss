@@ -1,4 +1,6 @@
 .auth-wrapper {
+  display: flex;
+  align-self: center;
   min-height: 450px;
   min-width: 340px;
   align-items: center;
@@ -25,4 +27,9 @@
 }
 .max-height-signup {
   max-height: calc(100vh - 30vh);
+}
+.server-error {
+  text-align: center;
+  padding: 10px 5px;
+  font-size: 14px;
 }

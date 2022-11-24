@@ -5,18 +5,24 @@ import { Block } from "../../../../utils/classes/Block/Block";
 import { TElement } from "../../../../utils/classes/Block/types/types";
 
 interface IChatContact {
-  avatar: TElement;
+  avatar?: TElement;
   name: string;
-  lastMessage: string;
-  timestamp: string;
-  notifier?: string;
+  lastMessage?: string;
+  timestamp?: string;
+  notifier?: TElement;
+  event?: {
+    type: string;
+    action(e: any): void;
+  };
 }
 
 const tmp = new Templator(ChatContact);
 
 class ChatEmptyComponent extends Block<IChatContact> {
   render() {
-    return tmp.compile({ ...this.props }, styles);
+    const { event, ...props } = this.props;
+
+    return tmp.compile({ ...props }, styles, event);
   }
 }
 

@@ -10,4 +10,9 @@
   border-radius: 50%;
   padding: 2px;
   color: var(--white);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--dark-blue);
+  }
 }

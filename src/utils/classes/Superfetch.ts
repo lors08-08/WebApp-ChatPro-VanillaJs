@@ -5,13 +5,13 @@ enum Methods {
   DELETE = "DELETE",
 }
 interface IOptions {
-  data?: Record<string, string> | string;
+  data?: unknown;
   timeout?: number;
   headers?: Record<string, string>;
   method: Methods;
 }
 
-function queryStringify(data: Record<string, string> | string | undefined) {
+function queryStringify(data: unknown) {
   if (!data) {
     return;
   }
@@ -22,32 +22,41 @@ function queryStringify(data: Record<string, string> | string | undefined) {
 }
 
 export class Superfetch {
-  get = (url: string, options: Omit<IOptions, "method">) => {
-    options.data = queryStringify(options.data);
+  static API_URL = "https://ya-praktikum.tech/api/v2";
+  protected endpoint: string;
+
+  constructor(endpoint: string) {
+    this.endpoint = `${Superfetch.API_URL}${endpoint}`;
+  }
+
+  get = (url: string = "/", options?: Omit<IOptions, "method">) => {
+    if (options?.data) {
+      options.data = queryStringify(options.data);
+    }
 
     return this.request(
-      url,
+      this.endpoint + url,
       { ...options, method: Methods.GET },
-      options.timeout,
+      options?.timeout,
     );
   };
-  post = (url: string, options: IOptions) => {
+  post(url: string = "/", options?: Omit<IOptions, "method">) {
     return this.request(
-      url,
+      this.endpoint + url,
       { ...options, method: Methods.POST },
-      options.timeout,
+      options?.timeout,
     );
-  };
-  put = (url: string, options: IOptions) => {
+  }
+  put = (url: string = "/", options?: Omit<IOptions, "method">) => {
     return this.request(
-      url,
+      this.endpoint + url,
       { ...options, method: Methods.PUT },
-      options.timeout,
+      options?.timeout,
     );
   };
-  delete = (url: string, options: IOptions) => {
+  delete = (url: string = "/", options: Omit<IOptions, "method">) => {
     return this.request(
-      url,
+      this.endpoint + url,
       { ...options, method: Methods.DELETE },
       options.timeout,
     );
@@ -66,7 +75,7 @@ export class Superfetch {
       }
       xhr.timeout = timeout;
 
-      xhr.setRequestHeader("Content-Type", "text/plain");
+      xhr.withCredentials = true;
 
       if (headers) {
         Object.entries(headers).forEach(([key, value]) => {
@@ -78,6 +87,23 @@ export class Superfetch {
         res(xhr);
       });
 
+      xhr.onreadystatechange = () => {
+        if (
+          xhr.readyState === XMLHttpRequest.DONE &&
+          xhr.readyState === XMLHttpRequest.DONE
+        ) {
+          if (xhr.status < 300 && xhr.status >= 200) {
+            res(xhr.response);
+          } else {
+            rej(JSON.parse(xhr.response));
+            // eslint-disable-next-line no-console
+            console.log(
+              `Ответ от сервера: ${xhr.status} | ${xhr.responseText}`,
+            );
+          }
+        }
+      };
+
       xhr.onerror = rej;
       xhr.addEventListener("abort", rej);
       xhr.ontimeout = rej;
@@ -85,15 +111,13 @@ export class Superfetch {
       if (method === Methods.GET || !data) {
         xhr.send();
       } else {
-        xhr.send(data as any);
-      }
+        if (data instanceof FormData) {
+          xhr.send(data);
+        } else {
+          xhr.setRequestHeader("Content-Type", "application/json");
 
-      if (xhr.status === 200) {
-        // eslint-disable-next-line no-console
-        console.log(xhr.responseText);
-      } else {
-        // eslint-disable-next-line no-console
-        console.log(`Ответ от сервера: ${xhr.status} | ${xhr.statusText}`);
+          xhr.send(JSON.stringify(data));
+        }
       }
     });
   };

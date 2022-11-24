@@ -16,6 +16,7 @@ export default `
                   {{ userInfo }}
               </div>
           </div>
+          <div class="{{ styles.action-status }}">{{&if actionStatus !== undefined}} {{ actionStatus }} {{&end}}</div>
           <div class="profile-actions flexColumn">
               {{ buttons }}
           </div>

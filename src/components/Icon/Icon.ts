@@ -8,13 +8,19 @@ interface IIcon {
   size?: string;
   color?: string;
   icon: string;
+  event?: {
+    type: string;
+    action(e: any): void;
+  };
 }
 
 const tmp = new Templator(icon);
 
 class IconComponent extends Block<IIcon> {
   render() {
-    return tmp.compile({ ...this.props }, styles);
+    const { event, ...props } = this.props;
+
+    return tmp.compile({ ...props }, styles, event);
   }
 }
 

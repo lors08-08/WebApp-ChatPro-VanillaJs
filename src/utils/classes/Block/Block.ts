@@ -3,10 +3,10 @@ import { Events } from "./types/enum";
 import { IBlockEventsArgs, TElement, TMeta } from "./types/types";
 import isEqual from "../../funcs/isEqual";
 
-export class Block<P extends {}> {
+export class Block<P extends {} = {}> {
   static Events = Events;
 
-  protected props = {} as P;
+  props = {} as P;
   private readonly eventBus: () => EventBus<typeof Events, IBlockEventsArgs>;
 
   _element: TElement = null;
@@ -38,6 +38,10 @@ export class Block<P extends {}> {
     if (!this._meta) {
       return;
     }
+
+    const element: HTMLElement = document.createElement("div");
+
+    return element;
   }
 
   private _init() {
@@ -92,7 +96,7 @@ export class Block<P extends {}> {
     if (this._element) {
       this._element.replaceWith(rootElement);
     }
-
+    // console.log(rootElement);
     this._element = rootElement;
   }
 

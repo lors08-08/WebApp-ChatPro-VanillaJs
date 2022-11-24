@@ -44,3 +44,16 @@
     border: none;
   }
 }
+
+.transparent {
+  background-color: transparent;
+  &:hover,
+  &:focus {
+    background-color: transparent;
+  }
+}
+
+.textRight {
+  text-align: right;
+}
+

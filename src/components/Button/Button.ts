@@ -11,13 +11,19 @@ interface IButton {
   type?: string;
   color?: string;
   iconRight?: TElement;
+  event?: {
+    type: string;
+    action(e: any): void;
+  };
 }
 
 const tmp = new Templator(ButtonTmp);
 
 class ButtonComponent extends Block<IButton> {
   render() {
-    return tmp.compile({ ...this.props }, styles);
+    const { event, ...props } = this.props;
+
+    return tmp.compile({ ...props }, styles, event);
   }
 }
 

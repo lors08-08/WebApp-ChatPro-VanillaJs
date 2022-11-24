@@ -5,6 +5,8 @@ import LabelComponent from "../../components/Label/Label";
 import InputWrapper from "../../module/InputWrapper/InputWrapper";
 import LayoutComponent from "../../components/Layout/Layout";
 import FormSignupComponent from "./module/FormSignup";
+import LinkComponent from "../../components/Link/Link";
+import { Pages } from "../../common/enums/Pages";
 
 const ctxLabelMail = {
   id: "email",
@@ -153,9 +155,13 @@ const InputPasswordAgain = new InputWrapper({
 const SignupBtn = new ButtonComponent({
   value: "Зарегистрироваться",
 }).getContent();
-const LoginBtn = new ButtonComponent({
-  value: "Войти",
-  className: "styles.ghost",
+const LoginBtn = new LinkComponent({
+  id: "profile-link",
+  to: Pages.SIGN_IN,
+  value: new ButtonComponent({
+    value: "Войти",
+    className: "styles.ghost",
+  }).getContent(),
 }).getContent();
 
 const AuthCard = new AuthCardComponent({
@@ -176,7 +182,7 @@ const AuthCard = new AuthCardComponent({
 
 const Form = new FormSignupComponent({
   id: "login-form",
-  input: AuthCard,
+  content: AuthCard,
   emailError: EmailError,
   loginError: LoginError,
   nameError: NameError,

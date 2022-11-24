@@ -8,13 +8,24 @@ interface ILabel {
   id?: string;
   className?: string;
   value?: TElement | string;
+  type?: "error" | "success";
 }
 
 const tmp = new Templator(Label);
 
 class LabelComponent extends Block<ILabel> {
   render() {
-    return tmp.compile({ ...this.props }, styles);
+    let status = "";
+
+    if (this.props.type) {
+      status =
+        this.props.type === "success" ? "styles.success" : "styles.error";
+    }
+
+    return tmp.compile(
+      { ...this.props, className: `${this.props.className} ${status}` },
+      styles,
+    );
   }
 }
 

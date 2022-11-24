@@ -1,5 +1,5 @@
 export default `
-  <div class="{{ styles.wrapper }} medium w100 flexCenter">
-      {{ key }} {{&if value !== undefined}} <div class="{{ styles.key }}">{{ value }}</div> {{&end}}
+  <div id="{{&if id !== undefined}} {{ id }} {{&end}}" class="{{ styles.wrapper }} medium w100 flexCenter">
+      {{ key }} {{&if input !== undefined}} <div class="{{ styles.key }}">{{ input }}</div> {{&end}}
   </div>
 `;

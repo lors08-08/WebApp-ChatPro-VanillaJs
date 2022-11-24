@@ -1,9 +1,12 @@
 import Form, { IForm } from "../../../module/Form/Form";
 import LabelComponent from "../../../components/Label/Label";
+import AuthController from "../../../controllers/AuthController";
+import Store, { StoreEvents } from "../../../utils/classes/Store";
 
 interface IFormLogin extends IForm {
   loginError: LabelComponent;
   passwordError: LabelComponent;
+  serverError: LabelComponent;
 }
 interface IFormElements extends HTMLCollection {
   login: HTMLInputElement;
@@ -14,6 +17,13 @@ class FormLogin extends Form<IFormLogin> {
   constructor(props: IFormLogin) {
     super(props);
   }
+
+  protected init() {
+    Store.on(StoreEvents.UPDATED, () => {
+      // const newState = Store.getState();
+    });
+  }
+
   private _validateLogin = new RegExp(/^(?=.*[a-z])[\w-]*$/i);
   private _validatePassword = new RegExp(/(?=.*\d)[A-Z]/);
 
@@ -87,7 +97,7 @@ class FormLogin extends Form<IFormLogin> {
       }
     });
 
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
       const login = formElements.login.value;
@@ -97,6 +107,12 @@ class FormLogin extends Form<IFormLogin> {
         this._validate(login, this._validateLogin) &&
         this._validate(password, this._validatePassword)
       ) {
+        try {
+          await AuthController.signIn({ login, password });
+        } catch (error) {
+          this.props.serverError.setProps({ value: error });
+        }
+
         console.log({
           login,
           password,

@@ -1,7 +1,6 @@
 import ChatEmpty from "./ChatEmpty.tmp";
 import * as styles from "./ChatEmpty.module.scss";
 import Templator from "../../../../utils/classes/Templator";
-import LayoutComponent from "../../../../components/Layout/Layout";
 import { Block } from "../../../../utils/classes/Block/Block";
 
 interface IChatEmpty {
@@ -16,8 +15,4 @@ class ChatEmptyComponent extends Block<IChatEmpty> {
   }
 }
 
-export default new LayoutComponent({
-  content: new ChatEmptyComponent({
-    value: "Выберите чат чтобы отправить сообщение",
-  }).getContent(),
-}).getContent();
+export default ChatEmptyComponent;

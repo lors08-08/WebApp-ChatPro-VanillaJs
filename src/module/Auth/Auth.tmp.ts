@@ -6,7 +6,9 @@ export default `
               {{ content }}
           </div>  
       </div>
-      
-      <div class="{{ styles.action-buttons }} flexColumn flexCenter w100">{{ buttons }}</div>
+      <div class="{{ styles.action-buttons }} flexColumn flexCenter w100">
+        <div class="{{ styles.server-error }}">{{&if serverError !== undefined}} {{ serverError }} {{&end}}</div>
+        {{ buttons }}
+      </div>
   </div>
 `;

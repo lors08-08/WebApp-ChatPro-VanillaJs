@@ -1,6 +1,5 @@
 export default `
-  <div class="flexColumn {{styles.wrapper}}">
-      {{header}}
-      {{bottom}}
+  <div class="h100 {{styles.wrapper}}">
+      {{content}}
   </div>
 `;

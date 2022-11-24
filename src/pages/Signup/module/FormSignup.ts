@@ -1,5 +1,6 @@
 import Form, { IForm } from "../../../module/Form/Form";
 import LabelComponent from "../../../components/Label/Label";
+import AuthController from "../../../controllers/AuthController";
 
 interface IFormSignup extends IForm {
   emailError: LabelComponent;
@@ -207,7 +208,7 @@ class FormSignup extends Form<IFormSignup> {
       const email = formElements.email.value;
       const login = formElements.login.value;
       const firstName = formElements.name.value;
-      const surName = formElements.surname.value;
+      const surname = formElements.surname.value;
       const phone = formElements.phone.value;
       const password = formElements.password.value;
       const passwordAgain = formElements.passwordAgain.value;
@@ -218,18 +219,27 @@ class FormSignup extends Form<IFormSignup> {
           this._validate(password, this._validatePassword) &&
           this._validate(email, this._validateEmail) &&
           this._validate(firstName, this._validateFullName) &&
-          this._validate(surName, this._validateFullName) &&
+          this._validate(surname, this._validateFullName) &&
           this._validate(phone, this._validatePhone) &&
           passwordValue === passwordAgainValue
         );
       };
 
       if (validateAllFields()) {
+        AuthController.signUp({
+          first_name: firstName,
+          second_name: surname,
+          email,
+          login,
+          phone,
+          password,
+        });
+
         console.log({
           email,
           login,
           firstName,
-          surName,
+          surname,
           phone,
           password,
           passwordAgain,
