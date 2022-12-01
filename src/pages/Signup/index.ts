@@ -110,59 +110,59 @@ const PasswordAgainError = new LabelComponent({
 });
 
 const InputMail = new InputWrapper({
-  label: new LabelComponent(ctxLabelMail).getContent(),
+  label: new LabelComponent(ctxLabelMail),
   wrapperClass: "flexColumn",
-  error: EmailError.getContent(),
-  input: new InputComponent(ctxMail).getContent(),
-}).getContent();
+  error: EmailError,
+  input: new InputComponent(ctxMail),
+});
 const InputLogin = new InputWrapper({
-  label: new LabelComponent(ctxLabelLogin).getContent(),
+  label: new LabelComponent(ctxLabelLogin),
   wrapperClass: "flexColumn",
-  error: LoginError.getContent(),
-  input: new InputComponent(ctxLogin).getContent(),
-}).getContent();
+  error: LoginError,
+  input: new InputComponent(ctxLogin),
+});
 const InputName = new InputWrapper({
-  label: new LabelComponent(ctxLabelName).getContent(),
+  label: new LabelComponent(ctxLabelName),
   wrapperClass: "flexColumn",
-  error: NameError.getContent(),
-  input: new InputComponent(ctxName).getContent(),
-}).getContent();
+  error: NameError,
+  input: new InputComponent(ctxName),
+});
 const InputSurname = new InputWrapper({
-  label: new LabelComponent(ctxLabelSurname).getContent(),
+  label: new LabelComponent(ctxLabelSurname),
   wrapperClass: "flexColumn",
-  error: SurnameError.getContent(),
-  input: new InputComponent(ctxSurname).getContent(),
-}).getContent();
+  error: SurnameError,
+  input: new InputComponent(ctxSurname),
+});
 const InputPhone = new InputWrapper({
-  label: new LabelComponent(ctxLabelPhone).getContent(),
+  label: new LabelComponent(ctxLabelPhone),
   wrapperClass: "flexColumn",
-  error: PhoneError.getContent(),
-  input: new InputComponent(ctxPhone).getContent(),
-}).getContent();
+  error: PhoneError,
+  input: new InputComponent(ctxPhone),
+});
 const InputPassword = new InputWrapper({
-  label: new LabelComponent(ctxLabelPassword).getContent(),
+  label: new LabelComponent(ctxLabelPassword),
   wrapperClass: "flexColumn",
-  error: PasswordError.getContent(),
-  input: new InputComponent(ctxPassword).getContent(),
-}).getContent();
+  error: PasswordError,
+  input: new InputComponent(ctxPassword),
+});
 const InputPasswordAgain = new InputWrapper({
-  label: new LabelComponent(ctxLabelPasswordAgain).getContent(),
+  label: new LabelComponent(ctxLabelPasswordAgain),
   wrapperClass: "flexColumn",
-  error: PasswordAgainError.getContent(),
-  input: new InputComponent(ctxPasswordAgain).getContent(),
-}).getContent();
+  error: PasswordAgainError,
+  input: new InputComponent(ctxPasswordAgain),
+});
 
 const SignupBtn = new ButtonComponent({
   value: "Зарегистрироваться",
-}).getContent();
+});
 const LoginBtn = new LinkComponent({
   id: "profile-link",
   to: Pages.SIGN_IN,
   value: new ButtonComponent({
     value: "Войти",
     className: "styles.ghost",
-  }).getContent(),
-}).getContent();
+  }),
+});
 
 const AuthCard = new AuthCardComponent({
   title: "Регистрация",
@@ -178,7 +178,7 @@ const AuthCard = new AuthCardComponent({
   buttons: [SignupBtn, LoginBtn],
   fieldsClassName: "styles.input-fields-sm",
   wrapperClass: "styles.max-height-signup",
-}).getContent();
+});
 
 const Form = new FormSignupComponent({
   id: "login-form",
@@ -190,7 +190,7 @@ const Form = new FormSignupComponent({
   phoneError: PhoneError,
   passwordError: PasswordError,
   passwordAgainError: PasswordAgainError,
-}).getContent();
+});
 
 export default new LayoutComponent({
   content: Form,

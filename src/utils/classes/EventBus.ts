@@ -2,8 +2,8 @@ type THandler<A extends any[] = unknown[]> = (...args: A) => void;
 type TMapInterface<P> = P[keyof P];
 
 export class EventBus<
-  E extends Record<string, string>,
-  A extends Record<TMapInterface<E>, any[]>,
+  E extends Record<string, string> = Record<string, string>,
+  A extends Record<TMapInterface<E>, any[]> = Record<TMapInterface<E>, any[]>,
 > {
   private readonly listeners: { [K in TMapInterface<E>]?: THandler<A[K]>[] };
 

@@ -2,14 +2,13 @@ import ChatContact from "./ChatContact.tmp";
 import * as styles from "./ChatContact.module.scss";
 import Templator from "../../../../utils/classes/Templator";
 import { Block } from "../../../../utils/classes/Block/Block";
-import { TElement } from "../../../../utils/classes/Block/types/types";
 
 interface IChatContact {
-  avatar?: TElement;
+  avatar?: Block;
   name: string;
   lastMessage?: string;
   timestamp?: string;
-  notifier?: TElement;
+  notifier?: Block;
   event?: {
     type: string;
     action(e: any): void;

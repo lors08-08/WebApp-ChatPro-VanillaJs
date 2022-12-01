@@ -1,7 +1,6 @@
 import Form, { IForm } from "../../../module/Form/Form";
 import LabelComponent from "../../../components/Label/Label";
 import AuthController from "../../../controllers/AuthController";
-import Store, { StoreEvents } from "../../../utils/classes/Store";
 
 interface IFormLogin extends IForm {
   loginError: LabelComponent;
@@ -16,12 +15,6 @@ interface IFormElements extends HTMLCollection {
 class FormLogin extends Form<IFormLogin> {
   constructor(props: IFormLogin) {
     super(props);
-  }
-
-  protected init() {
-    Store.on(StoreEvents.UPDATED, () => {
-      // const newState = Store.getState();
-    });
   }
 
   private _validateLogin = new RegExp(/^(?=.*[a-z])[\w-]*$/i);
@@ -112,11 +105,6 @@ class FormLogin extends Form<IFormLogin> {
         } catch (error) {
           this.props.serverError.setProps({ value: error });
         }
-
-        console.log({
-          login,
-          password,
-        });
       } else {
         [...formElements].forEach((element: HTMLInputElement) => {
           element.focus();

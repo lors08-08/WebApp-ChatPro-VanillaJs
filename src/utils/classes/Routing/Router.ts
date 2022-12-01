@@ -1,5 +1,7 @@
 import Route from "./Route";
 import { TElement } from "../Block/types/types";
+import AuthController from "../../../controllers/AuthController";
+import { Pages } from "../../../common/enums/Pages";
 
 class Router {
   private static __instance: Router;
@@ -11,7 +13,6 @@ class Router {
     if (Router.__instance) {
       return Router.__instance;
     }
-
     this.routes = [];
 
     Router.__instance = this;
@@ -52,10 +53,20 @@ class Router {
     route.render();
   }
 
-  public go(pathname: string) {
+  public async go(pathname: string) {
     this.history.pushState({}, "", pathname);
 
-    this._onRoute(pathname);
+    if (pathname === Pages.SIGN_UP || pathname === Pages.SIGN_IN) {
+      this._onRoute(pathname);
+    } else {
+      try {
+        await AuthController.fetchUser();
+
+        this._onRoute(pathname);
+      } catch {
+        this._onRoute(Pages.SIGN_IN);
+      }
+    }
   }
 
   public forward() {

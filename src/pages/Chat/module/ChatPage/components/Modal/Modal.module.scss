@@ -28,6 +28,10 @@
 .element {
   cursor: pointer;
 
+  & svg {
+    color: var(--blue);
+  }
+
   &:hover {
     color: var(--light-grey);
   }

@@ -2,15 +2,14 @@ import Templator from "../../utils/classes/Templator";
 import * as styles from "./Modal.module.scss";
 import Modal from "./Modal.tmp";
 import { Block } from "../../utils/classes/Block/Block";
-import { TElement } from "../../utils/classes/Block/types/types";
 
 interface IModal {
   id?: string;
   title: string;
-  input: TElement | string;
+  input: Block | string;
   className?: string;
-  actionBtn: TElement;
-  closeBtn?: TElement;
+  actionBtn: Block;
+  closeBtn?: Block;
   error?: string;
   darkBack?: string;
   event?: {

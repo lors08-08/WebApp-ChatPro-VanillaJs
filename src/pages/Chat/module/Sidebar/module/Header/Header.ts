@@ -2,11 +2,10 @@ import Header from "./Header.tmp";
 import * as styles from "./Header.module.scss";
 import Templator from "../../../../../../utils/classes/Templator";
 import { Block } from "../../../../../../utils/classes/Block/Block";
-import { TElement } from "../../../../../../utils/classes/Block/types/types";
 
 interface ISidebarComponent {
-  button: TElement;
-  search: TElement;
+  button: Block;
+  search: Block;
 }
 
 const tmp = new Templator(Header);

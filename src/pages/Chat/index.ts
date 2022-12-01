@@ -11,13 +11,15 @@ import IconComponent from "../../components/Icon/Icon";
 import SearchIcon from "../../../static/img/search";
 import ArrowRight from "../../../static/img/arrow-right-min";
 import { Block } from "../../utils/classes/Block/Block";
-import { TElement } from "../../utils/classes/Block/types/types";
 import { Pages } from "../../common/enums/Pages";
-import MainComponent from "./module/ChatPage/ChatPage";
+import ChatPageComponent from "./module/ChatPage/ChatPage";
+import LayoutComponent from "../../components/Layout/Layout";
+import ChatEmptyComponent from "./module/ChatEmpty/ChatEmpty";
+import { withAuth } from "../../utils/hocs/withAuth";
 
 interface IChat {
-  sidebar: TElement;
-  main: TElement;
+  sidebar: Block;
+  main: Block;
 }
 
 const tmp = new Templator(Chat);
@@ -29,7 +31,7 @@ const ctxSearchInput = {
   placeholder: "Поиск",
   iconLeft: new IconComponent({
     icon: SearchIcon,
-  }).getContent(),
+  }),
 };
 
 const profileBtnCtx = {
@@ -49,28 +51,33 @@ class ChatComponent extends Block<IChat> {
   }
 }
 
-export default new ChatComponent({
-  sidebar: new SidebarComponent({
-    header: new HeaderComponent({
-      button: new LinkComponent({
-        id: "profile-link",
-        to: Pages.SETTING,
-        value: new ButtonComponent(profileBtnCtx).getContent(),
-      }).getContent(),
-      search: new LabelComponent({
-        id: "search",
-        value: SearchInput(ctxSearchInput),
-      }).getContent(),
-    }).getContent(),
-    chatContacts: new LabelComponent({
-      value: "Тут пусто, доабавьте что нибудь",
-      className: "styles.medium center-text",
-    }).getContent(),
+const protectedPage = withAuth(
+  new ChatComponent({
+    sidebar: new SidebarComponent({
+      header: new HeaderComponent({
+        button: new LinkComponent({
+          id: "profile-link",
+          to: Pages.SETTING,
+          value: new ButtonComponent(profileBtnCtx),
+        }),
+        search: new LabelComponent({
+          id: "search",
+          value: SearchInput(ctxSearchInput),
+        }),
+      }),
+      chatContacts: new LabelComponent({
+        value: "Тут пусто, доабавьте что нибудь",
+        className: "styles.medium center-text",
+      }),
+    }),
+    main: new ChatPageComponent({
+      content: new LayoutComponent({
+        content: new ChatEmptyComponent({
+          value: "Выберите чат чтобы отправить сообщение",
+        }),
+      }),
+    }),
   }).getContent(),
-  main: new MainComponent({
-    content: new LabelComponent({
-      value: "Выберите чат чтобы отправить сообщение",
-      className: "styles.medium",
-    }).getContent(),
-  }).getContent(),
-}).getContent();
+);
+
+export default protectedPage;

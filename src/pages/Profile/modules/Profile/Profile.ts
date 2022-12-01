@@ -12,11 +12,11 @@ import InputComponent from "../../../../components/Input/Input";
 import LabelComponent from "../../../../components/Label/Label";
 
 interface IProfile {
-  icon: TElement;
-  userAvatar: TElement;
+  icon: Block;
+  userAvatar: Block;
   userInfo?: TElement[];
   buttons?: TElement[] | TElement;
-  actionStatus?: TElement;
+  actionStatus?: Block;
 }
 
 const ctxProfileValue = {
@@ -55,7 +55,7 @@ export class ProfileComponent extends Block<IProfile> {
       className: "styles.md",
       value: text,
       type,
-    }).getContent();
+    });
   }
 
   private setProfilePasswordMode() {
@@ -66,7 +66,7 @@ export class ProfileComponent extends Block<IProfile> {
           ...ctxProfilePasswordValue,
           id: key,
           name: key,
-        }).getContent(),
+        }),
       }).getContent(),
     );
 
@@ -86,7 +86,7 @@ export class ProfileComponent extends Block<IProfile> {
             value: user[key as keyof IUpdateProfileRequestDto] || "",
             disabled: disabled ? "disabled" : "",
             name: key,
-          }).getContent(),
+          }),
         }).getContent(),
       );
 
@@ -133,7 +133,7 @@ export class ProfileComponent extends Block<IProfile> {
               type: "click",
               action: () => this.enableEditMode(),
             },
-          }).getContent(),
+          }),
         }).getContent(),
         new FieldComponent({
           key: new ButtonComponent({
@@ -143,7 +143,7 @@ export class ProfileComponent extends Block<IProfile> {
               type: "click",
               action: () => this.enablePasswordEditMode(),
             },
-          }).getContent(),
+          }),
         }).getContent(),
         new ButtonComponent({
           id: "logout-btn",

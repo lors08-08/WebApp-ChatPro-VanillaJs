@@ -3,5 +3,6 @@ export default `
         {{profile}}
         {{optionsIcon}}
         {{&if modal !== undefined}} {{ modal }} {{&end}}
+        {{&if editModal !== undefined}} {{ editModal }} {{&end}}
     </div>
 `;

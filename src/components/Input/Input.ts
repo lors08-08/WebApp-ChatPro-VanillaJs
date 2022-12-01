@@ -2,13 +2,12 @@ import InputTmp from "./Input.tmp";
 import * as styles from "./Input.module.scss";
 import Templator from "../../utils/classes/Templator";
 import { Block } from "../../utils/classes/Block/Block";
-import { TElement } from "../../utils/classes/Block/types/types";
 import { IEvent } from "../../common/types/types";
 
 export interface IInput {
   inputVariant?: string;
   placeholder?: string;
-  iconLeft?: TElement;
+  iconLeft?: Block;
   id?: string;
   name?: string;
   type?: string;
@@ -22,6 +21,18 @@ export interface IInput {
 const tmp = new Templator(InputTmp);
 
 class InputComponent<T extends IInput> extends Block<T> {
+  getValue() {
+    return (this.getContent() as HTMLInputElement)?.value;
+  }
+
+  setValue(value: string = "") {
+    const input = this.getContent() as HTMLInputElement;
+
+    if (input?.value) {
+      input.value = value;
+    }
+  }
+
   render() {
     const { additionalStyles, event, ...rest } = this.props;
 

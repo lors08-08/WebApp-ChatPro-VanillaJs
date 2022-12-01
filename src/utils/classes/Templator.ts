@@ -2,6 +2,7 @@ import { nanoid } from "nanoid";
 
 import getObjectData from "../funcs/getObjectData";
 import { IEvent } from "../../common/types/types";
+import { Block } from "./Block/Block";
 
 class Templator<T extends Record<string, any>> {
   protected readonly _template: string;
@@ -42,7 +43,10 @@ class Templator<T extends Record<string, any>> {
         const fragment = document.createDocumentFragment();
 
         data.component.forEach((element) => {
-          fragment.append(element);
+          const newElement =
+            element instanceof Block ? element.getContent() : element;
+
+          fragment.append(newElement);
         });
 
         stub.replaceWith(fragment);
@@ -59,7 +63,7 @@ class Templator<T extends Record<string, any>> {
       return {
         id: nanoid(6),
         name: key,
-        component: value,
+        component: value instanceof Block ? value.getContent() : value,
       };
     });
   }

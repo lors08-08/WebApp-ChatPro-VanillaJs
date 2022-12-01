@@ -1,12 +1,11 @@
 import Templator from "../../utils/classes/Templator";
 import FormTemplate from "./Form.tmp";
-import { TElement } from "../../utils/classes/Block/types/types";
 import { Block } from "../../utils/classes/Block/Block";
 import * as styles from "./Form.scss";
 
 export interface IForm {
   id: string;
-  content: TElement | TElement[];
+  content: Block | Block[];
 }
 
 const tmp = new Templator(FormTemplate);

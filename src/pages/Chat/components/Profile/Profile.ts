@@ -1,11 +1,10 @@
 import Profile from "./Profile.tmp";
 import * as styles from "./Profile.module.scss";
-import { TElement } from "../../../../utils/classes/Block/types/types";
 import Templator from "../../../../utils/classes/Templator";
 import { Block } from "../../../../utils/classes/Block/Block";
 
 interface IProfile {
-  avatar: TElement;
+  avatar: Block;
   name: string;
 }
 

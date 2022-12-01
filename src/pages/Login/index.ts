@@ -44,27 +44,27 @@ const ServerError = new LabelComponent({
 });
 
 const InputLogin = new InputWrapperComponent({
-  label: new LabelComponent(ctxLabelLogin).getContent(),
+  label: new LabelComponent(ctxLabelLogin),
   wrapperClass: "flexColumn",
-  error: LoginError.getContent(),
+  error: LoginError,
   input: new InputComponent({
     ...ctxLogin,
-  }).getContent(),
+  }),
 });
 
 const InputPassword = new InputWrapperComponent({
-  label: new LabelComponent(ctxLabelPassword).getContent(),
+  label: new LabelComponent(ctxLabelPassword),
   wrapperClass: "flexColumn",
-  error: PasswordError.getContent(),
+  error: PasswordError,
   input: new InputComponent({
     ...ctxPassword,
-  }).getContent(),
+  }),
 });
 
 const AuthorizeBtn = new ButtonComponent({
   value: "Авторизоваться",
   type: "submit",
-}).getContent();
+});
 
 const AskForAccountBtn = new LinkComponent({
   id: "signup-link",
@@ -72,15 +72,15 @@ const AskForAccountBtn = new LinkComponent({
   value: new ButtonComponent({
     value: "Нет аккаунта?",
     className: "styles.ghost",
-  }).getContent(),
-}).getContent();
+  }),
+});
 
 const AuthCard = new AuthCardComponent({
   title: "Вход",
-  content: [InputLogin.getContent(), InputPassword.getContent()],
-  serverError: ServerError.getContent(),
+  content: [InputLogin, InputPassword],
+  serverError: ServerError,
   buttons: [AuthorizeBtn, AskForAccountBtn],
-}).getContent();
+});
 
 const Form = new FormLoginComponent({
   id: "login-form",
@@ -88,7 +88,7 @@ const Form = new FormLoginComponent({
   loginError: LoginError,
   passwordError: PasswordError,
   serverError: ServerError,
-}).getContent();
+});
 
 export default new LayoutComponent({
   content: Form,

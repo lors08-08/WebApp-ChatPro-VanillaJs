@@ -3,7 +3,7 @@ import { Events } from "./types/enum";
 import { IBlockEventsArgs, TElement, TMeta } from "./types/types";
 import isEqual from "../../funcs/isEqual";
 
-export class Block<P extends {} = {}> {
+export class Block<P extends Record<string, any> = {}> {
   static Events = Events;
 
   props = {} as P;
@@ -96,7 +96,7 @@ export class Block<P extends {} = {}> {
     if (this._element) {
       this._element.replaceWith(rootElement);
     }
-    // console.log(rootElement);
+
     this._element = rootElement;
   }
 

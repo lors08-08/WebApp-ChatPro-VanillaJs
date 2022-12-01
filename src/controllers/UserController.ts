@@ -3,6 +3,7 @@ import { IUpdateProfileRequestDto } from "../api/types/user/request/IUpdateProfi
 import Store from "../utils/classes/Store";
 import { IUpdateProfileResponseDto } from "../api/types/user/response/IUpdateProfileResponseDto";
 import { IUpdatePasswordRequestDto } from "../api/types/user/request/IUpdatePasswordRequestDto";
+import { IUserSearchRequestDto } from "../api/types/user/request/IUserSearchRequestDto";
 
 class UserController {
   private readonly api: UserApi;
@@ -21,7 +22,6 @@ class UserController {
     } catch (error) {
       const { reason } = error;
 
-      console.log(error);
       throw new Error(reason);
     }
   }
@@ -36,7 +36,6 @@ class UserController {
     } catch (error) {
       const { reason } = error;
 
-      console.log(reason);
       throw new Error(reason);
     }
   }
@@ -47,7 +46,18 @@ class UserController {
     } catch (error) {
       const { reason } = error;
 
-      console.log(reason);
+      throw new Error(reason);
+    }
+  }
+
+  async search_user(data: IUserSearchRequestDto) {
+    try {
+      const userId = await this.api.search_user(data);
+
+      return userId[0]?.id;
+    } catch (error) {
+      const { reason } = error;
+
       throw new Error(reason);
     }
   }
@@ -60,7 +70,6 @@ class UserController {
     } catch (error) {
       const { reason } = error;
 
-      console.log(reason);
       throw new Error(reason);
     }
   }

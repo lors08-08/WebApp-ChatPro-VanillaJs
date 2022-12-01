@@ -1,7 +1,6 @@
 import { Block } from "../classes/Block/Block";
 import Router from "../classes/Routing/Router";
 
-//TODO instead of any should be Block
 export function withRouter(Component: any) {
   type Props = typeof Component extends typeof Block ? {} : any;
 

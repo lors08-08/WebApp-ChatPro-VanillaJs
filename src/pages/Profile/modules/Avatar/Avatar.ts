@@ -13,7 +13,7 @@ import ImageComponent from "../../../../components/Image/Image";
 
 interface IAvatar {
   id?: string;
-  avatarImg?: TElement;
+  avatarImg?: Block;
   avatar: AvatarElement;
   name: string;
   modal?: TElement;
@@ -27,7 +27,7 @@ class AvatarComponent extends Block<IAvatar> {
     id: "modal-background",
     title: "Загрузите файл",
     darkBack: "styles.dark-background ",
-    input: new FileLoader({}).getContent(),
+    input: new FileLoader({}),
     actionBtn: new ButtonComponent({
       value: "Сохранить",
       event: {
@@ -52,7 +52,7 @@ class AvatarComponent extends Block<IAvatar> {
                 type: "click",
                 action: () => this.closeModal(),
               },
-            }).getContent();
+            });
 
             await UserController.update_avatar(this.file);
 
@@ -70,7 +70,7 @@ class AvatarComponent extends Block<IAvatar> {
           }
         },
       },
-    }).getContent(),
+    }),
     event: {
       type: "click",
       action: (e: Event) => {
@@ -86,7 +86,7 @@ class AvatarComponent extends Block<IAvatar> {
     this.modal.setProps({
       ...this.modal.props,
       error: undefined,
-      input: new FileLoader({}).getContent(),
+      input: new FileLoader({}),
       title: "Загрузите файл",
       className: "styles.title",
       closeBtn: undefined,
@@ -107,7 +107,7 @@ class AvatarComponent extends Block<IAvatar> {
       if (user?.avatar) {
         const image = new ImageComponent({
           src: "https://ya-praktikum.tech/api/v2/resources" + user?.avatar,
-        }).getContent();
+        });
 
         this.props.avatar?.setProps({
           ...this.props.avatar.props,
@@ -124,7 +124,7 @@ class AvatarComponent extends Block<IAvatar> {
         setTimeout(() => {
           this.setProps({
             ...this.props,
-            avatarImg: this.props.avatar?.getContent(),
+            avatarImg: this.props.avatar,
           });
         }, 100);
       }

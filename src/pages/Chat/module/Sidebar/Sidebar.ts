@@ -2,7 +2,6 @@ import Sidebar from "./Sidebar.tmp";
 import * as styles from "./Sidebar.module.scss";
 import Templator from "../../../../utils/classes/Templator";
 import { Block } from "../../../../utils/classes/Block/Block";
-import { TElement } from "../../../../utils/classes/Block/types/types";
 import Store, { StoreEvents } from "../../../../utils/classes/Store";
 import ChatController from "../../../../controllers/ChatController";
 import ChatContactComponent from "../ChatContact/ChatContact";
@@ -13,12 +12,13 @@ import NotifierComponent from "../../components/Notifier/Notifier";
 import Modal from "../../../../module/Modal/Modal";
 import ButtonComponent from "../../../../components/Button/Button";
 import InputComponent from "../../../../components/Input/Input";
+import convertTimestamp from "../../../../utils/funcs/convertTimestamp";
 
 interface ISidebarComponent {
-  modal?: TElement;
-  header: TElement;
-  chatContacts: TElement | TElement[];
-  addChatBtn?: TElement;
+  modal?: Block;
+  header: Block;
+  chatContacts: Block | Block[];
+  addChatBtn?: Block;
 }
 
 const tmp = new Templator(Sidebar);
@@ -26,16 +26,20 @@ const tmp = new Templator(Sidebar);
 const ChatsEmpty = new LayoutComponent({
   content: new ChatEmptyComponent({
     value: "Тут пусто",
-  }).getContent(),
-}).getContent();
+  }),
+});
+
+const ChatTitleInput = new InputComponent({
+  id: "chat-title",
+  placeholder: "Введите название",
+});
 
 class SidebarComponent extends Block<ISidebarComponent> {
-  title: string | undefined;
   modal = new Modal({
     id: "modal-background",
     title: "Название чата",
     darkBack: "styles.dark-background ",
-    input: new InputComponent({ id: "chat-title" }).getContent(),
+    input: ChatTitleInput,
     actionBtn: new ButtonComponent({
       value: "Добавить",
       event: {
@@ -43,7 +47,9 @@ class SidebarComponent extends Block<ISidebarComponent> {
         action: async (e) => {
           e.preventDefault();
 
-          if (!this.title) {
+          const title = ChatTitleInput.getValue();
+
+          if (!title) {
             this.modal.setProps({
               ...this.modal.props,
               error: "Нужно выбрать файл",
@@ -60,9 +66,9 @@ class SidebarComponent extends Block<ISidebarComponent> {
                 type: "click",
                 action: () => this.closeModal(),
               },
-            }).getContent();
+            });
 
-            await ChatController.add_chat({ title: this.title });
+            await ChatController.add_chat({ title });
 
             this.modal.setProps({
               ...this.modal.props,
@@ -78,7 +84,7 @@ class SidebarComponent extends Block<ISidebarComponent> {
           }
         },
       },
-    }).getContent(),
+    }),
     event: {
       type: "click",
       action: (e: Event) => {
@@ -103,12 +109,12 @@ class SidebarComponent extends Block<ISidebarComponent> {
   openModal() {
     this.setProps({
       ...this.props,
-      modal: this.modal.getContent(),
+      modal: this.modal,
     });
   }
 
   init() {
-    ChatController.get_chats();
+    ChatController.fetch_chats();
 
     this.setProps({
       ...this.props,
@@ -121,7 +127,7 @@ class SidebarComponent extends Block<ISidebarComponent> {
             this.openModal();
           },
         },
-      }).getContent(),
+      }),
     });
 
     Store.on(StoreEvents.UPDATED, () => {
@@ -136,15 +142,15 @@ class SidebarComponent extends Block<ISidebarComponent> {
                 return new ChatContactComponent({
                   avatar: new AvatarComponent({
                     size: "styles.small",
-                  }).getContent(),
+                  }),
                   name: title,
                   lastMessage: last_message?.content || "*нет сообщений",
-                  timestamp: last_message?.time,
+                  timestamp: convertTimestamp(last_message?.time),
                   notifier: !unread_count
                     ? undefined
                     : new NotifierComponent({
                         value: unread_count,
-                      }).getContent(),
+                      }),
                   event: {
                     type: "click",
                     action: () => {
@@ -157,29 +163,13 @@ class SidebarComponent extends Block<ISidebarComponent> {
                       });
                     },
                   },
-                }).getContent();
+                });
               }),
       });
     });
   }
 
   render() {
-    const event = {
-      type: "click",
-      action: () => this.openModal(),
-    };
-
-    const compiled = tmp.compile({ ...this.props }, styles, event);
-
-    compiled.querySelector("#chat-title")?.addEventListener("change", (e) => {
-      const currentTarget = e.target as HTMLInputElement;
-      const title = currentTarget.value;
-
-      if (title) {
-        this.title = title;
-      }
-    });
-
     return tmp.compile({ ...this.props }, styles);
   }
 }

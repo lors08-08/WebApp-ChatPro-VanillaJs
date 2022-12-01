@@ -2,10 +2,9 @@ import LayoutTmp from "./Layout.tmp";
 import * as styles from "./Layout.module.scss";
 import Templator from "../../utils/classes/Templator";
 import { Block } from "../../utils/classes/Block/Block";
-import { TElement } from "../../utils/classes/Block/types/types";
 
 interface ILayout {
-  content: TElement;
+  content: Block;
   className?: string;
 }
 

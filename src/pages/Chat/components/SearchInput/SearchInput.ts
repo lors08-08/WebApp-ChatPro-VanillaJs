@@ -12,8 +12,8 @@ const SearchInput = (args: IInput) => {
       className: "styles.wrapper medium styles.ghost",
       additionalStyles: styles,
       ...rest,
-    }).getContent(),
-  }).getContent();
+    }),
+  });
 };
 
 export default SearchInput;

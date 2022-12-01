@@ -8,8 +8,6 @@ import Router from "./utils/classes/Routing/Router";
 import { Pages } from "./common/enums/Pages";
 
 window.addEventListener("DOMContentLoaded", () => {
-  Router.use(Pages.MESSENGER, ChatPage).start();
-
   Router.use(Pages.SIGN_IN, LoginPage)
     .use(Pages.SIGN_UP, SignupPage)
     .use(Pages.MESSENGER, ChatPage)

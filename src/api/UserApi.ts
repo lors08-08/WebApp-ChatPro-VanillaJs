@@ -2,6 +2,7 @@ import BaseApi from "./BaseApi";
 import { IUpdateProfileRequestDto } from "./types/user/request/IUpdateProfileRequestDto";
 import { IUpdatePasswordRequestDto } from "./types/user/request/IUpdatePasswordRequestDto";
 import { IUpdateProfileResponseDto } from "./types/user/response/IUpdateProfileResponseDto";
+import { IUserSearchRequestDto } from "./types/user/request/IUserSearchRequestDto";
 
 export class UserApi extends BaseApi {
   constructor() {
@@ -30,6 +31,12 @@ export class UserApi extends BaseApi {
 
   update_password(data: IUpdatePasswordRequestDto) {
     return this.http.put("/password", { data });
+  }
+
+  search_user(data: IUserSearchRequestDto) {
+    return this.http.post("/search", { data }).then((dataInfo) => {
+      return JSON.parse(`${dataInfo}`);
+    }) as Promise<IUpdateProfileResponseDto[]>;
   }
 
   read(id: number) {

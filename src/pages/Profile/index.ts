@@ -9,6 +9,7 @@ import FormProfileComponent from "./modules/FormProfile";
 import LayoutComponent from "../../components/Layout/Layout";
 import Profile from "./modules/Profile/Profile";
 import LabelComponent from "../../components/Label/Label";
+import { withAuth } from "../../utils/hocs/withAuth";
 
 const ActionStatus = new LabelComponent({
   id: "action-status",
@@ -20,7 +21,7 @@ const Avatar = new AvatarComponent({
   image: new IconComponent({
     icon: AvatarDefault,
     size: "styles.large",
-  }).getContent(),
+  }),
 });
 
 const profile = new Profile({
@@ -30,21 +31,25 @@ const profile = new Profile({
     value: new IconComponent({
       icon: ArrowLeft,
       color: "styles.white",
-    }).getContent(),
-  }).getContent(),
+    }),
+  }),
   userAvatar: new AvatarProfile({
     avatar: Avatar,
     name: "Лорс",
-  }).getContent(),
-  actionStatus: ActionStatus.getContent(),
+  }),
+  actionStatus: ActionStatus,
 });
 
-export default new LayoutComponent({
-  className: "styles.block",
-  content: new FormProfileComponent({
-    id: "profile-form",
-    content: profile.getContent(),
-    profile: profile,
-    actionStatus: ActionStatus,
+const protectedPage = withAuth(
+  new LayoutComponent({
+    className: "styles.block",
+    content: new FormProfileComponent({
+      id: "profile-form",
+      content: profile,
+      profile: profile,
+      actionStatus: ActionStatus,
+    }),
   }).getContent(),
-}).getContent();
+);
+
+export default protectedPage;

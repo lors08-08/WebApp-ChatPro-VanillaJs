@@ -18,7 +18,7 @@ class AuthController {
 
       await this.fetchUser();
 
-      Router.go(Pages.MESSENGER);
+      await Router.go(Pages.MESSENGER);
     } catch (error) {
       const { reason } = error;
 
@@ -30,12 +30,12 @@ class AuthController {
 
     await this.fetchUser();
 
-    Router.go(Pages.MESSENGER);
+    await Router.go(Pages.MESSENGER);
   }
   async logout() {
     await this.api.logout();
 
-    Router.go(Pages.SIGN_IN);
+    await Router.go(Pages.SIGN_IN);
   }
   async fetchUser() {
     const user = await this.api.read();
