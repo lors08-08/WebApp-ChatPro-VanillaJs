@@ -2,7 +2,6 @@
   "name": "chat-pro",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
   "scripts": {
     "start": "npm run build && node ./server/server.js",
     "dev": "concurrently \"tsc --noEmit && parcel ./static/index.html --port=3000 --no-cache\" \"tsc --watch\"",
