@@ -17,8 +17,8 @@ export class ChatApi extends BaseApi {
       .then((dataInfo) => {
         return JSON.parse(`${dataInfo}`);
       })
-      .catch((error) => {
-        throw new Error(error);
+      .catch(() => {
+        return;
       }) as Promise<IChatAllResponseDto[]>;
   }
 

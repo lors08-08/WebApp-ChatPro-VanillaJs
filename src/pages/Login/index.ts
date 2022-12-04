@@ -5,6 +5,7 @@ import LabelComponent from "../../components/Label/Label";
 import FormLoginComponent from "./module/FormLogin";
 import LinkComponent from "../../components/Link/Link";
 import { Pages } from "../../common/enums/Pages";
+import { withRedirect } from "../../utils/hocs/withRedirect";
 
 const LoginError = new LabelComponent({
   id: "login",
@@ -47,6 +48,10 @@ const Form = new FormLoginComponent({
   serverError: ServerError,
 });
 
-export default new LayoutComponent({
-  content: Form,
-}).getContent();
+const redirectedPage = withRedirect(
+  new LayoutComponent({
+    content: Form,
+  }).getContent(),
+);
+
+export default redirectedPage;

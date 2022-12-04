@@ -96,10 +96,6 @@ export class Superfetch {
             res(xhr.response);
           } else {
             rej(JSON.parse(xhr.response));
-            // eslint-disable-next-line no-console
-            console.log(
-              `Ответ от сервера: ${xhr.status} | ${xhr.responseText}`,
-            );
           }
         }
       };

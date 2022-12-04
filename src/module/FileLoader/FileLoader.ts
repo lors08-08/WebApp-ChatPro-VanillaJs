@@ -10,7 +10,7 @@ interface IFileLoader {
 const tmp = new Templator(FileLoaderTmp);
 
 class FileLoader extends Block<IFileLoader> {
-  file: Blob | null = null;
+  file: File | null = null;
   getFile() {
     return this.file;
   }

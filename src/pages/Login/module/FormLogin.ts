@@ -57,13 +57,11 @@ class FormLogin extends Form<IFormLogin> {
             this._validate(login, this._validateLogin) &&
             this._validate(password, this._validatePassword)
           ) {
-            await AuthController.loggedIn().catch(async () => {
-              try {
-                await AuthController.signIn({ login, password });
-              } catch (error) {
-                this.props.serverError.setProps({ value: error });
-              }
-            });
+            try {
+              await AuthController.signIn({ login, password });
+            } catch (error) {
+              this.props.serverError.setProps({ value: error });
+            }
           } else {
             [InputLogin, InputPassword].forEach((element) => {
               element.focus();

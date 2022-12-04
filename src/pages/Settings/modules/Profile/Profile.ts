@@ -179,7 +179,9 @@ export class ProfileComponent extends Block<ISettings> {
 
     this.disableEditMode();
 
-    await AuthController.fetchUser();
+    await AuthController.fetchUser().catch(() => {
+      return;
+    });
   }
 
   render() {

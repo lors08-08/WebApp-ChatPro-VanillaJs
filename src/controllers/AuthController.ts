@@ -13,12 +13,6 @@ class AuthController {
     this.api = Api;
   }
 
-  async loggedIn() {
-    await this.fetchUser();
-
-    await Router.go(Pages.MESSENGER);
-  }
-
   async signIn(data: ISignInDataRequestDto) {
     try {
       await this.api.signIn(data);
@@ -33,6 +27,7 @@ class AuthController {
       throw new Error(reason);
     }
   }
+
   async signUp(data: ISignUpDataRequestDto) {
     try {
       await this.api.signUp(data);
@@ -46,15 +41,25 @@ class AuthController {
       throw new Error(reason);
     }
   }
+
   async logout() {
     await this.api.logout();
 
     await Router.go(Pages.SIGN_IN);
   }
-  async fetchUser() {
-    const user = await this.api.read();
 
-    Store.set("user", user);
+  async fetchUser() {
+    try {
+      const user = await this.api.read();
+
+      Store.set("user", user);
+    } catch (error) {
+      const { reason } = error;
+
+      await Router.go(Pages.SIGN_IN);
+
+      throw new Error(reason);
+    }
   }
 }
 

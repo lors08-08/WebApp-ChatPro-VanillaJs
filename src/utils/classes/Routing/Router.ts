@@ -40,7 +40,10 @@ class Router {
     const route = this.getRoute(pathname);
 
     if (!route) {
-      //redirect to 404
+      const notFound = this.getRoute(Pages.PAGE_404);
+
+      notFound?.render();
+
       return;
     }
 

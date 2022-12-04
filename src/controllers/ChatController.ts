@@ -16,23 +16,17 @@ class ChatController {
   }
 
   async fetchChats(query?: string) {
-    try {
-      const chats = (await this.api.fetchChats(query)) as IChatAllResponseDto[];
+    const chats = (await this.api.fetchChats(query)) as IChatAllResponseDto[];
 
-      chats.map(async (chat) => {
-        const token = await this.getToken(chat.id);
+    chats?.map(async (chat) => {
+      const token = await this.getToken(chat.id);
 
-        if (token) {
-          await MessageController.connect(chat.id, token);
-        }
-      });
+      if (token) {
+        await MessageController.connect(chat.id, token);
+      }
+    });
 
-      Store.set("chat", chats);
-    } catch (error) {
-      const { reason } = error;
-
-      console.error(reason);
-    }
+    Store.set("chat", chats);
   }
 
   async getUsers(id: number) {

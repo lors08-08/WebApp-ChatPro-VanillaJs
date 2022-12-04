@@ -52,7 +52,7 @@ class AvatarComponent extends Block<IAvatar> {
 
             setTimeout(() => {
               this.closeModal();
-            }, 1000);
+            }, 1500);
 
             this.modal.setProps({
               ...this.modal.props,
