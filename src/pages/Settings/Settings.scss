@@ -1,0 +1,51 @@
+.profile-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.back-icon-wrapper {
+  background-color: var(--dark-white);
+  border-right: 1px solid var(--light-grey);
+  padding: 18px;
+}
+
+.back-icon {
+  background-color: var(--blue);
+  border-radius: 50%;
+  padding: 4px;
+
+  &:hover {
+    background-color: var(--dark-blue);
+    cursor: pointer;
+  }
+}
+
+.profile-main-content {
+  position: relative;
+  width: 60%;
+  row-gap: 30px;
+  height: 100%;
+  margin: 0 auto;
+  overflow-y: scroll;
+}
+
+.profile-user-info {
+  row-gap: 60px;
+  padding-top: 20px;
+}
+
+.profile-actions {
+  row-gap: 10px;
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.action-status {
+  text-align: center;
+  padding: 10px 5px;
+  font-size: 14px;
+  color: var(--red);
+  padding-bottom: 20px;
+}
+

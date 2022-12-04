@@ -1,0 +1,31 @@
+.wrapper {
+  position: relative;
+  background-color: var(--regular-grey);
+  width: fit-content;
+  min-width: 200px;
+  padding: 11px;
+  border-radius: 0 15px 15px 15px;
+  align-self: start;
+  text-align: left;
+}
+
+.from-user {
+  background-color: var(--tile);
+  border-radius: 15px 15px 0 15px;
+  align-self: end;
+  margin-top: 20px;
+
+  & span {
+    color: var(--blue);
+  }
+}
+
+.message-info {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+  right: 12px;
+  bottom: 6px;
+  font-size: 9px;
+}

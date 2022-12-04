@@ -1,111 +1,79 @@
 import Form, { IForm } from "../../../module/Form/Form";
 import LabelComponent from "../../../components/Label/Label";
+import AuthController from "../../../controllers/AuthController";
+import { Block } from "../../../utils/classes/Block/Block";
+import LoginComponent from "../components/LoginComponent";
+import PasswordComponent from "../components/PasswordComponent";
 
 interface IFormLogin extends IForm {
   loginError: LabelComponent;
   passwordError: LabelComponent;
-}
-interface IFormElements extends HTMLCollection {
-  login: HTMLInputElement;
-  password: HTMLInputElement;
+  serverError: LabelComponent;
 }
 
 class FormLogin extends Form<IFormLogin> {
   constructor(props: IFormLogin) {
     super(props);
   }
+
   private _validateLogin = new RegExp(/^(?=.*[a-z])[\w-]*$/i);
   private _validatePassword = new RegExp(/(?=.*\d)[A-Z]/);
 
-  protected restoreInput(form: HTMLFormElement) {
-    const inputs = ["login", "password"] as const;
+  protected restoreInput(e: Event, error: Block) {
+    const targetInput = e.target as HTMLInputElement;
 
-    type TInput = typeof inputs[number];
+    targetInput.style.borderBottomColor = "";
+    targetInput.style.color = "";
 
-    const formElements = form.elements as IFormElements;
-
-    inputs.forEach((name: TInput) => {
-      formElements[name]?.addEventListener("focus", (e) => {
-        const targetInput = e.target as HTMLInputElement;
-
-        targetInput.style.borderBottomColor = "";
-        targetInput.style.color = "";
-
-        this.props[`${name}Error`].setProps({
-          value: undefined,
-        });
-      });
+    error.setProps({
+      value: undefined,
     });
   }
 
-  addEvents(form: HTMLFormElement): void {
-    const formElements = form.elements as IFormElements;
-
-    formElements.login?.addEventListener("focusout", (e) => {
-      const targetInput = e.target as HTMLInputElement;
-      const valueLength = targetInput.value.length;
-
-      const isValid =
-        this._validate(targetInput.value, this._validateLogin) &&
-        valueLength >= 3 &&
-        valueLength <= 20;
-
-      if (!isValid) {
-        targetInput.style.borderBottomColor = "red";
-        targetInput.style.color = "red";
-
-        this.props.loginError.setProps({
-          value: `Логин - должен соответствовать следющим требования:
-           <p>- от 3 до 20 символов,</p>
-           <p>- без пробелов</p>
-           <p>- может содержать цифры, но не состоять из них</p>
-           <p>- нет спецсимволов (допустимы дефис и нижнее подчёркивание)</p>
-          `,
-        });
-      }
+  init() {
+    const InputLogin = LoginComponent({
+      restoreInput: this.restoreInput,
+      validate: this._validate,
+      loginError: this.props.loginError,
     });
 
-    formElements.password?.addEventListener("focusout", (e) => {
-      const targetInput = e.target as HTMLInputElement;
-      const valueLength = targetInput.value.length;
-
-      const isValid =
-        this._validate(targetInput.value, this._validatePassword) &&
-        valueLength >= 8 &&
-        valueLength <= 40;
-
-      if (!isValid) {
-        targetInput.style.borderBottomColor = "red";
-        targetInput.style.color = "red";
-
-        this.props.passwordError.setProps({
-          value: `Пароль - должен соответствовать следющим требования:
-           <p>- от 8 до 40 символов</p>
-           <p>- обязательно хотя бы одна заглавная буква и цифра</p>
-          `,
-        });
-      }
+    const InputPassword = PasswordComponent({
+      restoreInput: this.restoreInput,
+      validate: this._validate,
+      passwordError: this.props.passwordError,
     });
 
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
+    this.setProps({
+      ...this.props,
+      event: {
+        type: "submit",
+        action: async (e) => {
+          e.preventDefault();
 
-      const login = formElements.login.value;
-      const password = formElements.password.value;
+          const login = InputLogin.getValue();
+          const password = InputPassword.getValue();
 
-      if (
-        this._validate(login, this._validateLogin) &&
-        this._validate(password, this._validatePassword)
-      ) {
-        console.log({
-          login,
-          password,
-        });
-      } else {
-        [...formElements].forEach((element: HTMLInputElement) => {
-          element.focus();
-        });
-      }
+          if (
+            this._validate(login, this._validateLogin) &&
+            this._validate(password, this._validatePassword)
+          ) {
+            try {
+              await AuthController.signIn({ login, password });
+            } catch (error) {
+              this.props.serverError.setProps({ value: error });
+            }
+          } else {
+            [InputLogin, InputPassword].forEach((element) => {
+              element.focus();
+            });
+          }
+        },
+      },
+    });
+
+    this.props.content.setProps({
+      ...this.props.content.props,
+      content: [InputLogin, InputPassword],
     });
   }
 }

@@ -27,5 +27,5 @@ export default new LayoutComponent({
   className: "flexColumn",
   content: new Page404Component({
     button: Button,
-  }).getContent(),
+  }),
 }).getContent();

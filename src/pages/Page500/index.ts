@@ -27,5 +27,5 @@ export default new LayoutComponent({
   className: "flexColumn",
   content: new Page500Component({
     button: Button,
-  }).getContent(),
+  }),
 }).getContent();

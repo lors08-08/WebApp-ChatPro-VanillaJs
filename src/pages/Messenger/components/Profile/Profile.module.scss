@@ -1,0 +1,16 @@
+.wrapper {
+  column-gap: 10px;
+}
+
+.avatar-wrapper {
+  position: relative;
+  width: 47px;
+  height: 47px;
+  border-radius: 50%;
+  overflow: hidden;
+
+  img {
+    width: inherit;
+    height: inherit;
+  }
+}

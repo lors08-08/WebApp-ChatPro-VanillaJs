@@ -1,5 +1,5 @@
 export default `
-  <form id="{{id}}">
-      {{ input }}
+  <form id="{{id}}" class="h100 flex">
+      {{ content }}
   </form>
 `;

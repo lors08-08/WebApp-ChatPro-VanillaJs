@@ -9,5 +9,10 @@
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "noUnusedParameters": false,
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "test"
+  ]
 }
