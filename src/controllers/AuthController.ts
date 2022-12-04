@@ -5,6 +5,7 @@ import Store from "../utils/classes/Store";
 import Router from "../utils/classes/Routing/Router";
 import { Pages } from "../common/enums/Pages";
 import ChatController from "./ChatController";
+import MessageController from "./MessageController";
 
 class AuthController {
   private readonly api: AuthApi;
@@ -43,6 +44,8 @@ class AuthController {
   }
 
   async logout() {
+    MessageController.closeAll();
+
     await this.api.logout();
 
     await Router.go(Pages.SIGN_IN);

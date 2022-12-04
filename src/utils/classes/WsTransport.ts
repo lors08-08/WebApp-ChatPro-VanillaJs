@@ -9,6 +9,7 @@ export enum WSTransportEvents {
 
 export default class WsTransport extends EventBus {
   private socket: WebSocket | null = null;
+  private pingInterval: ReturnType<typeof setInterval> | null;
 
   constructor(private url: string) {
     super();
@@ -34,6 +35,10 @@ export default class WsTransport extends EventBus {
     }
 
     this.socket.send(JSON.stringify(data));
+  }
+
+  public close() {
+    this.socket?.close();
   }
 
   public subscribe(socket: WebSocket) {
@@ -65,8 +70,16 @@ export default class WsTransport extends EventBus {
   }
 
   private setPing() {
-    setInterval(() => {
+    this.pingInterval = setInterval(() => {
       this.send({ type: "ping" });
-    }, 10_000);
+    }, 5000);
+
+    this.on(WSTransportEvents.CLOSE, () => {
+      if (this.pingInterval) {
+        clearInterval(this.pingInterval);
+      }
+
+      this.pingInterval = null;
+    });
   }
 }
