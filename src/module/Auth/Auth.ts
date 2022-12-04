@@ -8,7 +8,7 @@ interface IAuth {
   fieldsClassName?: string;
   wrapperClass?: string;
   serverError?: Block;
-  content: Block | Block[];
+  content?: Block | Block[];
   buttons: Block | Block[];
 }
 

@@ -9,7 +9,7 @@ export class UserApi extends BaseApi {
     super("/user");
   }
 
-  update_avatar(data: Blob) {
+  updateAvatar(data: Blob) {
     const formData = new FormData();
 
     formData.append("avatar", data);
@@ -20,29 +20,47 @@ export class UserApi extends BaseApi {
       })
       .then((dataInfo) => {
         return JSON.parse(`${dataInfo}`);
+      })
+      .catch((error) => {
+        throw new Error(error);
       }) as Promise<IUpdateProfileResponseDto>;
   }
 
-  update_profile(data: IUpdateProfileRequestDto) {
-    return this.http.put("/profile", { data }).then((dataInfo) => {
-      return JSON.parse(`${dataInfo}`);
-    }) as Promise<IUpdateProfileResponseDto>;
+  updateProfile(data: IUpdateProfileRequestDto) {
+    return this.http
+      .put("/profile", { data })
+      .then((dataInfo) => {
+        return JSON.parse(`${dataInfo}`);
+      })
+      .catch((error) => {
+        throw new Error(error);
+      }) as Promise<IUpdateProfileResponseDto>;
   }
 
-  update_password(data: IUpdatePasswordRequestDto) {
+  updatePassword(data: IUpdatePasswordRequestDto) {
     return this.http.put("/password", { data });
   }
 
-  search_user(data: IUserSearchRequestDto) {
-    return this.http.post("/search", { data }).then((dataInfo) => {
-      return JSON.parse(`${dataInfo}`);
-    }) as Promise<IUpdateProfileResponseDto[]>;
+  searchUser(data: IUserSearchRequestDto) {
+    return this.http
+      .post("/search", { data })
+      .then((dataInfo) => {
+        return JSON.parse(`${dataInfo}`);
+      })
+      .catch((error) => {
+        throw new Error(error);
+      }) as Promise<IUpdateProfileResponseDto[]>;
   }
 
   read(id: number) {
-    return this.http.get(`/${id}`).then((data) => {
-      return JSON.parse(`${data}`);
-    }) as Promise<IUpdateProfileResponseDto>;
+    return this.http
+      .get(`/${id}`)
+      .then((data) => {
+        return JSON.parse(`${data}`);
+      })
+      .catch((error) => {
+        throw new Error(error);
+      }) as Promise<IUpdateProfileResponseDto>;
   }
 
   create = undefined;

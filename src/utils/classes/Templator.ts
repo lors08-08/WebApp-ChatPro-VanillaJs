@@ -129,6 +129,12 @@ class Templator<T extends Record<string, any>> {
     return template.content;
   }
 
+  private _removeEvents(events: Record<string, any>, _element: Element) {
+    Object.values(events).forEach((eventName) => {
+      _element!.removeEventListener(eventName, events[eventName]);
+    });
+  }
+
   private _compileTemplate(
     context: T,
     styles: Record<string, string>,
@@ -200,9 +206,11 @@ class Templator<T extends Record<string, any>> {
 
       if (Array.isArray(event)) {
         event.forEach((e: IEvent) => {
+          this._removeEvents(e, html);
           html.addEventListener(e.type, e.action);
         });
       } else {
+        this._removeEvents(event, html);
         html.addEventListener(event.type, event.action);
       }
     }

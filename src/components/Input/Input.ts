@@ -25,11 +25,15 @@ class InputComponent<T extends IInput> extends Block<T> {
     return (this.getContent() as HTMLInputElement)?.value;
   }
 
-  setValue(value: string = "") {
+  focus() {
+    return (this.getContent() as HTMLInputElement)?.focus();
+  }
+
+  resetValue() {
     const input = this.getContent() as HTMLInputElement;
 
     if (input?.value) {
-      input.value = value;
+      input.value = "";
     }
   }
 

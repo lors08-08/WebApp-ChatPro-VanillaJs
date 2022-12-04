@@ -12,12 +12,6 @@ interface IState {
   messages: Record<number, IMessage[]> | null;
 }
 
-// content: "asdas";
-// id: 1;
-// time: "2022-11-28T21:32:35+00:00";
-// type: "message";
-// user_id: 138_732;
-
 export enum StoreEvents {
   UPDATED = "updated",
 }

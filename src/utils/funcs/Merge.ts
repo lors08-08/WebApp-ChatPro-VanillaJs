@@ -7,7 +7,7 @@ function merge(lhs: Indexed, rhs: Indexed): Indexed | undefined {
     return;
   }
   Object.entries(rhs).forEach(([k, v]) => {
-    if (typeof lhs[k] === "object" && lhs[k]) {
+    if (typeof lhs[k] === "object" && lhs[k] && v) {
       merge(lhs[k] as Record<string, string>, v as Record<string, string>);
     } else {
       lhs[k] = v;

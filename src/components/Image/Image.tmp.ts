@@ -1,3 +1,3 @@
 export default `
-  <img src="{{src}}" alt="img" />
+  <img class="{{wrapper}}" src="{{src}}" alt="img" />
 `;

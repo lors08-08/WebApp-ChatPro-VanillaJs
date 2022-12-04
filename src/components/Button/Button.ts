@@ -3,6 +3,7 @@ import * as styles from "./Button.module.scss";
 import Templator from "../../utils/classes/Templator";
 import { Block } from "../../utils/classes/Block/Block";
 import { TElement } from "../../utils/classes/Block/types/types";
+import { IEvent } from "../../common/types/types";
 
 interface IButton {
   id?: string;
@@ -11,10 +12,7 @@ interface IButton {
   type?: string;
   color?: string;
   iconRight?: TElement;
-  event?: {
-    type: string;
-    action(e: any): void;
-  };
+  event?: IEvent;
 }
 
 const tmp = new Templator(ButtonTmp);

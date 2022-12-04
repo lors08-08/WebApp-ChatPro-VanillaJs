@@ -12,13 +12,13 @@ class UserController {
     this.api = Api;
   }
 
-  async update_avatar(data: Blob) {
+  async updateAvatar(data: Blob) {
     try {
-      const { id } = (await this.api.update_avatar(
+      const { id } = (await this.api.updateAvatar(
         data,
       )) as IUpdateProfileResponseDto;
 
-      await this.fetch_user(id);
+      await this.fetchUser(id);
     } catch (error) {
       const { reason } = error;
 
@@ -26,13 +26,13 @@ class UserController {
     }
   }
 
-  async update_profile(data: IUpdateProfileRequestDto) {
+  async updateProfile(data: IUpdateProfileRequestDto) {
     try {
-      const { id } = (await this.api.update_profile(
+      const { id } = (await this.api.updateProfile(
         data,
       )) as IUpdateProfileResponseDto;
 
-      await this.fetch_user(id);
+      await this.fetchUser(id);
     } catch (error) {
       const { reason } = error;
 
@@ -40,9 +40,9 @@ class UserController {
     }
   }
 
-  async update_password(data: IUpdatePasswordRequestDto) {
+  async updatePassword(data: IUpdatePasswordRequestDto) {
     try {
-      await this.api.update_password(data);
+      await this.api.updatePassword(data);
     } catch (error) {
       const { reason } = error;
 
@@ -50,19 +50,19 @@ class UserController {
     }
   }
 
-  async search_user(data: IUserSearchRequestDto) {
+  async searchUser(data: IUserSearchRequestDto) {
     try {
-      const userId = await this.api.search_user(data);
+      const userId = await this.api.searchUser(data);
 
       return userId[0]?.id;
     } catch (error) {
       const { reason } = error;
 
-      throw new Error(reason);
+      console.error(reason);
     }
   }
 
-  async fetch_user(id: number) {
+  async fetchUser(id: number) {
     try {
       const user = await this.api.read(id);
 

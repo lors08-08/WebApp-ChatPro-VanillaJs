@@ -2,17 +2,6 @@ import BaseApi from "./BaseApi";
 import { ISignUpDataRequestDto } from "./types/auth/request/ISignUpDataRequestDto";
 import { ISignInDataRequestDto } from "./types/auth/request/ISignInDataRequestDto";
 
-// interface IUser {
-//   id: number;
-//   first_name: string;
-//   second_name: string;
-//   login: string;
-//   email: string;
-//   password: string;
-//   phone: string;
-//   avatar: string;
-// }
-
 export class AuthApi extends BaseApi {
   constructor() {
     super("/auth");
@@ -31,9 +20,14 @@ export class AuthApi extends BaseApi {
   }
 
   read() {
-    return this.http.get("/user").then((data) => {
-      return JSON.parse(`${data}`);
-    }) as Promise<ISignUpDataRequestDto>;
+    return this.http
+      .get("/user")
+      .then((data) => {
+        return JSON.parse(`${data}`);
+      })
+      .catch((error) => {
+        throw new Error(error);
+      }) as Promise<ISignUpDataRequestDto>;
   }
 
   create = undefined;

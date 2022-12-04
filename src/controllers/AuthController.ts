@@ -4,6 +4,7 @@ import { ISignUpDataRequestDto } from "../api/types/auth/request/ISignUpDataRequ
 import Store from "../utils/classes/Store";
 import Router from "../utils/classes/Routing/Router";
 import { Pages } from "../common/enums/Pages";
+import ChatController from "./ChatController";
 
 class AuthController {
   private readonly api: AuthApi;
@@ -12,11 +13,18 @@ class AuthController {
     this.api = Api;
   }
 
+  async loggedIn() {
+    await this.fetchUser();
+
+    await Router.go(Pages.MESSENGER);
+  }
+
   async signIn(data: ISignInDataRequestDto) {
     try {
       await this.api.signIn(data);
 
       await this.fetchUser();
+      await ChatController.fetchChats();
 
       await Router.go(Pages.MESSENGER);
     } catch (error) {
@@ -26,11 +34,17 @@ class AuthController {
     }
   }
   async signUp(data: ISignUpDataRequestDto) {
-    await this.api.signUp(data);
+    try {
+      await this.api.signUp(data);
 
-    await this.fetchUser();
+      await this.fetchUser();
 
-    await Router.go(Pages.MESSENGER);
+      await Router.go(Pages.MESSENGER);
+    } catch (error) {
+      const { reason } = error;
+
+      throw new Error(reason);
+    }
   }
   async logout() {
     await this.api.logout();

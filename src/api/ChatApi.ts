@@ -11,38 +11,53 @@ export class ChatApi extends BaseApi {
     super("/chats");
   }
 
-  fetch_chats(query?: string) {
-    return this.http.get(query).then((dataInfo) => {
-      return JSON.parse(`${dataInfo}`);
-    }) as Promise<IChatAllResponseDto[]>;
+  fetchChats(query?: string) {
+    return this.http
+      .get(query)
+      .then((dataInfo) => {
+        return JSON.parse(`${dataInfo}`);
+      })
+      .catch((error) => {
+        throw new Error(error);
+      }) as Promise<IChatAllResponseDto[]>;
   }
 
-  get_users(id: number) {
-    return this.http.get(`/${id}/users`).then((dataInfo) => {
-      return JSON.parse(`${dataInfo}`);
-    }) as Promise<IUpdateProfileResponseDto[]>;
+  getUsers(id: number) {
+    return this.http
+      .get(`/${id}/users`)
+      .then((dataInfo) => {
+        return JSON.parse(`${dataInfo}`);
+      })
+      .catch((error) => {
+        throw new Error(error);
+      }) as Promise<IUpdateProfileResponseDto[]>;
   }
 
-  add_chat(data: IChatAddRequestDto) {
+  addChat(data: IChatAddRequestDto) {
     return this.http.post("", { data });
   }
 
-  add_user(data: IChatEditUserRequestDto) {
+  addUser(data: IChatEditUserRequestDto) {
     return this.http.put("/users", { data });
   }
 
-  delete_user(data: IChatEditUserRequestDto) {
+  deleteUser(data: IChatEditUserRequestDto) {
     return this.http.delete("/users", { data });
   }
 
-  delete_chat(data: IChatDeleteRequest) {
+  deleteChat(data: IChatDeleteRequest) {
     return this.http.delete("/", { data });
   }
 
-  get_token(id: number) {
-    return this.http.post(`/token/${id}`).then((dataInfo) => {
-      return JSON.parse(`${dataInfo}`);
-    }) as Promise<IChatTokenResponseDto>;
+  getToken(id: number) {
+    return this.http
+      .post(`/token/${id}`)
+      .then((dataInfo) => {
+        return JSON.parse(`${dataInfo}`);
+      })
+      .catch((error) => {
+        throw new Error(error);
+      }) as Promise<IChatTokenResponseDto>;
   }
 
   create = undefined;

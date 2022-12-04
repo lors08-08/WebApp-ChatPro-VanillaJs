@@ -15,30 +15,30 @@ class ChatController {
     this.api = Api;
   }
 
-  async fetch_chats(query?: string) {
+  async fetchChats(query?: string) {
     try {
-      const chats = (await this.api.fetch_chats(
-        query,
-      )) as IChatAllResponseDto[];
+      const chats = (await this.api.fetchChats(query)) as IChatAllResponseDto[];
 
       chats.map(async (chat) => {
-        const token = await this.get_token(chat.id);
+        const token = await this.getToken(chat.id);
 
-        await MessageController.connect(chat.id, token);
+        if (token) {
+          await MessageController.connect(chat.id, token);
+        }
       });
 
       Store.set("chat", chats);
     } catch (error) {
       const { reason } = error;
 
-      throw new Error(reason);
+      console.error(reason);
     }
   }
 
-  async get_users(id: number) {
+  async getUsers(id: number) {
     try {
       const users =
-        ((await this.api.get_users(id)) as IUpdateProfileResponseDto[]) || [];
+        ((await this.api.getUsers(id)) as IUpdateProfileResponseDto[]) || [];
 
       return users.length > 1;
     } catch (error) {
@@ -48,11 +48,11 @@ class ChatController {
     }
   }
 
-  async add_chat(data: IChatAddRequestDto) {
+  async addChat(data: IChatAddRequestDto) {
     try {
-      await this.api.add_chat(data);
+      await this.api.addChat(data);
 
-      const chats = await this.fetch_chats();
+      const chats = await this.fetchChats();
 
       Store.set("chat", chats);
     } catch (error) {
@@ -62,9 +62,9 @@ class ChatController {
     }
   }
 
-  async add_user(data: IChatEditUserRequestDto) {
+  async addUser(data: IChatEditUserRequestDto) {
     try {
-      await this.api.add_user(data);
+      await this.api.addUser(data);
     } catch (error) {
       const { reason } = error;
 
@@ -72,9 +72,9 @@ class ChatController {
     }
   }
 
-  async delete_user(data: IChatEditUserRequestDto) {
+  async deleteUser(data: IChatEditUserRequestDto) {
     try {
-      await this.api.delete_user(data);
+      await this.api.deleteUser(data);
     } catch (error) {
       const { reason } = error;
 
@@ -82,19 +82,19 @@ class ChatController {
     }
   }
 
-  async delete_chat(data: IChatDeleteRequest) {
+  async deleteChat(data: IChatDeleteRequest) {
     try {
-      await this.api.delete_chat(data);
+      await this.api.deleteChat(data);
     } catch (error) {
       const { reason } = error;
 
-      throw new Error(reason);
+      console.error(reason);
     }
   }
 
-  async get_token(chatId: number) {
+  async getToken(chatId: number) {
     try {
-      const { token } = (await this.api.get_token(
+      const { token } = (await this.api.getToken(
         chatId,
       )) as IChatTokenResponseDto;
 
@@ -102,7 +102,7 @@ class ChatController {
     } catch (error) {
       const { reason } = error;
 
-      throw new Error(reason);
+      console.error(reason);
     }
   }
 }
