@@ -17,8 +17,6 @@ class FormComponent<T extends IForm> extends Block<T> {
     return regExp.test(value);
   }
 
-  public addEvents(form: HTMLFormElement): void {}
-
   protected restoreInput(e: Event, error: Block): void {}
 
   render() {
