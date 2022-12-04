@@ -63,6 +63,10 @@ class MessageController {
     socket.send({ type: "get old", content: "0" });
   }
 
+  closeAll() {
+    Array.from(this.sockets.values()).forEach((socket) => socket.close());
+  }
+
   private onMessage(chatId: number, messages: IMessage | IMessage[]) {
     let newMessages: IMessage[] = [];
 
