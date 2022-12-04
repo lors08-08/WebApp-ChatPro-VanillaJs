@@ -11,7 +11,7 @@ export class ChatApi extends BaseApi {
     super("/chats");
   }
 
-  fetchChats(query?: string) {
+  fetchChats(query: string) {
     return this.http
       .get(query)
       .then((dataInfo) => {

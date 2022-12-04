@@ -15,7 +15,7 @@ class ChatController {
     this.api = Api;
   }
 
-  async fetchChats(query?: string) {
+  async fetchChats(query: string = "") {
     const chats = (await this.api.fetchChats(query)) as IChatAllResponseDto[];
 
     chats?.map(async (chat) => {
