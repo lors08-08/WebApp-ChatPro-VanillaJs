@@ -11,6 +11,11 @@ interface IOptions {
   method: Methods;
 }
 
+type HTTPMethod = (
+  url: string,
+  options?: Omit<IOptions, "method">,
+) => Promise<unknown>;
+
 function queryStringify(data: unknown) {
   if (!data) {
     return;
@@ -29,7 +34,7 @@ export class Superfetch {
     this.endpoint = `${Superfetch.API_URL}${endpoint}`;
   }
 
-  get = (url: string = "/", options?: Omit<IOptions, "method">) => {
+  get: HTTPMethod = (url: string = "/", options = {}) => {
     if (options?.data) {
       options.data = queryStringify(options.data);
     }
@@ -40,21 +45,21 @@ export class Superfetch {
       options?.timeout,
     );
   };
-  post(url: string = "/", options?: Omit<IOptions, "method">) {
+  post: HTTPMethod = (url: string = "/", options = {}) => {
     return this.request(
       this.endpoint + url,
       { ...options, method: Methods.POST },
       options?.timeout,
     );
-  }
-  put = (url: string = "/", options?: Omit<IOptions, "method">) => {
+  };
+  put: HTTPMethod = (url: string = "/", options = {}) => {
     return this.request(
       this.endpoint + url,
       { ...options, method: Methods.PUT },
       options?.timeout,
     );
   };
-  delete = (url: string = "/", options: Omit<IOptions, "method">) => {
+  delete: HTTPMethod = (url: string = "/", options = {}) => {
     return this.request(
       this.endpoint + url,
       { ...options, method: Methods.DELETE },
