@@ -1,8 +1,8 @@
-import * as styles from "./Modal.module.scss";
-import Modal from "./Modal.tmp";
-import Templator from "../../../../../../utils/classes/Templator";
-import { Block } from "../../../../../../utils/classes/Block/Block";
-import { IEvent } from "../../../../../../common/types/types";
+import styles from "@pages/Messenger/module/ChatPage/components/Modal/Modal.module.scss";
+import Modal from "@pages/Messenger/module/ChatPage/components/Modal/Modal.tmp";
+import Templator from "@utils/classes/Templator";
+import Block from "@utils/classes/Block/Block";
+import { IEvent } from "@common/types/types";
 
 interface IModal {
   id?: string;

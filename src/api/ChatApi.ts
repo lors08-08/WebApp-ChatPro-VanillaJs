@@ -1,10 +1,10 @@
-import BaseApi from "./BaseApi";
-import { IChatAllResponseDto } from "./types/chat/response/IChatAllResponseDto";
-import { IChatAddRequestDto } from "./types/chat/request/IChatAddRequestDto";
-import { IChatEditUserRequestDto } from "./types/chat/request/IChatEditUserRequestDto";
-import { IChatTokenResponseDto } from "./types/chat/response/IChatTokenResponseDto";
-import { IUpdateProfileResponseDto } from "./types/user/response/IUpdateProfileResponseDto";
-import { IChatDeleteRequest } from "./types/chat/request/IChatDeleteRequest";
+import BaseApi from "@api/BaseApi";
+import { IChatAllResponseDto } from "@api/types/chat/response/IChatAllResponseDto";
+import { IChatAddRequestDto } from "@api/types/chat/request/IChatAddRequestDto";
+import { IChatEditUserRequestDto } from "@api/types/chat/request/IChatEditUserRequestDto";
+import { IChatTokenResponseDto } from "@api/types/chat/response/IChatTokenResponseDto";
+import { IUpdateProfileResponseDto } from "@api/types/user/response/IUpdateProfileResponseDto";
+import { IChatDeleteRequest } from "@api/types/chat/request/IChatDeleteRequest";
 
 export class ChatApi extends BaseApi {
   constructor() {

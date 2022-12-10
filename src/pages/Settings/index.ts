@@ -1,15 +1,15 @@
-import IconComponent from "../../components/Icon/Icon";
-import AvatarComponent from "../../components/Avatar/Avatar";
-import AvatarProfile from "./modules/Avatar/Avatar";
-import ArrowLeft from "../../../static/img/arrow-left";
-import AvatarDefault from "../../../static/img/avatar-default";
-import LinkComponent from "../../components/Link/Link";
-import { Pages } from "../../common/enums/Pages";
-import FormProfileComponent from "./modules/FormProfile";
-import LayoutComponent from "../../components/Layout/Layout";
-import Profile from "./modules/Profile/Profile";
-import LabelComponent from "../../components/Label/Label";
-import { withAuth } from "../../utils/hocs/withAuth";
+import IconComponent from "@components/Icon/Icon";
+import AvatarComponent from "@components/Avatar/Avatar";
+import AvatarProfile from "@pages/Settings/modules/Avatar/Avatar";
+import ArrowLeft from "@img/arrow-left.svg";
+import AvatarDefault from "@img/avatar-default.svg";
+import LinkComponent from "@components/Link/Link";
+import { Pages } from "@common/enums/Pages";
+import FormProfileComponent from "@pages/Settings/modules/FormProfile";
+import LayoutComponent from "@components/Layout/Layout";
+import Profile from "@pages/Settings/modules/Profile/Profile";
+import LabelComponent from "@components/Label/Label";
+import { withAuth } from "@utils/hocs/withAuth";
 
 const ActionStatus = new LabelComponent({
   id: "action-status",

@@ -1,19 +1,19 @@
-import { Block } from "../../../../../../utils/classes/Block/Block";
-import Templator from "../../../../../../utils/classes/Templator";
-import Header from "./Header.tmp";
-import * as styles from "./Header.module.scss";
-import ModalComponent from "../Modal/Modal";
-import EditModalComponent from "../../../../../../module/Modal/Modal";
-import IconComponent from "../../../../../../components/Icon/Icon";
-import OptionsIcon from "../../../../../../../static/img/options";
-import EditChat from "../EditChat/EditChat";
-import AddIcon from "../../../../../../../static/img/add";
-import DeleteIcon from "../../../../../../../static/img/delete";
-import ButtonComponent from "../../../../../../components/Button/Button";
-import InputComponent from "../../../../../../components/Input/Input";
-import UserController from "../../../../../../controllers/UserController";
-import ChatController from "../../../../../../controllers/ChatController";
-import Store from "../../../../../../utils/classes/Store";
+import Block from "@utils/classes/Block/Block";
+import Templator from "@utils/classes/Templator";
+import Header from "@pages/Messenger/module/ChatPage/components/Header/Header.tmp";
+import styles from "@pages/Messenger/module/ChatPage/components/Header/Header.module.scss";
+import ModalComponent from "@pages/Messenger/module/ChatPage/components/Modal/Modal";
+import EditModalComponent from "@module/Modal/Modal";
+import IconComponent from "@components/Icon/Icon";
+import OptionsIcon from "@img/options.svg";
+import EditChat from "@pages/Messenger/module/ChatPage/components/EditChat/EditChat";
+import AddIcon from "@img/add.svg";
+import DeleteIcon from "@img/delete.svg";
+import ButtonComponent from "@components/Button/Button";
+import InputComponent from "@components/Input/Input";
+import UserController from "@controllers/UserController";
+import ChatController from "@controllers/ChatController";
+import Store from "@utils/classes/Store";
 
 interface IHeader {
   profile: Block;

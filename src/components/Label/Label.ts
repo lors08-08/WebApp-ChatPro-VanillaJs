@@ -1,7 +1,7 @@
-import Templator from "../../utils/classes/Templator";
-import * as styles from "./Label.module.scss";
-import Label from "./Label.tmp";
-import { Block } from "../../utils/classes/Block/Block";
+import Templator from "@utils/classes/Templator";
+import styles from "@components/Label/Label.module.scss";
+import Label from "@components/Label/Label.tmp";
+import Block from "@utils/classes/Block/Block";
 
 interface ILabel {
   id?: string;

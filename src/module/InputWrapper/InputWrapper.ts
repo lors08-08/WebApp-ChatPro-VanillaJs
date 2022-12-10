@@ -1,8 +1,8 @@
-import Templator from "../../utils/classes/Templator";
-import InputWrapperTemplate from "./InputWrapper.tmp";
-import { Block } from "../../utils/classes/Block/Block";
-import * as styles from "./InputWrapper.module.scss";
-import { IEvent } from "../../common/types/types";
+import Templator from "@utils/classes/Templator";
+import InputWrapperTemplate from "@module/InputWrapper/InputWrapper.tmp";
+import Block from "@utils/classes/Block/Block";
+import styles from "@module/InputWrapper/InputWrapper.module.scss";
+import { IEvent } from "@common/types/types";
 
 export interface IInputWrapper {
   wrapperClass?: string;

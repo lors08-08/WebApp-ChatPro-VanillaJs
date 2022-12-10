@@ -1,6 +1,6 @@
-import BaseApi from "./BaseApi";
-import { ISignUpDataRequestDto } from "./types/auth/request/ISignUpDataRequestDto";
-import { ISignInDataRequestDto } from "./types/auth/request/ISignInDataRequestDto";
+import BaseApi from "@api/BaseApi";
+import { ISignUpDataRequestDto } from "@api/types/auth/request/ISignUpDataRequestDto";
+import { ISignInDataRequestDto } from "@api/types/auth/request/ISignInDataRequestDto";
 
 export class AuthApi extends BaseApi {
   constructor() {

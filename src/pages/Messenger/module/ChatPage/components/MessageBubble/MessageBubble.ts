@@ -1,8 +1,8 @@
-import MessageBubble from "./MessageBubble.tmp";
-import * as styles from "./MessageBubble.module.scss";
-import Templator from "../../../../../../utils/classes/Templator";
-import { Block } from "../../../../../../utils/classes/Block/Block";
-import { IMessage } from "../../../../../../controllers/MessageController";
+import MessageBubble from "@pages/Messenger/module/ChatPage/components/MessageBubble/MessageBubble.tmp";
+import styles from "@pages/Messenger/module/ChatPage/components/MessageBubble/MessageBubble.module.scss";
+import Templator from "@utils/classes/Templator";
+import Block from "@utils/classes/Block/Block";
+import { IMessage } from "@controllers/MessageController";
 
 export interface IMessageBubble extends IMessage {
   className?: string;

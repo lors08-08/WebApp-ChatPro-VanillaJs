@@ -1,8 +1,8 @@
-import InputTmp from "./Input.tmp";
-import * as styles from "./Input.module.scss";
-import Templator from "../../utils/classes/Templator";
-import { Block } from "../../utils/classes/Block/Block";
-import { IEvent } from "../../common/types/types";
+import InputTmp from "@components/Input/Input.tmp";
+import styles from "@components/Input/Input.module.scss";
+import Templator from "@utils/classes/Templator";
+import Block from "@utils/classes/Block/Block";
+import { IEvent } from "@common/types/types";
 
 export interface IInput {
   inputVariant?: string;

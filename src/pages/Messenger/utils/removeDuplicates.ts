@@ -1,4 +1,4 @@
-import { IChatAllResponseDto } from "../../../api/types/chat/response/IChatAllResponseDto";
+import { IChatAllResponseDto } from "@api/types/chat/response/IChatAllResponseDto";
 
 export default function removeDuplicates(
   array: IChatAllResponseDto[],

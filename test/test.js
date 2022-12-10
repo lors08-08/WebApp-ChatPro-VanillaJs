@@ -1,9 +1,8 @@
-// // eslint-disable-next-line unicorn/prefer-module
-// require.extensions[".scss"] = function () {
-//   return null;
-// };
+require.extensions[".scss"] = function () {
+  return null;
+};
 
-import jsdom from "jsdom";
+const jsdom = require("jsdom");
 
 const { JSDOM } = jsdom;
 

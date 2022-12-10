@@ -1,10 +1,10 @@
-import Page500 from "./Page500.tmp";
-import * as styles from "./Page500.module.scss";
-import Templator from "../../utils/classes/Templator";
-import LayoutComponent from "../../components/Layout/Layout";
-import ButtonComponent from "../../components/Button/Button";
-import { Block } from "../../utils/classes/Block/Block";
-import { TElement } from "../../utils/classes/Block/types/types";
+import Page500 from "@pages/Page500/Page500.tmp";
+import styles from "@pages/Page500/Page500.module.scss";
+import Templator from "@utils/classes/Templator";
+import LayoutComponent from "@components/Layout/Layout";
+import ButtonComponent from "@components/Button/Button";
+import Block from "@utils/classes/Block/Block";
+import { TElement } from "@utils/classes/Block/types/types";
 
 interface IPage500 {
   button: TElement;

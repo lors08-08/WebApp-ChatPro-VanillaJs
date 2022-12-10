@@ -1,18 +1,55 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@src/*": [
+        "src/*"
+      ],
+      "@api/*": [
+        "src/api/*"
+      ],
+      "@pages/*": [
+        "src/pages/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
+      "@module/*": [
+        "src/module/*"
+      ],
+      "@common/*": [
+        "src/common/*"
+      ],
+      "@controllers/*": [
+        "src/controllers/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@img/*": [
+        "static/img/*"
+      ]
+    },
+    "target": "es5",
+    "module": "es2020",
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true,
     "outDir": "dist",
-    "target": "es2020",
     "declaration": true,
-    "module": "commonjs",
     "strictNullChecks": true,
     "sourceMap": true,
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "noUnusedParameters": false,
+    "typeRoots": [
+      "src/common/types/declares/*"
+    ],
+    "types": ["jest", "node"],
   },
+  "include": [
+    "**/*.ts",
+  ],
   "exclude": [
-    "node_modules",
-    "dist",
-    "test"
+    "node_modules"
   ]
 }

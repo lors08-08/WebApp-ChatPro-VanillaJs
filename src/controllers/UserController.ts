@@ -1,9 +1,9 @@
-import Api, { UserApi } from "../api/UserApi";
-import { IUpdateProfileRequestDto } from "../api/types/user/request/IUpdateProfileRequestDto";
-import Store from "../utils/classes/Store";
-import { IUpdateProfileResponseDto } from "../api/types/user/response/IUpdateProfileResponseDto";
-import { IUpdatePasswordRequestDto } from "../api/types/user/request/IUpdatePasswordRequestDto";
-import { IUserSearchRequestDto } from "../api/types/user/request/IUserSearchRequestDto";
+import Api, { UserApi } from "@api/UserApi";
+import { IUpdateProfileRequestDto } from "@api/types/user/request/IUpdateProfileRequestDto";
+import Store from "@utils/classes/Store";
+import { IUpdateProfileResponseDto } from "@api/types/user/response/IUpdateProfileResponseDto";
+import { IUpdatePasswordRequestDto } from "@api/types/user/request/IUpdatePasswordRequestDto";
+import { IUserSearchRequestDto } from "@api/types/user/request/IUserSearchRequestDto";
 
 class UserController {
   private readonly api: UserApi;
@@ -58,6 +58,7 @@ class UserController {
     } catch (error) {
       const { reason } = error;
 
+      // eslint-disable-next-line no-console
       console.error(reason);
     }
   }

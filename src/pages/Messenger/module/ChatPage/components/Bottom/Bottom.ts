@@ -1,7 +1,7 @@
-import { Block } from "../../../../../../utils/classes/Block/Block";
-import Templator from "../../../../../../utils/classes/Templator";
-import Bottom from "./Bottom.tmp";
-import * as styles from "./Bottom.module.scss";
+import Block from "@utils/classes/Block/Block";
+import Templator from "@utils/classes/Templator";
+import Bottom from "@pages/Messenger/module/ChatPage/components/Bottom/Bottom.tmp";
+import styles from "@pages/Messenger/module/ChatPage/components/Bottom/Bottom.module.scss";
 
 interface IBottom {
   attachIcon: Block;

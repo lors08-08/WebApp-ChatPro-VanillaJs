@@ -1,12 +1,12 @@
-import Api, { ChatApi } from "../api/ChatApi";
-import { IChatAllResponseDto } from "../api/types/chat/response/IChatAllResponseDto";
-import Store from "../utils/classes/Store";
-import { IChatAddRequestDto } from "../api/types/chat/request/IChatAddRequestDto";
-import { IChatEditUserRequestDto } from "../api/types/chat/request/IChatEditUserRequestDto";
-import { IChatTokenResponseDto } from "../api/types/chat/response/IChatTokenResponseDto";
-import MessageController from "./MessageController";
-import { IUpdateProfileResponseDto } from "../api/types/user/response/IUpdateProfileResponseDto";
-import { IChatDeleteRequest } from "../api/types/chat/request/IChatDeleteRequest";
+import Api, { ChatApi } from "@api/ChatApi";
+import { IChatAllResponseDto } from "@api/types/chat/response/IChatAllResponseDto";
+import Store from "@utils/classes/Store";
+import { IChatAddRequestDto } from "@api/types/chat/request/IChatAddRequestDto";
+import { IChatEditUserRequestDto } from "@api/types/chat/request/IChatEditUserRequestDto";
+import { IChatTokenResponseDto } from "@api/types/chat/response/IChatTokenResponseDto";
+import MessageController from "@controllers/MessageController";
+import { IUpdateProfileResponseDto } from "@api/types/user/response/IUpdateProfileResponseDto";
+import { IChatDeleteRequest } from "@api/types/chat/request/IChatDeleteRequest";
 
 class ChatController {
   private readonly api: ChatApi;
@@ -82,6 +82,7 @@ class ChatController {
     } catch (error) {
       const { reason } = error;
 
+      // eslint-disable-next-line no-console
       console.error(reason);
     }
   }
@@ -96,6 +97,7 @@ class ChatController {
     } catch (error) {
       const { reason } = error;
 
+      // eslint-disable-next-line no-console
       console.error(reason);
     }
   }

@@ -1,7 +1,7 @@
-import { Block } from "../../utils/classes/Block/Block";
-import Image from "./Image.tmp";
-import Templator from "../../utils/classes/Templator";
-import * as styles from "./Image.module.scss";
+import Block from "@utils/classes/Block/Block";
+import Image from "@components/Image/Image.tmp";
+import Templator from "@utils/classes/Templator";
+import styles from "@components/Image/Image.module.scss";
 
 interface IImage {
   src: string;

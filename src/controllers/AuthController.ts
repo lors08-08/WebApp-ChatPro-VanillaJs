@@ -1,11 +1,11 @@
-import Api, { AuthApi } from "../api/AuthApi";
-import { ISignInDataRequestDto } from "../api/types/auth/request/ISignInDataRequestDto";
-import { ISignUpDataRequestDto } from "../api/types/auth/request/ISignUpDataRequestDto";
-import Store from "../utils/classes/Store";
-import Router from "../utils/classes/Routing/Router";
-import { Pages } from "../common/enums/Pages";
-import ChatController from "./ChatController";
-import MessageController from "./MessageController";
+import Api, { AuthApi } from "@api/AuthApi";
+import { ISignInDataRequestDto } from "@api/types/auth/request/ISignInDataRequestDto";
+import { ISignUpDataRequestDto } from "@api/types/auth/request/ISignUpDataRequestDto";
+import Store from "@utils/classes/Store";
+import Router from "@utils/classes/Routing/Router";
+import { Pages } from "@common/enums/Pages";
+import ChatController from "@controllers/ChatController";
+import MessageController from "@controllers/MessageController";
 
 class AuthController {
   private readonly api: AuthApi;

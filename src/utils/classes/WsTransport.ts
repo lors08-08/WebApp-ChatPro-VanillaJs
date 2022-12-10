@@ -1,4 +1,4 @@
-import { EventBus } from "./EventBus";
+import EventBus from "@utils/classes/EventBus";
 
 export enum WSTransportEvents {
   CONNECTED = "connected",
@@ -64,7 +64,7 @@ export default class WsTransport extends EventBus {
 
         this.emit(WSTransportEvents.MESSAGE, data);
       } catch (error) {
-        console.error(error);
+        throw new Error(error);
       }
     });
   }

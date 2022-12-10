@@ -1,14 +1,14 @@
-import Form, { IForm } from "../../../module/Form/Form";
-import LabelComponent from "../../../components/Label/Label";
-import AuthController from "../../../controllers/AuthController";
-import EmailComponent from "../components/EmailComponent";
-import { Block } from "../../../utils/classes/Block/Block";
-import NameComponent from "../components/NameComponent";
-import SurnameComponent from "../components/SurnameComponent";
-import PhoneComponent from "../components/PhoneComponent";
-import LoginComponent from "../../Login/components/LoginComponent";
-import PasswordComponent from "../../Login/components/PasswordComponent";
-import PasswordAgainComponent from "../components/PasswordAgainComponent";
+import Form, { IForm } from "@module/Form/Form";
+import LabelComponent from "@components/Label/Label";
+import AuthController from "@controllers/AuthController";
+import EmailComponent from "@pages/Signup/components/EmailComponent";
+import Block from "@utils/classes/Block/Block";
+import NameComponent from "@pages/Signup/components/NameComponent";
+import SurnameComponent from "@pages/Signup/components/SurnameComponent";
+import PhoneComponent from "@pages/Signup/components/PhoneComponent";
+import PasswordAgainComponent from "@pages/Signup/components/PasswordAgainComponent";
+import LoginComponent from "@pages/Login/components/LoginComponent";
+import PasswordComponent from "@pages/Login/components/PasswordComponent";
 
 interface IFormSignup extends IForm {
   emailError: LabelComponent;

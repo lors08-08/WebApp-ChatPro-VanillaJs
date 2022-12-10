@@ -1,7 +1,7 @@
 type THandler<A extends any[] = unknown[]> = (...args: A) => void;
 type TMapInterface<P> = P[keyof P];
 
-export class EventBus<
+class EventBus<
   E extends Record<string, string> = Record<string, string>,
   A extends Record<TMapInterface<E>, any[]> = Record<TMapInterface<E>, any[]>,
 > {
@@ -45,3 +45,5 @@ export class EventBus<
     });
   }
 }
+
+export default EventBus;

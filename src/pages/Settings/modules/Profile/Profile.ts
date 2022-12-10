@@ -1,14 +1,14 @@
-import Profile from "./../../Settings.tmp";
-import Templator from "../../../../utils/classes/Templator";
-import { Block } from "../../../../utils/classes/Block/Block";
-import * as styles from "../../modules/Avatar/Avatar.module.scss";
-import Store, { StoreEvents } from "../../../../utils/classes/Store";
-import ButtonComponent from "../../../../components/Button/Button";
-import FieldComponent from "../../components/Field/Field";
-import AuthController from "../../../../controllers/AuthController";
-import { IUpdateProfileRequestDto } from "../../../../api/types/user/request/IUpdateProfileRequestDto";
-import InputComponent from "../../../../components/Input/Input";
-import LabelComponent from "../../../../components/Label/Label";
+import Profile from "@pages/Settings/Settings.tmp";
+import Templator from "@utils/classes/Templator";
+import Block from "@utils/classes/Block/Block";
+import styles from "@pages/Settings/Settings.module.scss";
+import Store, { StoreEvents } from "@utils/classes/Store";
+import ButtonComponent from "@components/Button/Button";
+import FieldComponent from "@pages/Settings/components/Field/Field";
+import AuthController from "@controllers/AuthController";
+import { IUpdateProfileRequestDto } from "@api/types/user/request/IUpdateProfileRequestDto";
+import InputComponent from "@components/Input/Input";
+import LabelComponent from "@components/Label/Label";
 
 interface ISettings {
   icon: Block;

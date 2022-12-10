@@ -1,8 +1,8 @@
 import { nanoid } from "nanoid";
 
-import getObjectData from "../funcs/getObjectData";
-import { IEvent } from "../../common/types/types";
-import { Block } from "./Block/Block";
+import getObjectData from "@utils/funcs/getObjectData";
+import { IEvent } from "@common/types/types";
+import Block from "@utils/classes/Block/Block";
 
 class Templator<T extends Record<string, any>> {
   protected readonly _template: string;

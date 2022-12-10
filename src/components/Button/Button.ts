@@ -1,9 +1,9 @@
-import ButtonTmp from "./Button.tmp";
-import * as styles from "./Button.module.scss";
-import Templator from "../../utils/classes/Templator";
-import { Block } from "../../utils/classes/Block/Block";
-import { TElement } from "../../utils/classes/Block/types/types";
-import { IEvent } from "../../common/types/types";
+import ButtonTmp from "@components/Button/Button.tmp";
+import styles from "@components/Button/Button.module.scss";
+import Templator from "@utils/classes/Templator";
+import Block from "@utils/classes/Block/Block";
+import { TElement } from "@utils/classes/Block/types/types";
+import { IEvent } from "@common/types/types";
 
 interface IButton {
   id?: string;

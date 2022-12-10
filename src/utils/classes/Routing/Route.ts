@@ -1,6 +1,6 @@
-import isEqual from "../../funcs/isEqual";
-import renderDom from "../../funcs/renderDom";
-import { TElement } from "../Block/types/types";
+import isEqual from "@utils/funcs/isEqual";
+import renderDom from "@utils/funcs/renderDom";
+import { TElement } from "@utils/classes/Block/types/types";
 
 class Route {
   private block: TElement | null = null;

@@ -1,9 +1,9 @@
-import set from "../funcs/Set";
-import { EventBus } from "./EventBus";
-import { IBlockEventsArgs } from "./Block/types/types";
-import { IUpdateProfileResponseDto } from "../../api/types/user/response/IUpdateProfileResponseDto";
-import { IChatAllResponseDto } from "../../api/types/chat/response/IChatAllResponseDto";
-import { IMessage } from "../../controllers/MessageController";
+import set from "@utils/funcs/Set";
+import EventBus from "@utils/classes/EventBus";
+import { IBlockEventsArgs } from "@utils/classes/Block/types/types";
+import { IUpdateProfileResponseDto } from "@api/types/user/response/IUpdateProfileResponseDto";
+import { IChatAllResponseDto } from "@api/types/chat/response/IChatAllResponseDto";
+import { IMessage } from "@controllers/MessageController";
 
 interface IState {
   user: IUpdateProfileResponseDto | null;

@@ -1,10 +1,10 @@
-import AuthCardComponent from "../../module/Auth/Auth";
-import ButtonComponent from "../../components/Button/Button";
-import LabelComponent from "../../components/Label/Label";
-import LayoutComponent from "../../components/Layout/Layout";
-import FormSignupComponent from "./module/FormSignup";
-import LinkComponent from "../../components/Link/Link";
-import { Pages } from "../../common/enums/Pages";
+import AuthCardComponent from "@module/Auth/Auth";
+import ButtonComponent from "@components/Button/Button";
+import LabelComponent from "@components/Label/Label";
+import LayoutComponent from "@components/Layout/Layout";
+import FormSignupComponent from "@pages/Signup/module/FormSignup";
+import LinkComponent from "@components/Link/Link";
+import { Pages } from "@common/enums/Pages";
 
 const ServerError = new LabelComponent({
   id: "server-error",

@@ -1,8 +1,8 @@
-import Templator from "../../utils/classes/Templator";
-import FormTemplate from "./Form.tmp";
-import { Block } from "../../utils/classes/Block/Block";
-import * as styles from "./Form.scss";
-import { IEvent } from "../../common/types/types";
+import Templator from "@utils/classes/Templator";
+import FormTemplate from "@module/Form/Form.tmp";
+import Block from "@utils/classes/Block/Block";
+import styles from "@module/Form/Form.module.scss";
+import { IEvent } from "@common/types/types";
 
 export interface IForm {
   id: string;
@@ -17,6 +17,7 @@ class FormComponent<T extends IForm> extends Block<T> {
     return regExp.test(value);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   protected restoreInput(e: Event, error: Block): void {}
 
   render() {

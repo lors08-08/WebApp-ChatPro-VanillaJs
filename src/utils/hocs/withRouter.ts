@@ -1,5 +1,5 @@
-import { Block } from "../classes/Block/Block";
-import Router from "../classes/Routing/Router";
+import Block from "@utils/classes/Block/Block";
+import Router from "@utils/classes/Routing/Router";
 
 export function withRouter(Component: any) {
   type Props = typeof Component extends typeof Block ? {} : any;

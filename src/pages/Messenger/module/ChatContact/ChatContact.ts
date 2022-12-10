@@ -1,8 +1,8 @@
-import ChatContact from "./ChatContact.tmp";
-import * as styles from "./ChatContact.module.scss";
-import Templator from "../../../../utils/classes/Templator";
-import { Block } from "../../../../utils/classes/Block/Block";
-import { IEvent } from "../../../../common/types/types";
+import ChatContact from "@pages/Messenger/module/ChatContact/ChatContact.tmp";
+import styles from "@pages/Messenger/module/ChatContact/ChatContact.module.scss";
+import Templator from "@utils/classes/Templator";
+import Block from "@utils/classes/Block/Block";
+import { IEvent } from "@common/types/types";
 
 interface IChatContact {
   avatar?: Block;

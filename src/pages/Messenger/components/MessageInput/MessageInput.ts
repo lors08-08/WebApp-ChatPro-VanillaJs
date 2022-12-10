@@ -1,6 +1,6 @@
-import * as styles from "./MessageInput.module.scss";
-import InputComponent, { IInput } from "../../../../components/Input/Input";
-import InputWrapper from "../../../../module/InputWrapper/InputWrapper";
+import styles from "@pages/Messenger/components/MessageInput/MessageInput.module.scss";
+import InputComponent, { IInput } from "@components/Input/Input";
+import InputWrapper from "@module/InputWrapper/InputWrapper";
 
 const ctxMessageInput = {
   id: "message",

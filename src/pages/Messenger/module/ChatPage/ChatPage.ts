@@ -1,26 +1,26 @@
-import { Block } from "../../../../utils/classes/Block/Block";
-import Templator from "../../../../utils/classes/Templator";
-import ChatPage from "./ChatPage.tmp";
-import * as styles from "./ChatPage.module.scss";
-import Store, { StoreEvents } from "../../../../utils/classes/Store";
-import AvatarComponent from "../../../../components/Avatar/Avatar";
-import HeaderComponent from "./components/Header/Header";
-import BottomComponent from "./components/Bottom/Bottom";
-import IconComponent from "../../../../components/Icon/Icon";
-import ProfileComponent from "../../components/Profile/Profile";
-import AttachIcon from "../../../../../static/img/attach";
+import Block from "@utils/classes/Block/Block";
+import Templator from "@utils/classes/Templator";
+import ChatPage from "@pages/Messenger/module/ChatPage/ChatPage.tmp";
+import styles from "@pages/Messenger/module/ChatPage/ChatPage.module.scss";
+import Store, { StoreEvents } from "@utils/classes/Store";
+import AvatarComponent from "@components/Avatar/Avatar";
+import HeaderComponent from "@pages/Messenger/module/ChatPage/components/Header/Header";
+import BottomComponent from "@pages/Messenger/module/ChatPage/components/Bottom/Bottom";
+import IconComponent from "@components/Icon/Icon";
+import ProfileComponent from "@pages/Messenger/components/Profile/Profile";
+import AttachIcon from "@img/attach.svg";
 import {
   MessageField,
   MessageInput,
-} from "../../components/MessageInput/MessageInput";
-import SendButtonComponent from "../../components/SendButton/SendButton";
-import ArrowRightIcon from "../../../../../static/img/arrow-right";
-import ContentComponent from "./components/Content/Content";
-import MessageController from "../../../../controllers/MessageController";
-import ChatEmptyComponent from "../ChatEmpty/ChatEmpty";
-import LayoutComponent from "../../../../components/Layout/Layout";
-import ImageComponent from "../../../../components/Image/Image";
-import { resources } from "../../../../common/constant";
+} from "@pages/Messenger/components/MessageInput/MessageInput";
+import SendButtonComponent from "@pages/Messenger/components/SendButton/SendButton";
+import ArrowRightIcon from "@img/arrow-right.svg";
+import ContentComponent from "@pages/Messenger/module/ChatPage/components/Content/Content";
+import MessageController from "@controllers/MessageController";
+import ChatEmptyComponent from "@pages/Messenger/module/ChatEmpty/ChatEmpty";
+import LayoutComponent from "@components/Layout/Layout";
+import ImageComponent from "@components/Image/Image";
+import { resources } from "@common/constant";
 
 interface IChat {
   header?: Block;

@@ -1,9 +1,9 @@
-import { IEvent } from "../../common/types/types";
-import { Block } from "../../utils/classes/Block/Block";
-import Templator from "../../utils/classes/Templator";
-import * as styles from "./Link.module.scss";
-import Link from "./Link.tmp";
-import { PropsWithRouter, withRouter } from "../../utils/hocs/withRouter";
+import { IEvent } from "@common/types/types";
+import Block from "@utils/classes/Block/Block";
+import Templator from "@utils/classes/Templator";
+import styles from "@components/Link/Link.module.scss";
+import Link from "@components/Link/Link.tmp";
+import { PropsWithRouter, withRouter } from "@utils/hocs/withRouter";
 
 interface ILink extends PropsWithRouter {
   id: string;
