@@ -19,6 +19,7 @@
 - `npm run lint` — запуск проверки для кодстайла.
 - `npm run docker:build` — сборка Докер контейнера.
 - `npm run docker:start` — запуск Докер контейнера на 3000-м порту.
+- `npm run test` — запуск тестов.
 
 ### Stack - ChatPro
 
@@ -31,4 +32,5 @@
 - Webpack
 - Babel
 - ESLint
+- Mocha
 - Также под проект настроен Docker
