@@ -8,7 +8,9 @@
     "start": "cross-env NODE_ENV=development WEBPACK_DEV_SERVER=true webpack serve --config webpack.dev-server.js",
     "lint": "tsc --noEmit && eslint \"./**/*.{ts,js}\"",
     "test": "ts-mocha -n loader=ts-node/esm -p tsconfig.json src/**/*.test.ts --require ./mochaSetup.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "docker:buil": "docker build -t chat-pro .",
+    "docker:run": "docker run -d -p 8082:3000 chat-pro"
   },
   "author": "Lors Saidov",
   "license": "ISC",
