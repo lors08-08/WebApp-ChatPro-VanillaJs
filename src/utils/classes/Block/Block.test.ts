@@ -1,29 +1,36 @@
-import proxyquire from "proxyquire";
-import { expect } from "chai";
-import sinon from "sinon";
+import { assert } from "chai";
 
-import type BlockType from "./Block";
+import Block from "@utils/classes/Block/Block";
+import Templator from "@utils/classes/Templator";
 
-const eventBusMock = {
-  on: sinon.fake(),
-  emit: sinon.fake(),
-};
+const template = new Templator("<div>{{content}}</div>");
 
-const { default: Block } = proxyquire("./Block", {
-  "./EventBus": {
-    EventBus: class {
-      emit = eventBusMock.emit;
-      on = eventBusMock.on;
-    },
-  },
-}) as { default: typeof BlockType };
+class TestBlock extends Block {
+  constructor(props: Record<string, any>) {
+    super(props);
+  }
 
-describe("Block", () => {
-  class ComponentMock extends Block {}
+  render() {
+    return template.compile(this.props, {});
+  }
+}
 
-  it("should fire init event on initialization", () => {
-    new ComponentMock({});
+const testBlock = new TestBlock({ content: "Test message" });
 
-    expect(eventBusMock.emit.calledWith("init")).to.eq(true);
+describe("Block base component: render", () => {
+  it("Should render correctly", () => {
+    assert.equal(testBlock.getContent()?.innerHTML, "Test message");
+  });
+});
+
+describe("Block base component: props", () => {
+  beforeEach(() => {
+    testBlock.setProps({
+      content: "New message",
+    });
+  });
+
+  it("Should render given props", () => {
+    assert.equal(testBlock.getContent()?.innerHTML, "New message");
   });
 });
