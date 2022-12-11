@@ -23,16 +23,18 @@ const ChatsEmpty = new LayoutComponent({
 });
 
 class ContentComponent extends Block<IContent> {
-  private createMessage(props: IMessage[]): Block[] {
+  private createMessage(props: IMessage[]): Block[] | null {
     const userId = Store.getState().user?.id;
 
-    return props?.map((data) => {
-      return new MessageBubble({
-        ...data,
-        isFromUser: data.user_id === userId,
-        time: convertTimestamp(data.time),
-      });
-    });
+    return props
+      ? props.map((data) => {
+          return new MessageBubble({
+            ...data,
+            isFromUser: data.user_id === userId,
+            time: convertTimestamp(data.time),
+          });
+        })
+      : null;
   }
 
   protected init() {

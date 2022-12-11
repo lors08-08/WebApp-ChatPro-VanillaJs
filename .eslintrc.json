@@ -14,7 +14,7 @@
     "project": "./tsconfig.json",
     "sourceType": "module"
   },
-  "ignorePatterns": ["babel.config.js", "test.js", "babelREgister.js"],
+  "ignorePatterns": ["babel.config.js", "mochaSetup.js"],
   "rules": {
     "@typescript-eslint/no-unused-vars": "warn",
     "@typescript-eslint/no-implied-eval": "off",

@@ -1,4 +1,8 @@
 {
+  "ts-node": {
+    // Do not forget to `npm i -D tsconfig-paths`
+    "require": ["tsconfig-paths/register"]
+  },
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
@@ -31,7 +35,7 @@
       ]
     },
     "target": "es5",
-    "module": "es2020",
+    "module": "commonjs",
     "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true,
     "outDir": "dist",
@@ -41,6 +45,8 @@
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "noUnusedParameters": false,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
     "typeRoots": [
       "src/common/types/declares/*"
     ],
