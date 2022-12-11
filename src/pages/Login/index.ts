@@ -1,11 +1,11 @@
-import AuthCardComponent from "../../module/Auth/Auth";
-import LayoutComponent from "../../components/Layout/Layout";
-import ButtonComponent from "../../components/Button/Button";
-import LabelComponent from "../../components/Label/Label";
-import FormLoginComponent from "./module/FormLogin";
-import LinkComponent from "../../components/Link/Link";
-import { Pages } from "../../common/enums/Pages";
-import { withRedirect } from "../../utils/hocs/withRedirect";
+import AuthCardComponent from "@module/Auth/Auth";
+import LayoutComponent from "@components/Layout/Layout";
+import ButtonComponent from "@components/Button/Button";
+import LabelComponent from "@components/Label/Label";
+import FormLoginComponent from "@pages/Login/module/FormLogin";
+import LinkComponent from "@components/Link/Link";
+import { Pages } from "@common/enums/Pages";
+import { withRedirect } from "@utils/hocs/withRedirect";
 
 const LoginError = new LabelComponent({
   id: "login",

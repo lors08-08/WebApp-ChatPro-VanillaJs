@@ -1,4 +1,4 @@
-import { Events } from "./enum";
+import { Events } from "@utils/classes/Block/types/enum";
 
 export interface IBlockEventsArgs {
   [Events.INIT]: [];

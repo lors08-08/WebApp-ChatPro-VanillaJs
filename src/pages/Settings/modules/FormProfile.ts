@@ -1,10 +1,10 @@
-import Form, { IForm } from "../../../module/Form/Form";
-import Profile from "./Profile/Profile";
-import LabelComponent from "../../../components/Label/Label";
-import UserController from "../../../controllers/UserController";
-import Store from "../../../utils/classes/Store";
-import isEqual from "../../../utils/funcs/isEqual";
-import FieldComponent from "../components/Field/Field";
+import Form, { IForm } from "@module/Form/Form";
+import Profile from "@pages/Settings/modules/Profile/Profile";
+import LabelComponent from "@components/Label/Label";
+import UserController from "@controllers/UserController";
+import Store from "@utils/classes/Store";
+import isEqual from "@utils/funcs/isEqual";
+import FieldComponent from "@pages/Settings/components/Field/Field";
 
 interface IFormProfile extends IForm {
   profile: Profile;

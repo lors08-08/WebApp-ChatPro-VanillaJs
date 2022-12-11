@@ -1,9 +1,13 @@
-import { EventBus } from "../EventBus";
-import { Events } from "./types/enum";
-import { IBlockEventsArgs, TElement, TMeta } from "./types/types";
-import isEqual from "../../funcs/isEqual";
+import EventBus from "@utils/classes/EventBus";
+import { Events } from "@utils/classes/Block/types/enum";
+import {
+  IBlockEventsArgs,
+  TElement,
+  TMeta,
+} from "@utils/classes/Block/types/types";
+import isEqual from "@utils/funcs/isEqual";
 
-export class Block<P extends Record<string, any> = {}> {
+class Block<P extends Record<string, any> = {}> {
   static Events = Events;
 
   props = {} as P;
@@ -58,6 +62,7 @@ export class Block<P extends Record<string, any> = {}> {
     this.componentDidMount();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   componentDidMount(oldProps = null) {}
 
   public dispatchComponentDidMount() {
@@ -145,3 +150,5 @@ export class Block<P extends Record<string, any> = {}> {
     }
   }
 }
+
+export default Block;

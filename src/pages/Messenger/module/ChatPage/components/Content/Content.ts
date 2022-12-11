@@ -1,13 +1,13 @@
-import Content from "./Content.tmp";
-import * as styles from "./Content.module.scss";
-import Templator from "../../../../../../utils/classes/Templator";
-import { Block } from "../../../../../../utils/classes/Block/Block";
-import MessageBubble from "../MessageBubble/MessageBubble";
-import Store from "../../../../../../utils/classes/Store";
-import { IMessage } from "../../../../../../controllers/MessageController";
-import LayoutComponent from "../../../../../../components/Layout/Layout";
-import ChatEmptyComponent from "../../../ChatEmpty/ChatEmpty";
-import convertTimestamp from "../../../../../../utils/funcs/convertTimestamp";
+import Content from "@pages/Messenger/module/ChatPage/components/Content/Content.tmp";
+import styles from "@pages/Messenger/module/ChatPage/components/Content/Content.module.scss";
+import Templator from "@utils/classes/Templator";
+import Block from "@utils/classes/Block/Block";
+import MessageBubble from "@pages/Messenger/module/ChatPage/components/MessageBubble/MessageBubble";
+import Store from "@utils/classes/Store";
+import { IMessage } from "@controllers/MessageController";
+import LayoutComponent from "@components/Layout/Layout";
+import ChatEmptyComponent from "@pages/Messenger/module/ChatEmpty/ChatEmpty";
+import convertTimestamp from "@utils/funcs/convertTimestamp";
 
 interface IContent {
   chatId: number;
@@ -23,16 +23,18 @@ const ChatsEmpty = new LayoutComponent({
 });
 
 class ContentComponent extends Block<IContent> {
-  private createMessage(props: IMessage[]): Block[] {
+  private createMessage(props: IMessage[]): Block[] | null {
     const userId = Store.getState().user?.id;
 
-    return props?.map((data) => {
-      return new MessageBubble({
-        ...data,
-        isFromUser: data.user_id === userId,
-        time: convertTimestamp(data.time),
-      });
-    });
+    return props
+      ? props.map((data) => {
+          return new MessageBubble({
+            ...data,
+            isFromUser: data.user_id === userId,
+            time: convertTimestamp(data.time),
+          });
+        })
+      : null;
   }
 
   protected init() {

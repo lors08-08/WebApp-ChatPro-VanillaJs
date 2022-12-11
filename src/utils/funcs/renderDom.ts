@@ -1,4 +1,4 @@
-import { TElement } from "../classes/Block/types/types";
+import { TElement } from "@utils/classes/Block/types/types";
 
 function renderDom(query: string, block: TElement) {
   const root = document.querySelector(query);

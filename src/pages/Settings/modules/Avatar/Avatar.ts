@@ -1,15 +1,15 @@
-import Avatar from "./Avatar.tmp";
-import * as styles from "./Avatar.module.scss";
-import AvatarElement from "../../../../components/Avatar/Avatar";
-import Templator from "../../../../utils/classes/Templator";
-import { Block } from "../../../../utils/classes/Block/Block";
-import Modal from "../../../../module/Modal/Modal";
-import ButtonComponent from "../../../../components/Button/Button";
-import FileLoader from "../../../../module/FileLoader/FileLoader";
-import UserController from "../../../../controllers/UserController";
-import Store, { StoreEvents } from "../../../../utils/classes/Store";
-import ImageComponent from "../../../../components/Image/Image";
-import { resources } from "../../../../common/constant";
+import Avatar from "@pages/Settings/modules/Avatar/Avatar.tmp";
+import styles from "@pages/Settings/modules/Avatar/Avatar.module.scss";
+import AvatarElement from "@components/Avatar/Avatar";
+import Templator from "@utils/classes/Templator";
+import Block from "@utils/classes/Block/Block";
+import Modal from "@module/Modal/Modal";
+import ButtonComponent from "@components/Button/Button";
+import FileLoader from "@module/FileLoader/FileLoader";
+import UserController from "@controllers/UserController";
+import Store, { StoreEvents } from "@utils/classes/Store";
+import ImageComponent from "@components/Image/Image";
+import { resources } from "@common/constant";
 
 interface IAvatar {
   id?: string;

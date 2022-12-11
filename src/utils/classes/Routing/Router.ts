@@ -1,7 +1,7 @@
-import Route from "./Route";
-import { TElement } from "../Block/types/types";
-import AuthController from "../../../controllers/AuthController";
-import { Pages } from "../../../common/enums/Pages";
+import Route from "@utils/classes/Routing/Route";
+import { TElement } from "@utils/classes/Block/types/types";
+import AuthController from "@controllers/AuthController";
+import { Pages } from "@common/enums/Pages";
 
 class Router {
   private static __instance: Router;

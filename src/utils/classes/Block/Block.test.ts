@@ -1,31 +1,36 @@
 import { assert } from "chai";
 
-import { Block } from "./Block";
-import Templator from "../Templator";
+import Block from "@utils/classes/Block/Block";
+import Templator from "@utils/classes/Templator";
 
-const mockTemplate = "<div id={{id}}>mock template</div>";
+const template = new Templator("<div>{{content}}</div>");
 
-const tmp = new Templator(mockTemplate);
+class TestBlock extends Block {
+  constructor(props: Record<string, any>) {
+    super(props);
+  }
 
-class MockComponent extends Block {
   render() {
-    return tmp.compile({ ...this.props }, {});
+    return template.compile(this.props, {});
   }
 }
 
-const component = new MockComponent({});
+const testBlock = new TestBlock({ content: "Test message" });
 
-describe("Block", () => {
-  before(() => {
-    component.setProps({ prop: "testProp" });
+describe("Block base component: render", () => {
+  it("Should render correctly", () => {
+    assert.equal(testBlock.getContent()?.innerHTML, "Test message");
+  });
+});
+
+describe("Block base component: props", () => {
+  beforeEach(() => {
+    testBlock.setProps({
+      content: "New message",
+    });
   });
 
-  it("Render вернул корректный результат", () => {
-    assert.equal(component.getContent()?.innerHTML, "mock template");
-  });
-
-  it("Метод SetProps меняет пропсы компонента", () => {
-    component.setProps({ id: "test" });
-    assert.deepEqual(component.props, { id: "test", prop: "TestProp" });
+  it("Should render given props", () => {
+    assert.equal(testBlock.getContent()?.innerHTML, "New message");
   });
 });

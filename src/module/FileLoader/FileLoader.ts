@@ -1,7 +1,7 @@
-import { Block } from "../../utils/classes/Block/Block";
-import FileLoaderTmp from "./FileLoader.tmp";
-import Templator from "../../utils/classes/Templator";
-import * as styles from "./FileLoader.module.scss";
+import Block from "@utils/classes/Block/Block";
+import FileLoaderTmp from "@module/FileLoader/FileLoader.tmp";
+import Templator from "@utils/classes/Templator";
+import styles from "@module/FileLoader/FileLoader.module.scss";
 
 interface IFileLoader {
   value: string;

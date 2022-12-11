@@ -11,10 +11,13 @@
 Команды для работы с проектом:
 
 - `npm install` — установка стабильной версии,
-- `npm run start` — запуск стабильной версии,
-- `npm run build` — сборка стабильной версии,
-- `npm run dev` — запуск версии для разработчика.
+- `npm run prod` — сборка стабильной версии,
+- `npm run dev` — сборка версии для разработчика,
+- `npm run start` — запуск версии для разработчика.
 - `npm run lint` — запуск проверки для кодстайла.
+- `npm run docker:build` — сборка Докер контейнера.
+- `npm run docker:start` — запуск Докер контейнера на 3000-м порту.
+- `npm run test` — запуск тестов.
 
 ### Stack - ChatPro
 
@@ -23,4 +26,9 @@
 - Самописный Router
 - Своя реализация XMLHttpRequest для работы с запросами
 - WebSockets
-
+- Typescript
+- Webpack
+- Babel
+- ESLint
+- Mocha
+- Также под проект настроен Docker

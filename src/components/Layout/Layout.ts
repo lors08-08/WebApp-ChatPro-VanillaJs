@@ -1,7 +1,7 @@
-import LayoutTmp from "./Layout.tmp";
-import * as styles from "./Layout.module.scss";
-import Templator from "../../utils/classes/Templator";
-import { Block } from "../../utils/classes/Block/Block";
+import LayoutTmp from "@components/Layout/Layout.tmp";
+import styles from "@components/Layout/Layout.module.scss";
+import Templator from "@utils/classes/Templator";
+import Block from "@utils/classes/Block/Block";
 
 interface ILayout {
   content: Block;

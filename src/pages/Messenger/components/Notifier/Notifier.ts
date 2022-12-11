@@ -1,7 +1,7 @@
-import Notifier from "./Notifier.tmp";
-import * as styles from "./Notifier.module.scss";
-import Templator from "../../../../utils/classes/Templator";
-import { Block } from "../../../../utils/classes/Block/Block";
+import Notifier from "@pages/Messenger/components/Notifier/Notifier.tmp";
+import styles from "@pages/Messenger/components/Notifier/Notifier.module.scss";
+import Templator from "@utils/classes/Templator";
+import Block from "@utils/classes/Block/Block";
 
 interface INotifier {
   value: number;

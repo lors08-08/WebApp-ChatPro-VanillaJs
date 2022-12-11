@@ -1,18 +1,61 @@
 {
+  "ts-node": {
+    // Do not forget to `npm i -D tsconfig-paths`
+    "require": ["tsconfig-paths/register"]
+  },
   "compilerOptions": {
-    "outDir": "dist",
-    "target": "es2020",
-    "declaration": true,
+    "baseUrl": "./",
+    "paths": {
+      "@src/*": [
+        "src/*"
+      ],
+      "@api/*": [
+        "src/api/*"
+      ],
+      "@pages/*": [
+        "src/pages/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
+      "@module/*": [
+        "src/module/*"
+      ],
+      "@common/*": [
+        "src/common/*"
+      ],
+      "@controllers/*": [
+        "src/controllers/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@img/*": [
+        "static/img/*"
+      ]
+    },
+    "target": "es5",
     "module": "commonjs",
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true,
+    "outDir": "dist",
+    "declaration": true,
     "strictNullChecks": true,
     "sourceMap": true,
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "noUnusedParameters": false,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "typeRoots": [
+      "src/common/types/declares/*"
+    ],
+    "types": ["jest", "node"],
   },
+  "include": [
+    "**/*.ts",
+  ],
   "exclude": [
-    "node_modules",
-    "dist",
-    "test"
+    "node_modules"
   ]
 }

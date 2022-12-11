@@ -1,14 +1,14 @@
-import icon from "./Icon.tmp";
-import Templator from "../../utils/classes/Templator";
-import * as styles from "./Icon.module.scss";
-import { Block } from "../../utils/classes/Block/Block";
-import { IEvent } from "../../common/types/types";
+import icon from "@components/Icon/Icon.tmp";
+import Templator from "@utils/classes/Templator";
+import styles from "@components/Icon/Icon.module.scss";
+import Block from "@utils/classes/Block/Block";
+import { IEvent } from "@common/types/types";
 
 interface IIcon {
   className?: string;
   size?: string;
   color?: string;
-  icon: string;
+  icon: any;
   event?: IEvent;
 }
 

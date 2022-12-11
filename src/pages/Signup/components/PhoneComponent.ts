@@ -1,7 +1,7 @@
-import { Block } from "../../../utils/classes/Block/Block";
-import InputComponent from "../../../components/Input/Input";
-import InputWrapper from "../../../module/InputWrapper/InputWrapper";
-import LabelComponent from "../../../components/Label/Label";
+import Block from "@utils/classes/Block/Block";
+import InputComponent from "@components/Input/Input";
+import InputWrapper from "@module/InputWrapper/InputWrapper";
+import LabelComponent from "@components/Label/Label";
 
 interface IPhoneComponentProps {
   restoreInput(e: Event, error: Block): void;

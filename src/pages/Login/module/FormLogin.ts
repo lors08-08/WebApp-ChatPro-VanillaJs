@@ -1,9 +1,9 @@
-import Form, { IForm } from "../../../module/Form/Form";
-import LabelComponent from "../../../components/Label/Label";
-import AuthController from "../../../controllers/AuthController";
-import { Block } from "../../../utils/classes/Block/Block";
-import LoginComponent from "../components/LoginComponent";
-import PasswordComponent from "../components/PasswordComponent";
+import Form, { IForm } from "@module/Form/Form";
+import LabelComponent from "@components/Label/Label";
+import AuthController from "@controllers/AuthController";
+import Block from "@utils/classes/Block/Block";
+import LoginComponent from "@pages/Login/components/LoginComponent";
+import PasswordComponent from "@pages/Login/components/PasswordComponent";
 
 interface IFormLogin extends IForm {
   loginError: LabelComponent;

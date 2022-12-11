@@ -1,23 +1,21 @@
-import "./Settings.scss";
-
 export default `
-  <div class="profile-container">
-      <div class="back-icon-wrapper flexColumn flexCenter">
-          <div class="back-icon">
+  <div class="{{styles.profile-container}}">
+      <div class="{{styles.back-icon-wrapper}} flexColumn flexCenter">
+          <div class="{{styles.back-icon}}">
               {{ icon }}
           </div>
       </div>
-      <div class="profile-main-content flexColumn">
-          <div class="profile-user-info flexColumn">
-              <div class="user-avatar">
+      <div class="{{styles.profile-main-content}} flexColumn">
+          <div class="{{styles.profile-user-info}} flexColumn">
+              <div class="{{styles.user-avatar}}">
                   {{ userAvatar }}
               </div>
-              <div class="user-info">
+              <div class="{{styles.user-info}}">
                   {{ userInfo }}
               </div>
           </div>
           <div class="{{ styles.action-status }}">{{&if actionStatus !== undefined}} {{ actionStatus }} {{&end}}</div>
-          <div class="profile-actions flexColumn">
+          <div class="{{styles.profile-actions}} flexColumn">
               {{ buttons }}
           </div>
       </div>

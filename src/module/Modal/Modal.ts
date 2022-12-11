@@ -1,8 +1,8 @@
-import Templator from "../../utils/classes/Templator";
-import * as styles from "./Modal.module.scss";
-import Modal from "./Modal.tmp";
-import { Block } from "../../utils/classes/Block/Block";
-import { IEvent } from "../../common/types/types";
+import Templator from "@utils/classes/Templator";
+import styles from "@module/Modal/Modal.module.scss";
+import Modal from "@module/Modal/Modal.tmp";
+import Block from "@utils/classes/Block/Block";
+import { IEvent } from "@common/types/types";
 
 interface IModal {
   id?: string;

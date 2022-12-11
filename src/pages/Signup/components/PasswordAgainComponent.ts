@@ -1,7 +1,7 @@
-import InputComponent from "../../../components/Input/Input";
-import { Block } from "../../../utils/classes/Block/Block";
-import InputWrapperComponent from "../../../module/InputWrapper/InputWrapper";
-import LabelComponent from "../../../components/Label/Label";
+import InputComponent from "@components/Input/Input";
+import Block from "@utils/classes/Block/Block";
+import InputWrapperComponent from "@module/InputWrapper/InputWrapper";
+import LabelComponent from "@components/Label/Label";
 
 interface IPasswordComponentProps {
   restoreInput(e: Event, error: Block): void;

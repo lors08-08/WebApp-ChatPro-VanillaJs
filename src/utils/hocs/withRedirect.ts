@@ -1,6 +1,6 @@
-import Router from "../classes/Routing/Router";
-import { Pages } from "../../common/enums/Pages";
-import AuthController from "../../controllers/AuthController";
+import Router from "@utils/classes/Routing/Router";
+import { Pages } from "@common/enums/Pages";
+import AuthController from "@controllers/AuthController";
 
 export function withRedirect(Component: any) {
   (async () => {

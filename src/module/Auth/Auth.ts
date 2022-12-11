@@ -1,7 +1,7 @@
-import Templator from "../../utils/classes/Templator";
-import Auth from "./Auth.tmp";
-import { Block } from "../../utils/classes/Block/Block";
-import * as styles from "./Auth.module.scss";
+import Templator from "@utils/classes/Templator";
+import Auth from "@module/Auth/Auth.tmp";
+import Block from "@utils/classes/Block/Block";
+import styles from "@module/Auth/Auth.module.scss";
 
 interface IAuth {
   title: string;

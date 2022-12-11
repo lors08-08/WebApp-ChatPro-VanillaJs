@@ -1,6 +1,6 @@
-import InputComponent, { IInput } from "../../../../components/Input/Input";
-import * as styles from "./SearchInput.module.scss";
-import InputWrapper from "../../../../module/InputWrapper/InputWrapper";
+import InputComponent, { IInput } from "@components/Input/Input";
+import styles from "@pages/Messenger/components/SearchInput/SearchInput.module.scss";
+import InputWrapper from "@module/InputWrapper/InputWrapper";
 
 const SearchInput = (args: IInput) => {
   const { iconLeft, ...rest } = args;

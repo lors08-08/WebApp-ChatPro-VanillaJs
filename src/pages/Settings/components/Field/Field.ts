@@ -1,8 +1,8 @@
-import Field from "./Field.tmp";
-import * as styles from "./Fields.module.scss";
-import Templator from "../../../../utils/classes/Templator";
-import { Block } from "../../../../utils/classes/Block/Block";
-import InputComponent from "../../../../components/Input/Input";
+import Field from "@pages/Settings/components/Field/Field.tmp";
+import styles from "@pages/Settings/components/Field/Fields.module.scss";
+import Templator from "@utils/classes/Templator";
+import Block from "@utils/classes/Block/Block";
+import InputComponent from "@components/Input/Input";
 
 interface IField {
   id?: string;

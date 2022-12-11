@@ -1,8 +1,8 @@
-import BaseApi from "./BaseApi";
-import { IUpdateProfileRequestDto } from "./types/user/request/IUpdateProfileRequestDto";
-import { IUpdatePasswordRequestDto } from "./types/user/request/IUpdatePasswordRequestDto";
-import { IUpdateProfileResponseDto } from "./types/user/response/IUpdateProfileResponseDto";
-import { IUserSearchRequestDto } from "./types/user/request/IUserSearchRequestDto";
+import BaseApi from "@api/BaseApi";
+import { IUpdateProfileRequestDto } from "@api/types/user/request/IUpdateProfileRequestDto";
+import { IUpdatePasswordRequestDto } from "@api/types/user/request/IUpdatePasswordRequestDto";
+import { IUpdateProfileResponseDto } from "@api/types/user/response/IUpdateProfileResponseDto";
+import { IUserSearchRequestDto } from "@api/types/user/request/IUserSearchRequestDto";
 
 export class UserApi extends BaseApi {
   constructor() {

@@ -1,7 +1,7 @@
-import Header from "./Header.tmp";
-import * as styles from "./Header.module.scss";
-import Templator from "../../../../../../utils/classes/Templator";
-import { Block } from "../../../../../../utils/classes/Block/Block";
+import Header from "@pages/Messenger/module/Sidebar/module/Header/Header.tmp";
+import styles from "@pages/Messenger/module/Sidebar/module/Header/Header.module.scss";
+import Templator from "@utils/classes/Templator";
+import Block from "@utils/classes/Block/Block";
 
 interface ISidebarComponent {
   button: Block;

@@ -1,4 +1,4 @@
-import { Superfetch } from "../utils/classes/Superfetch";
+import { Superfetch } from "@utils/classes/Superfetch";
 
 export default abstract class BaseApi {
   protected http: Superfetch;
