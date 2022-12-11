@@ -10,7 +10,7 @@
     "test": "ts-mocha -n loader=ts-node/esm -p tsconfig.json src/**/*.test.ts --require ./mochaSetup.js",
     "prepare": "husky install",
     "docker:build": "docker build -t chat-pro .",
-    "docker:run": "docker run -d -p 8082:3000 chat-pro"
+    "docker:start": "docker run -d -p 8082:3000 chat-pro"
   },
   "author": "Lors Saidov",
   "license": "ISC",
