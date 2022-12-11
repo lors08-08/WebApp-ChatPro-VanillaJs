@@ -1,5 +1,3 @@
-## [Pull_request_link](https://github.com/lors08-08/middle.messenger.praktikum.yandex/pull/2)
-
 ### WebApp - ChatPro
 
 ## Хостинг
