@@ -1,4 +1,4 @@
-import { nanoid } from "nanoid";
+import { v4 as uuid } from "uuid";
 
 import getObjectData from "@utils/funcs/getObjectData";
 import { IEvent } from "@common/types/types";
@@ -61,7 +61,7 @@ class Templator<T extends Record<string, any>> {
   private _addIds(elements: Record<string, any>) {
     return Object.entries(elements).map(([key, value]) => {
       return {
-        id: nanoid(6),
+        id: uuid(),
         name: key,
         component: value instanceof Block ? value.getContent() : value,
       };

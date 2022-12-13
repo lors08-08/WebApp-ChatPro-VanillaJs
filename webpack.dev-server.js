@@ -7,6 +7,7 @@ module.exports = merge(dev, {
   output: {
     publicPath: "/",
   },
+  watch: true,
   devServer: {
     hot: true,
     historyApiFallback: true,

@@ -5,7 +5,7 @@ import Block from "@utils/classes/Block/Block";
 
 interface ISidebarComponent {
   button: Block;
-  search: Block;
+  search?: Block;
 }
 
 const tmp = new Templator(Header);

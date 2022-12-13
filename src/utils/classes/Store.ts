@@ -1,4 +1,4 @@
-import set from "@utils/funcs/Set";
+import set from "@utils/funcs/set";
 import EventBus from "@utils/classes/EventBus";
 import { IBlockEventsArgs } from "@utils/classes/Block/types/types";
 import { IUpdateProfileResponseDto } from "@api/types/user/response/IUpdateProfileResponseDto";

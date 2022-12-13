@@ -3,7 +3,7 @@ import styles from "@pages/Messenger/components/SearchInput/SearchInput.module.s
 import InputWrapper from "@module/InputWrapper/InputWrapper";
 
 const SearchInput = (args: IInput) => {
-  const { iconLeft, ...rest } = args;
+  const { iconLeft, event, ...rest } = args;
 
   return new InputWrapper({
     iconLeft: iconLeft,
@@ -12,6 +12,7 @@ const SearchInput = (args: IInput) => {
       className: "styles.wrapper medium styles.ghost",
       additionalStyles: styles,
       ...rest,
+      event,
     }),
   });
 };
