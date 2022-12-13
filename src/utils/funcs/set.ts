@@ -1,4 +1,4 @@
-import merge from "@utils/funcs/Merge";
+import merge from "@utils/funcs/merge";
 
 type Indexed<T = unknown> = {
   [key in string]: T;

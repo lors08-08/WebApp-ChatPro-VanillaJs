@@ -19,4 +19,4 @@ function merge(lhs: Indexed, rhs: Indexed): Indexed | undefined {
 
 export default merge;
 
-merge({ a: { b: { a: 2 } }, d: 5 }, { a: { b: { c: 1 } } });
+// merge({ a: { b: { a: 2 } }, d: 5 }, { a: { b: { c: 1 } } });

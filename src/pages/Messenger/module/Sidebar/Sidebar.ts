@@ -16,12 +16,16 @@ import convertTimestamp from "@utils/funcs/convertTimestamp";
 import removeDuplicates from "@pages/Messenger/utils/removeDuplicates";
 import ImageComponent from "@components/Image/Image";
 import { resources } from "@common/constant";
+import HeaderComponent from "@pages/Messenger/module/Sidebar/module/Header/Header";
+import LabelComponent from "@components/Label/Label";
+import InputWrapperComponent from "@module/InputWrapper/InputWrapper";
 
 interface ISidebarComponent {
   modal?: Block;
   header: Block;
   chatContacts: Block | Block[];
   addChatBtn?: Block;
+  searchValue: string;
 }
 
 const tmp = new Templator(Sidebar);
@@ -140,13 +144,22 @@ class SidebarComponent extends Block<ISidebarComponent> {
     Store.on(StoreEvents.UPDATED, () => {
       const chats = Store.getState().chat;
 
+      const header = this.props.header as HeaderComponent;
+      const search = header.props.search as LabelComponent;
+      const input = search.props.value as InputWrapperComponent<any>;
+
       this.setProps({
         ...this.props,
         chatContacts:
           !chats || chats.length < 1
             ? ChatsEmpty
-            : removeDuplicates(chats).map(
-                ({ id, avatar, title, last_message, unread_count }) => {
+            : removeDuplicates(chats)
+                .filter((chat) =>
+                  chat.title
+                    .toLowerCase()
+                    .includes(input.getValue().toLowerCase()),
+                )
+                .map(({ id, avatar, title, last_message, unread_count }) => {
                   return new ChatContactComponent({
                     avatar: avatar
                       ? new ImageComponent({
@@ -176,8 +189,7 @@ class SidebarComponent extends Block<ISidebarComponent> {
                       },
                     },
                   });
-                },
-              ),
+                }),
       });
     });
   }
