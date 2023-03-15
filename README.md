@@ -1,5 +1,10 @@
 ### WebApp - ChatPro
 
+## Логин / Пароль
+
+- login: admin008
+- password: Admin008
+
 ## Хостинг
 [ChatPro](https://chat-pro-by-lors.netlify.app/)
 
